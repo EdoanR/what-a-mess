@@ -13,6 +13,10 @@ var surface_attached: PhysicObject = null
 func _ready():
 	if (get_collision_layer_value(2) or get_collision_layer_value(4)) and not get_collision_layer_value(3):
 		liftable = true
+	
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	attach_to_surface()
 
 func _physics_process(_delta):
 	if not surface_attached:
@@ -41,16 +45,25 @@ func drop():
 	if not get_collision_layer_value(4):
 		return
 
-	var bodies = surface_check.get_overlapping_bodies()
-	print(bodies)
-	for body in bodies:
-		if body.get_collision_layer_value(3):
-			print("body to pin ", body)
-			# surface_pinpoint.node_b = body.get_path()
-			surface_attached = body
-			return
+	var attached = attach_to_surface()
+	if attached:
+		return
 	
 	lower()
+
+func attach_to_surface():
+	if not get_collision_layer_value(4):
+		return
+
+	var bodies = surface_check.get_overlapping_bodies()
+	if name == "Pillow":
+		print(bodies)
+	for body in bodies:
+		if body.get_collision_layer_value(3):
+			# surface_pinpoint.node_b = body.get_path()
+			surface_attached = body
+			return true
+	return false
 
 func lift():
 	if not liftable:
@@ -90,7 +103,8 @@ func lift():
 	set_collision_mask_value(4, true)
 	set_collision_layer_value(2, false)
 	set_collision_layer_value(4, true)
-	z_index += 1
+	
+	get_parent().move_child(self, get_tree().current_scene.last_obj_index)
 
 func lower():
 	if not liftable:
@@ -131,4 +145,5 @@ func lower():
 	set_collision_mask_value(2, true)
 	set_collision_layer_value(4, false)
 	set_collision_layer_value(2, true)
-	z_index -= 1
+	
+	get_parent().move_child(self, get_tree().current_scene.first_obj_index)

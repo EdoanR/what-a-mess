@@ -18,12 +18,12 @@ linear_damp = 10.0
 angular_damp = 10.0
 script = ExtResource("1_eomnh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_yaler")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_hkbon")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yaler")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("..")

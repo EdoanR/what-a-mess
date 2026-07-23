@@ -3,11 +3,28 @@ class_name Level extends Node2D
 @onready var reality: Node2D = $Reality
 @onready var expectation: Node2D = $Expectation
 
+var last_obj_index = 0
+var first_obj_index = -1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_use_accumulated_input(false)
 
+	for child in reality.get_children():
+		if not child is PhysicObject:
+			continue
+		
+		var obj = child as PhysicObject
+		var idx = obj.get_index()
+		last_obj_index = max(last_obj_index, idx)
 
+		if obj.get_collision_layer_value(5):
+			first_obj_index = idx + 1
+
+		if first_obj_index == -1:
+			first_obj_index = idx
+
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("validate"):

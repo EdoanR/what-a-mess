@@ -7,8 +7,8 @@ size = Vector2(33.5, 32.5)
 
 [node name="SmallerPhysicObject" instance=ExtResource("1_s8138")]
 
-[node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.25, 0.25)
-
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_j17bu")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.25, 0.25)
