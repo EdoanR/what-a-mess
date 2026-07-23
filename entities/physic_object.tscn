@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dril3jhprl65l"]
+
+[ext_resource type="Script" uid="uid://cut2ebhtbmd62" path="res://Logic/physic_object.gd" id="1_eomnh"]
+[ext_resource type="Texture2D" uid="uid://c10kwnlir8ods" path="res://icon.svg" id="2_yaler"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkbon"]
+size = Vector2(130, 130)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eomnh"]
+radius = 1.0
+
+[node name="PhysicObject" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 3
+gravity_scale = 0.0
+continuous_cd = 2
+linear_damp = 10.0
+angular_damp = 10.0
+script = ExtResource("1_eomnh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yaler")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_hkbon")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("..")
+softness = 10.0
+
+[node name="SurfacePinpoint" type="PinJoint2D" parent="."]
+node_a = NodePath("..")
+softness = 5.0
+
+[node name="MiddleCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MiddleCheck"]
+shape = SubResource("CircleShape2D_eomnh")
+
+[node name="ObjectsCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectsCheck"]
+shape = SubResource("CircleShape2D_eomnh")
