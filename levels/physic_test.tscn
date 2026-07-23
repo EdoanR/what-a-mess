@@ -1,19 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bshtl5rh3yc0x"]
+[gd_scene load_steps=7 format=3 uid="uid://bshtl5rh3yc0x"]
 
 [ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="1_hkbon"]
-[ext_resource type="Texture2D" uid="uid://c10kwnlir8ods" path="res://icon.svg" id="2_v1bry"]
-[ext_resource type="Script" uid="uid://dnpob5fp7dlds" path="res://Logic/cursor_test.gd" id="3_hkbon"]
 [ext_resource type="PackedScene" uid="uid://cpvr47ikcco48" path="res://entities/table.tscn" id="3_qvjbq"]
 [ext_resource type="PackedScene" uid="uid://cbpthtlr7ngdm" path="res://entities/smaller_physic_object.tscn" id="4_mks1t"]
+[ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="4_qvjbq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ur5mt"]
 size = Vector2(282, 546)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i55u8"]
 size = Vector2(1181, 546)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mks1t"]
-radius = 3.16228
 
 [node name="PhysicsTestScene" type="Node2D"]
 
@@ -88,16 +84,4 @@ position = Vector2(571, 517)
 [node name="Table" parent="." instance=ExtResource("3_qvjbq")]
 position = Vector2(568, 282)
 
-[node name="Cursor" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 14
-script = ExtResource("3_hkbon")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
-shape = SubResource("CircleShape2D_mks1t")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Cursor"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Cursor"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_v1bry")
+[node name="Cursor" parent="." instance=ExtResource("4_qvjbq")]
