@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbpthtlr7ngdm"]
+
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="1_s8138"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j17bu"]
+size = Vector2(33.5, 32.5)
+
+[node name="SmallerPhysicObject" instance=ExtResource("1_s8138")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.25, 0.25)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_j17bu")

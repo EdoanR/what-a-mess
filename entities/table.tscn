@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpvr47ikcco48"]
+
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="1_dlbyq"]
+[ext_resource type="Texture2D" uid="uid://c10kwnlir8ods" path="res://icon.svg" id="2_g1ckm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlbyq"]
+size = Vector2(174.5, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1ckm"]
+size = Vector2(23, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2baeo"]
+size = Vector2(23, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wl342"]
+size = Vector2(23, 24)
+
+[node name="Table" instance=ExtResource("1_dlbyq")]
+collision_layer = 4
+collision_mask = 5
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(0.323495, 0.323495, 0.323495, 1)
+position = Vector2(-53.5, -52.2647)
+scale = Vector2(0.164063, 0.183364)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="1"]
+modulate = Color(0.323495, 0.323495, 0.323495, 1)
+position = Vector2(112, -55)
+scale = Vector2(0.164063, 0.183364)
+texture = ExtResource("2_g1ckm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." index="2"]
+modulate = Color(0.323495, 0.323495, 0.323495, 1)
+position = Vector2(111, 58)
+scale = Vector2(0.164063, 0.183364)
+texture = ExtResource("2_g1ckm")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." index="3"]
+modulate = Color(0.323495, 0.323495, 0.323495, 1)
+position = Vector2(-56, 59)
+scale = Vector2(0.164063, 0.183364)
+texture = ExtResource("2_g1ckm")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." index="4"]
+position = Vector2(29.75, 4.63236)
+scale = Vector2(1.36328, 0.943245)
+texture = ExtResource("2_g1ckm")
+
+[node name="CollisionShape2D" parent="." index="5"]
+position = Vector2(28.75, 4)
+shape = SubResource("RectangleShape2D_dlbyq")
+debug_color = Color(0.7, 0.379411, 0, 0.42)
+
+[node name="TableLegs" type="RigidBody2D" parent="." index="7"]
+collision_layer = 2
+collision_mask = 3
+gravity_scale = 0.0
+linear_damp = 10.0
+angular_damp = 10.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TableLegs" index="0"]
+position = Vector2(-54, -52)
+shape = SubResource("RectangleShape2D_g1ckm")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="TableLegs" index="1"]
+position = Vector2(112, -55)
+shape = SubResource("RectangleShape2D_g1ckm")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TableLegs" index="2"]
+position = Vector2(111, 58)
+shape = SubResource("RectangleShape2D_2baeo")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="TableLegs" index="3"]
+position = Vector2(-57, 59)
+shape = SubResource("RectangleShape2D_wl342")
+
+[node name="Glue" type="PinJoint2D" parent="." index="8"]
+position = Vector2(-57, -3)
+node_a = NodePath("..")
+node_b = NodePath("../TableLegs")
+
+[node name="Glue2" type="PinJoint2D" parent="." index="9"]
+position = Vector2(113, -3)
+node_a = NodePath("..")
+node_b = NodePath("../TableLegs")

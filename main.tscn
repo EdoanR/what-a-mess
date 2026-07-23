@@ -1,0 +1,193 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6eufvyp0l0bq"]
+
+[ext_resource type="Script" uid="uid://cxf5g3oy8ou5a" path="res://Logic/level.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://c10kwnlir8ods" path="res://icon.svg" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://d26y5iydlooqu" path="res://Logic/object.gd" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://doyd1fsdh35nr" path="res://Logic/cursor.gd" id="4_1bvp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(64, 66)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+radius = 3.16228
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_0xm2m")
+
+[node name="Reality" type="Node2D" parent="."]
+
+[node name="BG" type="ColorRect" parent="Reality"]
+offset_left = 31.0
+offset_top = 22.0
+offset_right = 604.0
+offset_bottom = 715.0
+mouse_filter = 2
+color = Color(0.377804, 0.270067, 0.270067, 1)
+
+[node name="Area2D3" type="Area2D" parent="Reality"]
+modulate = Color(0.124361, 0.124361, 0.124361, 1)
+position = Vector2(402, 362)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reality/Area2D3"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reality/Area2D3"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Area2D" type="Area2D" parent="Reality"]
+position = Vector2(403, 360)
+script = ExtResource("3_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reality/Area2D"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reality/Area2D"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Area2D2" type="Area2D" parent="Reality"]
+position = Vector2(120, 186)
+rotation = 0.785398
+script = ExtResource("3_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reality/Area2D2"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reality/Area2D2"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Area2D4" type="Area2D" parent="Reality"]
+modulate = Color(0.966155, 0.568348, 0.2501, 1)
+position = Vector2(487, 527)
+script = ExtResource("3_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reality/Area2D4"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reality/Area2D4"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Area2D5" type="Area2D" parent="Reality"]
+modulate = Color(0.435439, 1, 0.19748, 1)
+position = Vector2(136, 539)
+script = ExtResource("3_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reality/Area2D5"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reality/Area2D5"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Area2D6" type="Area2D" parent="Reality"]
+modulate = Color(0.19748, 0.667647, 1, 1)
+position = Vector2(335, 597)
+script = ExtResource("3_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reality/Area2D6"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reality/Area2D6"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Expectation" type="Node2D" parent="."]
+position = Vector2(644, 0)
+
+[node name="BG" type="ColorRect" parent="Expectation"]
+offset_left = 31.0
+offset_top = 22.0
+offset_right = 604.0
+offset_bottom = 715.0
+color = Color(0.377804, 0.270067, 0.270067, 1)
+
+[node name="Area2D3" type="Area2D" parent="Expectation"]
+modulate = Color(0.124361, 0.124361, 0.124361, 1)
+position = Vector2(510, 111)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Expectation/Area2D3"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/Area2D3"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Area2D" type="Area2D" parent="Expectation"]
+position = Vector2(223, 377)
+
+[node name="Sprite2D" type="Sprite2D" parent="Expectation/Area2D"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/Area2D"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Area2D2" type="Area2D" parent="Expectation"]
+position = Vector2(221, 291)
+
+[node name="Sprite2D" type="Sprite2D" parent="Expectation/Area2D2"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/Area2D2"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Area2D4" type="Area2D" parent="Expectation"]
+modulate = Color(0.966155, 0.568348, 0.2501, 1)
+position = Vector2(202, 641)
+
+[node name="Sprite2D" type="Sprite2D" parent="Expectation/Area2D4"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/Area2D4"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Area2D5" type="Area2D" parent="Expectation"]
+modulate = Color(0.435439, 1, 0.19748, 1)
+position = Vector2(127, 87)
+rotation = -1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="Expectation/Area2D5"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/Area2D5"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Area2D6" type="Area2D" parent="Expectation"]
+modulate = Color(0.19748, 0.667647, 1, 1)
+position = Vector2(392, 374)
+rotation = 0.785398
+
+[node name="Sprite2D" type="Sprite2D" parent="Expectation/Area2D6"]
+modulate = Color(0.60553, 0.610232, 0.993309, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/Area2D6"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Cursor" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("4_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
+shape = SubResource("CircleShape2D_lquwl")
