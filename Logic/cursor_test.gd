@@ -1,4 +1,4 @@
-extends Area2D
+class_name PlayerCursor extends Area2D
 
 @onready var anchor: StaticBody2D = $StaticBody2D
 var object_being_hold: PhysicObject
