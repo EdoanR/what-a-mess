@@ -163,6 +163,7 @@ region_rect = Rect2(284, 201, 24, 39)
 [node name="Shoe" parent="Reality" instance=ExtResource("3_lquwl")]
 position = Vector2(422, 608)
 score_importance = 0.5
+obj_group = "shoe"
 
 [node name="CollisionShape2D" parent="Reality/Shoe" index="0"]
 position = Vector2(0, 0.5)
@@ -177,6 +178,7 @@ region_rect = Rect2(169, 156, 7, 14)
 [node name="Shoe2" parent="Reality" instance=ExtResource("3_lquwl")]
 position = Vector2(457, 608)
 score_importance = 0.5
+obj_group = "shoe"
 
 [node name="CollisionShape2D" parent="Reality/Shoe2" index="0"]
 position = Vector2(0, 0.5)
