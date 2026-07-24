@@ -1,14 +1,23 @@
 class_name PhysicObject extends RigidBody2D
 
+enum RotationScoreJudge {
+	NORMAL,
+	AMBIGUOUS_SIDE,
+	AMBIGUOUS_EVERY_SIDE,
+}
+
 @onready var cursor_pinpoint: PinJoint2D = $PinJoint2D
 @onready var surface_pinpoint: PinJoint2D = $SurfacePinpoint
 @onready var surface_check: Area2D = $MiddleCheck
 @onready var objects_check: Area2D = $ObjectsCheck
 
 @export var surface_friction: float = 100
+@export var score_importance: float = 1.0
+@export var rotation_score_judge: RotationScoreJudge = RotationScoreJudge.NORMAL
 
 var liftable: bool = false
 var surface_attached: PhysicObject = null
+var being_hold: bool = false
 
 func _ready():
 	if (get_collision_layer_value(2) or get_collision_layer_value(4)) and not get_collision_layer_value(3):
@@ -17,6 +26,17 @@ func _ready():
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	attach_to_surface()
+
+	if not surface_attached:
+		lower()
+
+func _process(delta):
+	if not being_hold:
+		return
+	if Input.is_action_just_pressed("rotate_left"):
+		rotate(deg_to_rad(-45))
+	if Input.is_action_just_pressed("rotate_right"):
+		rotate(deg_to_rad(45))
 
 func _physics_process(_delta):
 	if not surface_attached:
@@ -36,9 +56,11 @@ func grab(clicked_global_pos: Vector2, anchor: CollisionObject2D):
 	surface_attached = null
 	cursor_pinpoint.global_position = clicked_global_pos
 	cursor_pinpoint.node_b = anchor.get_path()
+	being_hold = true
 
 func drop():
 	cursor_pinpoint.node_b = ""
+	being_hold = false
 
 	if not liftable:
 		return
