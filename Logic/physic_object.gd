@@ -14,6 +14,7 @@ enum RotationScoreJudge {
 @export var surface_friction: float = 100
 @export var score_importance: float = 1.0
 @export var rotation_score_judge: RotationScoreJudge = RotationScoreJudge.NORMAL
+@export var obj_group: String = ""
 
 var liftable: bool = false
 var surface_attached: PhysicObject = null

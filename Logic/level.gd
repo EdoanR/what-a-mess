@@ -6,6 +6,9 @@ class_name Level extends Node2D
 @export var max_distance_score = 160.0
 @export var max_rotation_angle = 3.0
 
+var all_objects: Array[PhysicObject] = []
+var expected_obj_groups = {}
+
 var last_obj_index = 0
 var first_obj_index = -1
 
@@ -18,6 +21,16 @@ func _ready():
 			continue
 		
 		var obj = child as PhysicObject
+		all_objects.push_back(obj)
+
+		if obj.obj_group:
+			var expected_obj = expectation.get_node(str(obj.name)) as PhysicObject
+			if expected_obj_groups.has(obj.obj_group):
+				var objs_in_group = expected_obj_groups.get(obj.obj_group)
+				objs_in_group.push_back(expected_obj)
+			else:
+				expected_obj_groups.set(obj.obj_group, [expected_obj])
+
 		var idx = obj.get_index()
 		last_obj_index = max(last_obj_index, idx)
 
@@ -38,18 +51,30 @@ func calculate_room_score():
 	var total_earned_score: float = 0.0
 	var total_importance_pool: float = 0.0
 
-	for child in reality.get_children():
-		if not child is PhysicObject:
-			continue
-		
-		var obj = child as PhysicObject
+	for obj in all_objects:
 		var obj_score: float = 0.0
 		var pos_score: float = 0.0
 		var rot_score: float = 0.0
 		
 		# calculating pos score
 		# which should be 0.0 to 1.0
-		var expected_obj = expectation.get_node(str(obj.name)) as PhysicObject
+
+		var expected_obj: PhysicObject = null
+
+		if obj.obj_group:
+			# if object is in a object group, use the most near expected object of that group
+			# to compare and calculate the score
+			var objs_in_group = expected_obj_groups.get(obj.obj_group)
+
+			var nearest_distance = 9999999.0
+			for item in objs_in_group:
+				var group_obj = item as PhysicObject
+				var distance = obj.position.distance_to(group_obj.position)
+				if distance < nearest_distance:
+					expected_obj = group_obj
+					nearest_distance = distance
+		else:
+			expected_obj = expectation.get_node(str(obj.name)) as PhysicObject
 
 		if obj.collision_layer != expected_obj.collision_layer:
 			# obj in the wrong layer, immediate position score penalty
