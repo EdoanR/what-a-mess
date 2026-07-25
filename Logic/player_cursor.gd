@@ -28,7 +28,7 @@ func _process(_delta):
 
 	update_pointer(overlappings)
 
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") or (Game.hold_to_drag and Input.is_action_just_released("click")):
 		if object_being_hold:
 			object_being_hold.drop()
 			object_being_hold = null
@@ -37,6 +37,7 @@ func _process(_delta):
 		if hovering_object:
 			hovering_object.grab(global_position, anchor)
 			object_being_hold = hovering_object
+	
 	if Input.is_action_just_pressed("lift"):
 		lift_object()
 	if Input.is_action_just_pressed("lower"):

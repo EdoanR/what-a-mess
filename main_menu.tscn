@@ -1,0 +1,158 @@
+[gd_scene load_steps=7 format=3 uid="uid://3gbh5ygrhbwp"]
+
+[ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="1_glbon"]
+[ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="2_7vrkn"]
+[ext_resource type="PackedScene" uid="uid://dl8mm22bduru4" path="res://UI/logo.tscn" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://Logic/UI/change_scene_button.gd" id="2_qe12f"]
+[ext_resource type="Script" uid="uid://c5c0gta1grost" path="res://Logic/UI/volume_slider.gd" id="4_jix8l"]
+[ext_resource type="Script" uid="uid://ccoi42fsqwvir" path="res://Logic/UI/hold_to_drag.gd" id="5_glbon"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.223529, 0.121569, 0.129412, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartGame" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = 103.0
+offset_right = 166.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_glbon")
+theme_override_font_sizes/font_size = 50
+text = "Start Game"
+script = ExtResource("2_qe12f")
+scene_path = "res://level_selection.tscn"
+
+[node name="Options" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = 202.0
+offset_right = 231.0
+offset_bottom = 279.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_glbon")
+theme_override_font_sizes/font_size = 50
+text = "Options"
+
+[node name="Logo" parent="." instance=ExtResource("2_fu7sn")]
+position = Vector2(627, 253)
+
+[node name="Cursor" parent="." instance=ExtResource("2_7vrkn")]
+
+[node name="Options" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="BG" type="ColorRect" parent="Options"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.364706, 0.172549, 0.156863, 1)
+
+[node name="SFXlabel" type="Label" parent="Options"]
+offset_left = 185.0
+offset_top = 236.0
+offset_right = 518.0
+offset_bottom = 281.0
+theme_override_font_sizes/font_size = 32
+text = "Sound effects volume"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="Options"]
+custom_minimum_size = Vector2(500, 50)
+offset_left = 190.0
+offset_top = 287.0
+offset_right = 690.0
+offset_bottom = 337.0
+theme = ExtResource("1_glbon")
+max_value = 1.0
+step = 0.1
+script = ExtResource("4_jix8l")
+bus_name = "sfx"
+
+[node name="MusicLabel" type="Label" parent="Options"]
+offset_left = 503.0
+offset_top = 385.0
+offset_right = 836.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+text = "Music volume"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Options"]
+custom_minimum_size = Vector2(500, 50)
+offset_left = 508.0
+offset_top = 436.0
+offset_right = 1008.0
+offset_bottom = 486.0
+theme = ExtResource("1_glbon")
+max_value = 1.0
+step = 0.1
+script = ExtResource("4_jix8l")
+bus_name = "music"
+
+[node name="MasterLabel" type="Label" parent="Options"]
+offset_left = 585.0
+offset_top = 91.0
+offset_right = 918.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 32
+text = "Master volume"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="Options"]
+custom_minimum_size = Vector2(500, 50)
+offset_left = 590.0
+offset_top = 142.0
+offset_right = 1090.0
+offset_bottom = 192.0
+theme = ExtResource("1_glbon")
+max_value = 1.0
+step = 0.1
+script = ExtResource("4_jix8l")
+bus_name = "Master"
+
+[node name="Button" type="Button" parent="Options"]
+offset_left = 488.0
+offset_top = 616.0
+offset_right = 754.0
+offset_bottom = 661.0
+theme = ExtResource("1_glbon")
+theme_override_font_sizes/font_size = 32
+text = "Go to Main Menu"
+
+[node name="HoldToDrag" type="CheckBox" parent="Options"]
+custom_minimum_size = Vector2(300, 0)
+offset_left = 169.0
+offset_top = 514.0
+offset_right = 387.0
+offset_bottom = 567.0
+theme = ExtResource("1_glbon")
+theme_override_font_sizes/font_size = 32
+text = "Hold to drag"
+script = ExtResource("5_glbon")
+
+[connection signal="pressed" from="CanvasLayer/Options" to="Options" method="show"]
+[connection signal="pressed" from="Options/Button" to="Options" method="hide"]
