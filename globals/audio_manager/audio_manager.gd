@@ -76,7 +76,7 @@ func create_2d_audio_at_location(type: SoundEffect.SOUND_EFFECT_TYPE, location: 
 
 ## Creates a sound effect if the limit has not been reached. Pass [param type] for the SoundEffect to be queued.
 @rpc("any_peer", "call_local")
-func create_audio(type) -> void:
+func create_audio(type, pitch_scale = null) -> void:
 	var sfx: int = -1
 
 	if typeof(type) == TYPE_ARRAY:
@@ -87,9 +87,9 @@ func create_audio(type) -> void:
 	if sfx == -1:
 		return
 		
-	_create_audio_stream(sfx)
+	_create_audio_stream(sfx, null, pitch_scale)
 
-func _create_audio_stream(type: SoundEffect.SOUND_EFFECT_TYPE, location = null):
+func _create_audio_stream(type: SoundEffect.SOUND_EFFECT_TYPE, location = null, pitch_scale = null):
 	if location != null and !(location is Vector2):
 		push_error("Audio Manager failed to create audio stream. Location must be a Vector2.")
 		return
@@ -103,7 +103,10 @@ func _create_audio_stream(type: SoundEffect.SOUND_EFFECT_TYPE, location = null):
 			new_audio.bus = sfx_bus
 			new_audio.stream = sound_effect.sound_effect
 			new_audio.volume_db = sound_effect.volume
-			new_audio.pitch_scale = sound_effect.pitch_scale
+			if pitch_scale:
+				new_audio.pitch_scale = pitch_scale
+			else:
+				new_audio.pitch_scale = sound_effect.pitch_scale
 			new_audio.pitch_scale += randf_range(-sound_effect.pitch_randomness, sound_effect.pitch_randomness)
 			new_audio.finished.connect(sound_effect.on_audio_finished)
 			new_audio.finished.connect(new_audio.queue_free)

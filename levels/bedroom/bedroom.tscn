@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b6eufvyp0l0bq"]
+[gd_scene load_steps=23 format=3 uid="uid://b6eufvyp0l0bq"]
 
 [ext_resource type="Script" uid="uid://cxf5g3oy8ou5a" path="res://Logic/level.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://be42c1b4xjbsn" path="res://assets/UI/level_UI.png" id="2_7mycd"]
@@ -6,8 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://da7bfy8letdv8" path="res://levels/bedroom/bedroom_messy.tscn" id="4_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b1hxved1wik6v" path="res://levels/bedroom/bedroom_expectation.tscn" id="5_rkq2c"]
-[ext_resource type="AudioStream" uid="uid://d2wq6d32tc7l1" path="res://assets/sfx/harp.mp3" id="7_0etjl"]
 [ext_resource type="AudioStream" uid="uid://cmseoirmstkes" path="res://assets/sfx/impact_0.wav" id="7_3xglk"]
+[ext_resource type="AudioStream" uid="uid://crma1qsv7p8fd" path="res://assets/sfx/harp.wav" id="7_xhnyy"]
+[ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="9_lhvc8"]
+[ext_resource type="Script" uid="uid://dc2jecvu687p3" path="res://Logic/UI/pause.gd" id="9_xhnyy"]
+[ext_resource type="Script" uid="uid://c5c0gta1grost" path="res://Logic/UI/volume_slider.gd" id="10_cqvla"]
+[ext_resource type="Script" uid="uid://ccoi42fsqwvir" path="res://Logic/UI/hold_to_drag.gd" id="11_xhnyy"]
+[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://Logic/UI/change_scene_button.gd" id="12_3iurg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
 bg_color = Color(0.109804, 0.0705882, 0.109804, 1)
@@ -289,7 +294,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_272bh"]
 resource_name = "start"
-length = 5.5
+length = 6.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -345,7 +350,7 @@ tracks/4/path = NodePath("UI/Expectation:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.6333, 2.66667),
+"times": PackedFloat32Array(2.4, 3.43337),
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -357,7 +362,7 @@ tracks/5/path = NodePath("Expectation:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1.6333, 2.66667),
+"times": PackedFloat32Array(2.4, 3.43337),
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -369,7 +374,7 @@ tracks/6/path = NodePath("UI/Timer:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 3, 3.5, 4, 4.5, 5),
+"times": PackedFloat32Array(0, 3.7667, 4.2667, 4.7667, 5.2667, 5.7667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, true, false, true]
@@ -381,7 +386,7 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(5.43333),
+"times": PackedFloat32Array(6.20003),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -395,7 +400,7 @@ tracks/8/path = NodePath("UI/Hint:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 5.5),
+"times": PackedFloat32Array(0, 6.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -425,9 +430,9 @@ tracks/10/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 1.51,
-"stream": ExtResource("7_0etjl")
+"stream": ExtResource("7_xhnyy")
 }],
-"times": PackedFloat32Array(1.43333)
+"times": PackedFloat32Array(2.46667)
 }
 tracks/10/use_blend = true
 
@@ -622,5 +627,120 @@ bus = &"sfx"
 [node name="HarpSound" type="AudioStreamPlayer2D" parent="."]
 bus = &"sfx"
 
+[node name="Pause" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("9_xhnyy")
+
+[node name="BG" type="ColorRect" parent="Pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.364706, 0.172549, 0.156863, 1)
+
+[node name="SFXlabel" type="Label" parent="Pause"]
+offset_left = 185.0
+offset_top = 236.0
+offset_right = 518.0
+offset_bottom = 281.0
+theme_override_font_sizes/font_size = 32
+text = "Sound effects volume"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="Pause"]
+custom_minimum_size = Vector2(500, 50)
+offset_left = 190.0
+offset_top = 287.0
+offset_right = 690.0
+offset_bottom = 337.0
+theme = ExtResource("9_lhvc8")
+max_value = 1.0
+step = 0.1
+script = ExtResource("10_cqvla")
+bus_name = "sfx"
+
+[node name="MusicLabel" type="Label" parent="Pause"]
+offset_left = 503.0
+offset_top = 385.0
+offset_right = 836.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+text = "Music volume"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Pause"]
+custom_minimum_size = Vector2(500, 50)
+offset_left = 508.0
+offset_top = 436.0
+offset_right = 1008.0
+offset_bottom = 486.0
+theme = ExtResource("9_lhvc8")
+max_value = 1.0
+step = 0.1
+script = ExtResource("10_cqvla")
+bus_name = "music"
+
+[node name="MasterLabel" type="Label" parent="Pause"]
+offset_left = 585.0
+offset_top = 91.0
+offset_right = 918.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 32
+text = "Master volume"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="Pause"]
+custom_minimum_size = Vector2(500, 50)
+offset_left = 590.0
+offset_top = 142.0
+offset_right = 1090.0
+offset_bottom = 192.0
+theme = ExtResource("9_lhvc8")
+max_value = 1.0
+step = 0.1
+script = ExtResource("10_cqvla")
+bus_name = "Master"
+
+[node name="Resume" type="Button" parent="Pause"]
+offset_left = 154.0
+offset_top = 621.0
+offset_right = 420.0
+offset_bottom = 666.0
+theme = ExtResource("9_lhvc8")
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="Retry" type="Button" parent="Pause"]
+offset_left = 486.0
+offset_top = 616.0
+offset_right = 752.0
+offset_bottom = 661.0
+theme = ExtResource("9_lhvc8")
+theme_override_font_sizes/font_size = 32
+text = "Retry Level"
+
+[node name="LevelSelection" type="Button" parent="Pause"]
+offset_left = 852.0
+offset_top = 609.0
+offset_right = 1193.0
+offset_bottom = 654.0
+theme = ExtResource("9_lhvc8")
+theme_override_font_sizes/font_size = 32
+text = "Back to level selection"
+script = ExtResource("12_3iurg")
+scene_path = "res://level_selection.tscn"
+
+[node name="HoldToDrag" type="CheckBox" parent="Pause"]
+custom_minimum_size = Vector2(300, 0)
+offset_left = 169.0
+offset_top = 514.0
+offset_right = 387.0
+offset_bottom = 567.0
+theme = ExtResource("9_lhvc8")
+theme_override_font_sizes/font_size = 32
+text = "Hold to drag"
+script = ExtResource("11_xhnyy")
+
 [connection signal="pressed" from="UI/ScoreControl/HBoxContainer/Button" to="." method="retry"]
 [connection signal="timeout" from="UI/Timer/Timer" to="UI/Timer" method="_on_timer_timeout"]
+[connection signal="pressed" from="Pause/Resume" to="Pause" method="unpause"]
+[connection signal="pressed" from="Pause/Retry" to="." method="retry"]

@@ -9,3 +9,7 @@ func _ready():
 
 func _toggle_change(toggled_on):
 	Game.hold_to_drag = toggled_on
+	if toggled_on:
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.TICK_A)
+	else:
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.TICK_B)

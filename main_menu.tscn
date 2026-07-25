@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://3gbh5ygrhbwp"]
+[gd_scene load_steps=8 format=3 uid="uid://3gbh5ygrhbwp"]
 
 [ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="1_glbon"]
 [ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="2_7vrkn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://Logic/UI/change_scene_button.gd" id="2_qe12f"]
 [ext_resource type="Script" uid="uid://c5c0gta1grost" path="res://Logic/UI/volume_slider.gd" id="4_jix8l"]
 [ext_resource type="Script" uid="uid://ccoi42fsqwvir" path="res://Logic/UI/hold_to_drag.gd" id="5_glbon"]
+[ext_resource type="Script" uid="uid://bdq3y05snylij" path="res://Logic/UI/sound_player.gd" id="7_qe12f"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -154,5 +155,11 @@ theme_override_font_sizes/font_size = 32
 text = "Hold to drag"
 script = ExtResource("5_glbon")
 
+[node name="SoundPlayer" type="Node2D" parent="."]
+script = ExtResource("7_qe12f")
+sounds = Array[int]([2, 3, 4])
+
+[connection signal="pressed" from="CanvasLayer/StartGame" to="SoundPlayer" method="play_sound"]
 [connection signal="pressed" from="CanvasLayer/Options" to="Options" method="show"]
+[connection signal="pressed" from="CanvasLayer/Options" to="SoundPlayer" method="play_sound"]
 [connection signal="pressed" from="Options/Button" to="Options" method="hide"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://baq18aanfat7t"]
+[gd_scene load_steps=10 format=3 uid="uid://baq18aanfat7t"]
 
 [ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="1_tsd2a"]
 [ext_resource type="Texture2D" uid="uid://byce3msrtuiyt" path="res://assets/UI/white_32x32.png" id="2_au0oc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bvb0m0dejtqks" path="res://assets/Room thumbnails/bedroom.png" id="3_b6v5k"]
 [ext_resource type="Texture2D" uid="uid://81qxt7fr73gg" path="res://assets/UI/check.png" id="4_xfjqa"]
 [ext_resource type="Texture2D" uid="uid://c1cgwheilsg07" path="res://assets/UI/star.png" id="5_txqpt"]
+[ext_resource type="Script" uid="uid://cj2g7pybafwfl" path="res://Logic/UI/auto_unpause.gd" id="7_txqpt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fg0ae"]
 texture = ExtResource("2_au0oc")
@@ -64,7 +65,7 @@ offset_bottom = 382.0
 theme_override_styles/hover = SubResource("StyleBoxTexture_fg0ae")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rv05k")
 script = ExtResource("2_txqpt")
-scene_path = "res://levels/bedroom/bedroom.tscn"
+scene_path = "res://levels/bedroom/bedroom_intro.tscn"
 
 [node name="TextureRect" type="TextureRect" parent="UI/Control/Button"]
 layout_mode = 0
@@ -130,3 +131,6 @@ offset_top = 7.0
 offset_right = 51.0
 offset_bottom = 47.0
 texture = ExtResource("5_txqpt")
+
+[node name="AutoUnpause" type="Node2D" parent="."]
+script = ExtResource("7_txqpt")
