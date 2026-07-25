@@ -18,8 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 Utils="*res://globals/utils.gd"
-Game="*res://globals/game.tscn"
-Pointer="*res://globals/pointer.tscn"
+Game="*res://globals/game/game.tscn"
+Pointer="*res://globals/pointer/pointer.tscn"
+AudioManager="*res://globals/audio_manager/audio_manager.tscn"
 
 [display]
 
