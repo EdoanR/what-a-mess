@@ -24,6 +24,7 @@ var first_obj_index = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = false
 	Input.set_use_accumulated_input(false)
 
 	# reality.process_mode = Node.PROCESS_MODE_DISABLED

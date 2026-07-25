@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://di3hd1emspag8" path="res://assets/cursors/cursors_grabbing.png" id="4_qbm5b"]
 
 [node name="Pointer" type="CanvasLayer"]
+process_mode = 3
 layer = 2
 script = ExtResource("1_r3mtq")
 cursor_normal = ExtResource("2_fa1fp")

@@ -73,7 +73,8 @@ func grab(clicked_global_pos: Vector2, anchor: CollisionObject2D):
 	cursor_pinpoint.node_b = anchor.get_path()
 	being_hold = true
 
-	AudioManager.create_audio(grab_sfxs)
+	if not grab_sfxs.is_empty():
+		AudioManager.create_audio(grab_sfxs)
 
 	update_hint()
 
@@ -81,7 +82,8 @@ func drop():
 	cursor_pinpoint.node_b = ""
 	being_hold = false
 
-	AudioManager.create_audio(drop_sfxs)
+	if not drop_sfxs.is_empty():
+		AudioManager.create_audio(drop_sfxs)
 
 	if not liftable:
 		return
@@ -224,4 +226,5 @@ func update_hint():
 func _on_body_entered(body):
 	if not being_hold:
 		return
-	AudioManager.create_audio(collision_sfxs)
+	if not collision_sfxs.is_empty():
+		AudioManager.create_audio(collision_sfxs)

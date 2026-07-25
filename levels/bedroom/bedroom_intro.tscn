@@ -1,0 +1,206 @@
+[gd_scene load_steps=11 format=3 uid="uid://b86c6iaauupj7"]
+
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="1_ramol"]
+[ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="2_kygvm"]
+[ext_resource type="Texture2D" uid="uid://dnkfo7jjjrii3" path="res://assets/UI/girlfriend.png" id="2_lh41o"]
+[ext_resource type="Texture2D" uid="uid://j3xisa6mo2ap" path="res://assets/UI/message_balloon.png" id="4_28u7o"]
+[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://Logic/UI/change_scene_button.gd" id="5_28u7o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw8d0"]
+size = Vector2(216, 245)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh41o"]
+size = Vector2(633, 170)
+
+[sub_resource type="Animation" id="Animation_kygvm"]
+resource_name = "start"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.433333, 0.733333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpeechBubble/Visual:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.46667, 1.76667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpeechBubble/Visual/RichTextLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.26667, 4.03333, 4.9, 5.72),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.49, 0.49, 1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChangeScene")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(8.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pressed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lh41o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpeechBubble/Visual:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpeechBubble/Visual/RichTextLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hjlpn"]
+_data = {
+&"RESET": SubResource("Animation_lh41o"),
+&"start": SubResource("Animation_kygvm")
+}
+
+[node name="BedroomIntro" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BG" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.223529, 0.121569, 0.129412, 1)
+metadata/_edit_lock_ = true
+
+[node name="Avatar" parent="." instance=ExtResource("1_ramol")]
+position = Vector2(380, 331)
+grab_sfxs = Array[int]([])
+drop_sfxs = Array[int]([])
+collision_sfxs = Array[int]([])
+
+[node name="CollisionShape2D" parent="Avatar" index="0"]
+position = Vector2(1, 5.5)
+shape = SubResource("RectangleShape2D_sw8d0")
+
+[node name="Sprite2D" parent="Avatar" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("2_lh41o")
+
+[node name="SpeechBubble" parent="." instance=ExtResource("1_ramol")]
+position = Vector2(635, 336)
+grab_sfxs = Array[int]([])
+drop_sfxs = Array[int]([])
+collision_sfxs = Array[int]([])
+
+[node name="CollisionShape2D" parent="SpeechBubble" index="0"]
+position = Vector2(180.5, 40)
+shape = SubResource("RectangleShape2D_lh41o")
+
+[node name="Sprite2D" parent="SpeechBubble" index="1"]
+scale = Vector2(4, 4)
+texture = null
+
+[node name="Visual" type="Node2D" parent="SpeechBubble"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SpeechBubble/Visual"]
+offset_left = -132.0
+offset_top = -36.0
+offset_right = 485.0
+offset_bottom = 115.0
+texture = ExtResource("4_28u7o")
+patch_margin_left = 60
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpeechBubble/Visual"]
+offset_left = -85.0
+offset_top = 13.0
+offset_right = 482.0
+offset_bottom = 110.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+text = "Hey! I should be there in 5 minutes. So excited to finally see your place!"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label" type="Label" parent="SpeechBubble/Visual"]
+offset_left = -84.0
+offset_top = -24.0
+offset_right = 54.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "GIRLFRIEND"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hjlpn")
+}
+autoplay = "start"
+
+[node name="Cursor" parent="." instance=ExtResource("2_kygvm")]
+
+[node name="ChangeScene" type="Button" parent="."]
+offset_left = -365.0
+offset_top = 288.0
+offset_right = -357.0
+offset_bottom = 296.0
+script = ExtResource("5_28u7o")
+scene_path = "res://levels/bedroom/bedroom.tscn"
+
+[editable path="Avatar"]
+[editable path="SpeechBubble"]
