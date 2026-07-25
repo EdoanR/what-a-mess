@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://lktwq6ulrows"]
+
+[ext_resource type="Script" uid="uid://butaky2dqfqqc" path="res://globals/pointer.gd" id="1_r3mtq"]
+[ext_resource type="Texture2D" uid="uid://bfq1qmmot5oj2" path="res://assets/cursors/cursors_normal.png" id="2_fa1fp"]
+[ext_resource type="Texture2D" uid="uid://js2y704epuw8" path="res://assets/cursors/cursors_ready_to_grab.png" id="3_qbm5b"]
+[ext_resource type="Texture2D" uid="uid://di3hd1emspag8" path="res://assets/cursors/cursors_grabbing.png" id="4_qbm5b"]
+
+[node name="Pointer" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_r3mtq")
+cursor_normal = ExtResource("2_fa1fp")
+cursor_ready_to_grab = ExtResource("3_qbm5b")
+cursor_grabbing = ExtResource("4_qbm5b")
+
+[node name="Pointer" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pointer"]
+texture = ExtResource("2_fa1fp")
+centered = false

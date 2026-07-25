@@ -6,6 +6,9 @@ enum RotationScoreJudge {
 	AMBIGUOUS_EVERY_SIDE,
 }
 
+@onready var level: Level
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite_original_scale: Vector2 = sprite.scale
 @onready var cursor_pinpoint: PinJoint2D = $PinJoint2D
 @onready var surface_pinpoint: PinJoint2D = $SurfacePinpoint
 @onready var surface_check: Area2D = $MiddleCheck
@@ -19,8 +22,15 @@ enum RotationScoreJudge {
 var liftable: bool = false
 var surface_attached: PhysicObject = null
 var being_hold: bool = false
+var hovering: bool = false
 
 func _ready():
+	var current_scene = get_tree().current_scene
+	if current_scene is Level:
+		level = current_scene
+
+	if get_parent().name == "Expectation":
+		return
 	if (get_collision_layer_value(2) or get_collision_layer_value(4)) and not get_collision_layer_value(3):
 		liftable = true
 	
@@ -31,13 +41,11 @@ func _ready():
 	if not surface_attached:
 		lower()
 
-func _process(delta):
-	if not being_hold:
-		return
-	if Input.is_action_just_pressed("rotate_left"):
-		rotate(deg_to_rad(-45))
-	if Input.is_action_just_pressed("rotate_right"):
-		rotate(deg_to_rad(45))
+func _process(_delta):
+	if hovering:
+		sprite.scale = sprite_original_scale * 1.02
+	else:
+		sprite.scale = sprite_original_scale
 
 func _physics_process(_delta):
 	if not surface_attached:
@@ -59,6 +67,8 @@ func grab(clicked_global_pos: Vector2, anchor: CollisionObject2D):
 	cursor_pinpoint.node_b = anchor.get_path()
 	being_hold = true
 
+	update_hint()
+
 func drop():
 	cursor_pinpoint.node_b = ""
 	being_hold = false
@@ -73,6 +83,7 @@ func drop():
 		return
 	
 	lower()
+	update_hint()
 
 func attach_to_surface():
 	if not get_collision_layer_value(4):
@@ -87,6 +98,20 @@ func attach_to_surface():
 			surface_attached = body
 			return true
 	return false
+
+func can_be_lifted():
+	if not liftable:
+		return false
+	if not get_collision_layer_value(2):
+		return false
+	return true
+
+func can_be_lowered():
+	if not liftable:
+		return false
+	if not get_collision_layer_value(4):
+		return false
+	return true
 
 func lift():
 	if not liftable:
@@ -128,6 +153,7 @@ func lift():
 	set_collision_layer_value(4, true)
 	
 	get_parent().move_child(self, get_tree().current_scene.last_obj_index)
+	update_hint()
 
 func lower():
 	if not liftable:
@@ -170,3 +196,17 @@ func lower():
 	set_collision_layer_value(2, true)
 	
 	get_parent().move_child(self, get_tree().current_scene.first_obj_index)
+
+	update_hint()
+
+func update_hint():
+	if not level:
+		return
+	
+	if can_be_lifted():
+		level.hint.text = "Press [ W ] to lift the object to a layer above"
+		return
+	if can_be_lowered():
+		level.hint.text = "Press [ S ] to lower the object to a layer below"
+		return
+	level.hint.text = ""
