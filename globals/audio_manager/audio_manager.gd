@@ -76,8 +76,18 @@ func create_2d_audio_at_location(type: SoundEffect.SOUND_EFFECT_TYPE, location: 
 
 ## Creates a sound effect if the limit has not been reached. Pass [param type] for the SoundEffect to be queued.
 @rpc("any_peer", "call_local")
-func create_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
-	_create_audio_stream(type)
+func create_audio(type) -> void:
+	var sfx: int = -1
+
+	if typeof(type) == TYPE_ARRAY:
+		sfx = type.pick_random()
+	else:
+		sfx = type
+	
+	if sfx == -1:
+		return
+		
+	_create_audio_stream(sfx)
 
 func _create_audio_stream(type: SoundEffect.SOUND_EFFECT_TYPE, location = null):
 	if location != null and !(location is Vector2):
