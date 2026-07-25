@@ -92,6 +92,8 @@ collision_mask = 17
 sleeping = true
 linear_velocity = Vector2(0.000398354, -0.000981485)
 score_importance = 0.85
+grab_sfxs = Array[int]([16])
+drop_sfxs = Array[int]([17])
 
 [node name="CollisionShape2D" parent="Carpet" index="0"]
 position = Vector2(0, 0.5)
@@ -115,6 +117,8 @@ sleeping = true
 linear_velocity = Vector2(-0.00855943, -0.00105854)
 angular_velocity = -6.27753e-05
 score_importance = 0.55
+grab_sfxs = Array[int]([16])
+drop_sfxs = Array[int]([17])
 
 [node name="CollisionShape2D" parent="WelcomeMat" index="0"]
 position = Vector2(0, 0.5)
@@ -135,6 +139,8 @@ rotation = -0.81521
 sleeping = true
 linear_velocity = Vector2(-3.56007e-17, 3.65551e-21)
 score_importance = 0.3
+grab_sfxs = Array[int]([14])
+drop_sfxs = Array[int]([15])
 
 [node name="CollisionShape2D" parent="Trash" index="0"]
 position = Vector2(0, 0)
@@ -176,6 +182,8 @@ sleeping = true
 linear_velocity = Vector2(0.00132632, -0.00787701)
 angular_velocity = 0.000264342
 score_importance = 0.3
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
 
 [node name="CollisionShape2D" parent="Pen" index="0"]
 position = Vector2(0, 0)
@@ -197,6 +205,8 @@ sleeping = true
 linear_velocity = Vector2(0.00196606, -0.00801216)
 angular_velocity = 3.07238e-05
 score_importance = 0.35
+grab_sfxs = Array[int]([14])
+drop_sfxs = Array[int]([15])
 
 [node name="CollisionShape2D" parent="Paper" index="0"]
 position = Vector2(0, 0)
@@ -260,6 +270,8 @@ sleeping = true
 linear_velocity = Vector2(0.00370954, -0.00573074)
 angular_velocity = 2.28499e-05
 score_importance = 0.65
+grab_sfxs = Array[int]([16])
+drop_sfxs = Array[int]([17])
 
 [node name="CollisionShape2D" parent="Pillow" index="0"]
 position = Vector2(-2.5, 0)
@@ -281,6 +293,8 @@ sleeping = true
 linear_velocity = Vector2(0.00158768, -0.000426644)
 angular_velocity = 1.80341e-05
 score_importance = 0.35
+grab_sfxs = Array[int]([5])
+drop_sfxs = Array[int]([5])
 
 [node name="CollisionShape2D" parent="Mouse" index="0"]
 position = Vector2(0, 0)
@@ -303,6 +317,8 @@ collision_mask = 7
 sleeping = true
 linear_velocity = Vector2(0.00329964, -0.00757158)
 angular_velocity = -2.67839e-05
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
 
 [node name="CollisionShape2D" parent="Bed" index="0"]
 position = Vector2(-1.5, -2.5)
@@ -324,6 +340,8 @@ collision_layer = 6
 collision_mask = 7
 sleeping = true
 linear_velocity = Vector2(-4.38094e-08, -8.26208e-08)
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
 
 [node name="CollisionShape2D" parent="Cabinet" index="0"]
 position = Vector2(-0.5, 0.5)
@@ -455,8 +473,12 @@ position = Vector2(-7.76587, 15.9031)
 position = Vector2(83.4738, -74.4288)
 rotation = 0.752635
 sleeping = true
+contact_monitor = false
+max_contacts_reported = 0
 linear_velocity = Vector2(0.000320171, 2.94025e-05)
 rotation_score_judge = 1
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
 
 [node name="Blanket" parent="." instance=ExtResource("2_owoxq")]
 position = Vector2(-145.05, -113.186)
@@ -467,6 +489,8 @@ sleeping = true
 linear_velocity = Vector2(-3.97905e-08, -7.50416e-08)
 score_importance = 0.65
 rotation_score_judge = 1
+grab_sfxs = Array[int]([16])
+drop_sfxs = Array[int]([17])
 
 [node name="CollisionShape2D" parent="Blanket" index="0"]
 position = Vector2(0, 0)
@@ -489,6 +513,8 @@ collision_mask = 9
 sleeping = true
 linear_velocity = Vector2(-3.97905e-08, -7.50416e-08)
 score_importance = 0.3
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
 
 [node name="CollisionShape2D" parent="Pencil" index="0"]
 position = Vector2(0, 0)

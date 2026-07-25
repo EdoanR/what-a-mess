@@ -38,6 +38,11 @@ func _process(_delta):
 			hovering_object.grab(global_position, anchor)
 			object_being_hold = hovering_object
 	
+	if object_being_hold and Input.is_action_just_pressed("lift_or_lower"):
+		if object_being_hold.can_be_lifted():
+			lift_object()
+		elif object_being_hold.can_be_lowered():
+			lower_object()
 	if Input.is_action_just_pressed("lift"):
 		lift_object()
 	if Input.is_action_just_pressed("lower"):

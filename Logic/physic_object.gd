@@ -19,6 +19,10 @@ enum RotationScoreJudge {
 @export var rotation_score_judge: RotationScoreJudge = RotationScoreJudge.NORMAL
 @export var obj_group: String = ""
 
+@export var grab_sfxs: Array[SoundEffect.SOUND_EFFECT_TYPE] = []
+@export var drop_sfxs: Array[SoundEffect.SOUND_EFFECT_TYPE] = []
+@export var collision_sfxs: Array[SoundEffect.SOUND_EFFECT_TYPE] = []
+
 var liftable: bool = false
 var surface_attached: PhysicObject = null
 var being_hold: bool = false
@@ -40,6 +44,8 @@ func _ready():
 
 	if not surface_attached:
 		lower()
+	
+	body_entered.connect(_on_body_entered)
 
 func _process(_delta):
 	if hovering:
@@ -67,11 +73,15 @@ func grab(clicked_global_pos: Vector2, anchor: CollisionObject2D):
 	cursor_pinpoint.node_b = anchor.get_path()
 	being_hold = true
 
+	AudioManager.create_audio(grab_sfxs)
+
 	update_hint()
 
 func drop():
 	cursor_pinpoint.node_b = ""
 	being_hold = false
+
+	AudioManager.create_audio(drop_sfxs)
 
 	if not liftable:
 		return
@@ -210,3 +220,8 @@ func update_hint():
 		level.hint.text = "Press [ S ] to lower the object to a layer below"
 		return
 	level.hint.text = ""
+
+func _on_body_entered(body):
+	if not being_hold:
+		return
+	AudioManager.create_audio(collision_sfxs)
