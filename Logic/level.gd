@@ -2,9 +2,19 @@ class_name Level extends Node2D
 
 @onready var reality: Node2D = $Reality
 @onready var expectation: Node2D = $Expectation
+@onready var animation_player = $AnimationPlayer
 
+@export var count_down: CountDown
+@export var hint: Label
 @export var max_distance_score = 160.0
 @export var max_rotation_angle = 3.0
+@export var goal_score: int = 85
+
+@export_category("score result")
+@export var organization_bar: ProgressBar
+@export var result_score_label: Label
+@export var goal_indicator: ColorRect
+@export var buttons_container: HBoxContainer
 
 var all_objects: Array[PhysicObject] = []
 var expected_obj_groups = {}
@@ -15,6 +25,9 @@ var first_obj_index = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_use_accumulated_input(false)
+
+	# reality.process_mode = Node.PROCESS_MODE_DISABLED
+	expectation.process_mode = Node.PROCESS_MODE_DISABLED
 
 	for child in reality.get_children():
 		if not child is PhysicObject:
@@ -40,6 +53,44 @@ func _ready():
 		if first_obj_index == -1:
 			first_obj_index = idx
 
+func start():
+	hint.text = "Organize this mess!"
+	reality.process_mode = Node.PROCESS_MODE_INHERIT
+	count_down.start()
+
+func retry():
+	get_tree().reload_current_scene()
+
+func on_timer_finished():
+	reality.process_mode = Node.PROCESS_MODE_DISABLED
+	var score = calculate_room_score()
+
+	goal_indicator.position.x = (float(goal_score) / 100) * organization_bar.custom_minimum_size.x
+	organization_bar.value = 0.0
+
+	await Utils.wait(1.0)
+
+	animation_player.play("show_score")
+	await animation_player.animation_finished
+	await Utils.wait(1.0)
+
+	organization_bar.value = 0.0
+	var tween = get_tree().create_tween()
+	tween.tween_property(organization_bar, "value", score, 2.0)
+	await tween.finished
+	await Utils.wait(1.0)
+
+	if score >= 100:
+		result_score_label.text = "PERFECT!"
+		result_score_label.modulate = Color.YELLOW
+	elif score >= goal_score:
+		result_score_label.text = "Well done!"
+	else:
+		result_score_label.text = "Not quite there"
+
+	buttons_container.visible = true
+
+	print("The end! Result: ", score)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -116,20 +167,20 @@ func calculate_room_score():
 		total_earned_score += obj_score
 		total_importance_pool += obj.score_importance
 
-		var label = expected_obj.get_node_or_null("Label") as Label
-		if obj.being_hold:
-			if not label:
-				label = Label.new()
-				expected_obj.add_child(label)
-				label.global_position = expected_obj.global_position + Vector2(-100, 0)
-				label.name = "Label"
+		# var label = expected_obj.get_node_or_null("Label") as Label
+		# if obj.being_hold:
+		# 	if not label:
+		# 		label = Label.new()
+		# 		expected_obj.add_child(label)
+		# 		label.global_position = expected_obj.global_position + Vector2(-100, 0)
+		# 		label.name = "Label"
 
-			var label_text = "p:%.2f r:%.2f s:%.2f" % [pos_score, rot_score, obj_score]
-			label_text += "\nr_diff:%s" % rot_diff
-			label.text = label_text
-			label.visible = true
-		else:
-			if label:
-				label.visible = false
+		# 	var label_text = "p:%.2f r:%.2f s:%.2f" % [pos_score, rot_score, obj_score]
+		# 	label_text += "\nr_diff:%s" % rot_diff
+		# 	label.text = label_text
+		# 	label.visible = true
+		# else:
+		# 	if label:
+		# 		label.visible = false
 		
 	return (total_earned_score / total_importance_pool) * 100

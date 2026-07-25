@@ -1,0 +1,579 @@
+[gd_scene load_steps=27 format=3 uid="uid://da7bfy8letdv8"]
+
+[ext_resource type="Texture2D" uid="uid://eeswym73m04m" path="res://assets/bedroom/bedroom_assets.png" id="1_ql72w"]
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="2_owoxq"]
+[ext_resource type="PackedScene" uid="uid://cpvr47ikcco48" path="res://entities/table.tscn" id="3_lpfki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efxa6"]
+size = Vector2(178, 167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_074og"]
+size = Vector2(64, 105)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
+radius = 11.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cegan"]
+size = Vector2(56, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82xsv"]
+size = Vector2(40, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryguw"]
+size = Vector2(48, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
+size = Vector2(12, 26)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycdy4"]
+radius = 15.0333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycdy4"]
+size = Vector2(102, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(127, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
+size = Vector2(20, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(157, 253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
+size = Vector2(97, 155)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
+size = Vector2(28, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vivmo"]
+size = Vector2(80, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaehf"]
+size = Vector2(99, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+radius = 26.03
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u8w0"]
+size = Vector2(60, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(104, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_getpj"]
+size = Vector2(44, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w48qg"]
+size = Vector2(112, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(72, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(600, 72)
+
+[node name="Reality" type="Node2D"]
+position = Vector2(289, 477)
+
+[node name="Floor" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(15, -37)
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(9.16937, 142, 134.831, 127)
+
+[node name="Carpet" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-122.986, -63.3107)
+rotation = 0.942472
+collision_layer = 16
+collision_mask = 17
+sleeping = true
+linear_velocity = Vector2(0.000398354, -0.000981485)
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Carpet" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_efxa6")
+
+[node name="Sprite2D" parent="Carpet" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(204, 144, 44, 42)
+
+[node name="PinJoint2D" parent="Carpet" index="2"]
+position = Vector2(-70.6693, -54.6501)
+
+[node name="WelcomeMat" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-133.328, 143.461)
+rotation = 1.90545
+collision_layer = 16
+collision_mask = 17
+sleeping = true
+linear_velocity = Vector2(-0.00855943, -0.00105854)
+angular_velocity = -6.27753e-05
+score_importance = 0.55
+
+[node name="CollisionShape2D" parent="WelcomeMat" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_074og")
+
+[node name="Sprite2D" parent="WelcomeMat" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(286, 150, 16, 25)
+
+[node name="PinJoint2D" parent="WelcomeMat" index="2"]
+position = Vector2(-22.1506, 25.2104)
+
+[node name="Trash" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-123.886, -269.295)
+rotation = -0.81521
+sleeping = true
+linear_velocity = Vector2(-3.56007e-17, 3.65551e-21)
+score_importance = 0.3
+
+[node name="CollisionShape2D" parent="Trash" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_7mycd")
+
+[node name="Sprite2D" parent="Trash" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(189, 194, 5, 5)
+
+[node name="PinJoint2D" parent="Trash" index="2"]
+position = Vector2(-4.81348, 2.59935)
+
+[node name="Notebook" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(44.0339, -31.6405)
+rotation = 0.29173
+sleeping = true
+linear_velocity = Vector2(-2.92305e-28, 1.8884e-27)
+score_importance = 0.35
+
+[node name="CollisionShape2D" parent="Notebook" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_cegan")
+
+[node name="Sprite2D" parent="Notebook" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(254, 192, 14, 10)
+
+[node name="PinJoint2D" parent="Notebook" index="2"]
+position = Vector2(9.60895, 12.315)
+
+[node name="Pen" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(101.651, -24.7739)
+rotation = 2.75619
+sleeping = true
+linear_velocity = Vector2(0.00132632, -0.00787701)
+angular_velocity = 0.000264342
+score_importance = 0.3
+
+[node name="CollisionShape2D" parent="Pen" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_82xsv")
+
+[node name="Sprite2D" parent="Pen" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(256, 206, 9, 1)
+
+[node name="PinJoint2D" parent="Pen" index="2"]
+position = Vector2(6.89716, -1.77525)
+
+[node name="Paper" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-24.9703, -85.7763)
+rotation = -2.59252
+sleeping = true
+linear_velocity = Vector2(0.00196606, -0.00801216)
+angular_velocity = 3.07238e-05
+score_importance = 0.35
+
+[node name="CollisionShape2D" parent="Paper" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_ryguw")
+
+[node name="Sprite2D" parent="Paper" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(213, 227, 12, 8)
+
+[node name="Cup" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(181.065, -218.578)
+rotation = -2.14403
+sleeping = true
+linear_velocity = Vector2(0.0022653, 0.00902964)
+angular_velocity = -3.44823e-05
+score_importance = 0.35
+
+[node name="CollisionShape2D" parent="Cup" index="0"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_dg77c")
+
+[node name="Sprite2D" parent="Cup" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(168, 122, 7, 9)
+
+[node name="PinJoint2D" parent="Cup" index="2"]
+position = Vector2(-4.45245, -2.31665)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Cup"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_ycdy4")
+
+[node name="Computer" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(211.539, 90.5378)
+rotation = 0.467855
+sleeping = true
+linear_velocity = Vector2(2.8026e-45, 2.8026e-45)
+score_importance = 0.65
+
+[node name="CollisionShape2D" parent="Computer" index="0"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_ycdy4")
+
+[node name="Sprite2D" parent="Computer" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(167, 53, 26, 17)
+
+[node name="PinJoint2D" parent="Computer" index="2"]
+position = Vector2(-39.1062, 24.8118)
+
+[node name="Pillow" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(46.0887, -131.298)
+rotation = 2.12591
+sleeping = true
+linear_velocity = Vector2(0.00370954, -0.00573074)
+angular_velocity = 2.28499e-05
+score_importance = 0.65
+
+[node name="CollisionShape2D" parent="Pillow" index="0"]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Sprite2D" parent="Pillow" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(164, 4, 37, 19)
+
+[node name="PinJoint2D" parent="Pillow" index="2"]
+position = Vector2(-47.7394, 4.276)
+
+[node name="Mouse" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(98.3263, -126.392)
+rotation = -2.58575
+sleeping = true
+linear_velocity = Vector2(0.00158768, -0.000426644)
+angular_velocity = 1.80341e-05
+score_importance = 0.35
+
+[node name="CollisionShape2D" parent="Mouse" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_2cqfq")
+
+[node name="Sprite2D" parent="Mouse" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(197, 100, 5, 8)
+
+[node name="PinJoint2D" parent="Mouse" index="2"]
+position = Vector2(-0.537277, -5.90527)
+
+[node name="Bed" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-103.918, 105.228)
+rotation = -1.72329
+collision_layer = 6
+collision_mask = 7
+sleeping = true
+linear_velocity = Vector2(0.00329964, -0.00757158)
+angular_velocity = -2.67839e-05
+
+[node name="CollisionShape2D" parent="Bed" index="0"]
+position = Vector2(-1.5, -2.5)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Sprite2D" parent="Bed" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(210, 4, 42, 66)
+
+[node name="PinJoint2D" parent="Bed" index="2"]
+position = Vector2(18.2375, 115.759)
+
+[node name="Cabinet" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-150.915, -163.775)
+rotation = -3.03876
+collision_layer = 6
+collision_mask = 7
+sleeping = true
+linear_velocity = Vector2(-4.38094e-08, -8.26208e-08)
+
+[node name="CollisionShape2D" parent="Cabinet" index="0"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="Sprite2D" parent="Cabinet" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(284, 201, 24, 39)
+
+[node name="PinJoint2D" parent="Cabinet" index="2"]
+position = Vector2(23.8505, 28.0344)
+
+[node name="Shoe" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(77.2065, 188.019)
+rotation = -1.45799
+sleeping = true
+linear_velocity = Vector2(-0.00134959, 0.00204337)
+angular_velocity = -7.93566e-05
+score_importance = 0.5
+obj_group = "shoe"
+
+[node name="CollisionShape2D" parent="Shoe" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="Sprite2D" parent="Shoe" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(169, 156, 7, 14)
+
+[node name="Shoe2" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-87.4506, -249.179)
+rotation = -1.42089
+sleeping = true
+linear_velocity = Vector2(1.48574e-08, -5.77575e-08)
+score_importance = 0.5
+obj_group = "shoe"
+
+[node name="CollisionShape2D" parent="Shoe2" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="Sprite2D" parent="Shoe2" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(169, 156, 7, 14)
+
+[node name="PinJoint2D" parent="Shoe2" index="2"]
+position = Vector2(-2.97733, -1.09221)
+
+[node name="Chair" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-62.4892, -39.9164)
+rotation = -0.745956
+collision_layer = 6
+collision_mask = 7
+sleeping = true
+linear_velocity = Vector2(0.000398264, -0.00881215)
+angular_velocity = 2.12978e-05
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Chair" index="0"]
+position = Vector2(-2, -0.5)
+shape = SubResource("RectangleShape2D_vivmo")
+
+[node name="Sprite2D" parent="Chair" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(166, 94, 25, 20)
+
+[node name="PinJoint2D" parent="Chair" index="2"]
+position = Vector2(5.49518, 7.12859)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Chair"]
+position = Vector2(-0.5, 25.5)
+shape = SubResource("RectangleShape2D_yaehf")
+
+[node name="Plant" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(106.063, 74.025)
+rotation = -1.38531
+collision_layer = 6
+collision_mask = 7
+sleeping = true
+linear_velocity = Vector2(0.000528365, 4.40291e-05)
+score_importance = 0.65
+
+[node name="CollisionShape2D" parent="Plant" index="0"]
+position = Vector2(-2, -0.5)
+shape = SubResource("CircleShape2D_lquwl")
+
+[node name="Sprite2D" parent="Plant" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(170, 31, 14, 13)
+
+[node name="PinJoint2D" parent="Plant" index="2"]
+position = Vector2(-17.4672, -5.7356)
+
+[node name="Garbage" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(56.3316, 48.4943)
+rotation = 0.571017
+collision_layer = 6
+collision_mask = 7
+sleeping = true
+linear_velocity = Vector2(0.0029492, -0.0045613)
+angular_velocity = 8.38299e-05
+score_importance = 0.5
+rotation_score_judge = 2
+
+[node name="CollisionShape2D" parent="Garbage" index="0"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1u8w0")
+
+[node name="Sprite2D" parent="Garbage" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(164, 192, 15, 16)
+
+[node name="PinJoint2D" parent="Garbage" index="2"]
+position = Vector2(-7.76587, 15.9031)
+
+[node name="Table" parent="." instance=ExtResource("3_lpfki")]
+position = Vector2(83.4738, -74.4288)
+rotation = 0.752635
+sleeping = true
+linear_velocity = Vector2(0.000320171, 2.94025e-05)
+rotation_score_judge = 1
+
+[node name="Blanket" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-145.05, -113.186)
+rotation = 1.84338
+collision_layer = 8
+collision_mask = 9
+sleeping = true
+linear_velocity = Vector2(-3.97905e-08, -7.50416e-08)
+score_importance = 0.65
+rotation_score_judge = 1
+
+[node name="CollisionShape2D" parent="Blanket" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Sprite2D" parent="Blanket" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(260, 7, 26, 9)
+
+[node name="PinJoint2D" parent="Blanket" index="2"]
+position = Vector2(9.53503, 1.0209)
+
+[node name="Pencil" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-165.173, -122.358)
+rotation = 1.84856
+collision_layer = 8
+collision_mask = 9
+sleeping = true
+linear_velocity = Vector2(-3.97905e-08, -7.50416e-08)
+score_importance = 0.3
+
+[node name="CollisionShape2D" parent="Pencil" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_getpj")
+
+[node name="Sprite2D" parent="Pencil" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(257, 211, 10, 1)
+
+[node name="Keyboard" parent="." instance=ExtResource("2_owoxq")]
+position = Vector2(-81.7343, 110.257)
+rotation = -1.10561
+collision_layer = 8
+collision_mask = 9
+sleeping = true
+linear_velocity = Vector2(0.00299695, -0.006877)
+score_importance = 0.5
+
+[node name="CollisionShape2D" parent="Keyboard" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_w48qg")
+
+[node name="Sprite2D" parent="Keyboard" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(166, 76, 28, 9)
+
+[node name="PinJoint2D" parent="Keyboard" index="2"]
+position = Vector2(-27.8794, -0.676498)
+
+[node name="Walls" type="Sprite2D" parent="."]
+position = Vector2(15, -37)
+scale = Vector2(4, 4)
+texture = ExtResource("1_ql72w")
+region_enabled = true
+region_rect = Rect2(10, 6, 135, 127)
+
+[node name="WallCollisionSide" type="StaticBody2D" parent="."]
+position = Vector2(-279, -42)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisionSide"]
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="WallCollisionSide2" type="StaticBody2D" parent="."]
+position = Vector2(309, -42)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisionSide2"]
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="WallCollisionVertical" type="StaticBody2D" parent="."]
+position = Vector2(10, -316)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisionVertical"]
+shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="WallCollisionVertical2" type="StaticBody2D" parent="."]
+position = Vector2(11, 241)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisionVertical2"]
+shape = SubResource("RectangleShape2D_4c57u")
+
+[editable path="Carpet"]
+[editable path="WelcomeMat"]
+[editable path="Trash"]
+[editable path="Notebook"]
+[editable path="Pen"]
+[editable path="Paper"]
+[editable path="Cup"]
+[editable path="Computer"]
+[editable path="Pillow"]
+[editable path="Mouse"]
+[editable path="Bed"]
+[editable path="Cabinet"]
+[editable path="Shoe"]
+[editable path="Shoe2"]
+[editable path="Chair"]
+[editable path="Plant"]
+[editable path="Garbage"]
+[editable path="Blanket"]
+[editable path="Pencil"]
+[editable path="Keyboard"]
