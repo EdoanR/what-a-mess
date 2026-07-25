@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://busi278cvbhww"]
+
+[ext_resource type="Texture2D" uid="uid://dog7311mbs7bx" path="res://assets/UI/grabber.png" id="1_rjgu6"]
+[ext_resource type="Texture2D" uid="uid://bnc377l4eavpa" path="res://assets/UI/checkbox_checked.png" id="1_ydht1"]
+[ext_resource type="Texture2D" uid="uid://cgdmnckkfaio1" path="res://assets/UI/checkbox_unchecked.png" id="2_8gw6x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu6l5"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydht1"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8gw6x"]
+color = Color(0.521569, 0.521569, 0.521569, 1)
+thickness = 10
+
+[resource]
+Button/colors/font_color = Color(0.705882, 0.705882, 0.705882, 1)
+Button/styles/hover = SubResource("StyleBoxEmpty_jix8l")
+Button/styles/normal = SubResource("StyleBoxEmpty_glbon")
+Button/styles/pressed = SubResource("StyleBoxEmpty_nlkkf")
+CheckBox/icons/checked = ExtResource("1_ydht1")
+CheckBox/icons/unchecked = ExtResource("2_8gw6x")
+HSlider/icons/grabber = ExtResource("1_rjgu6")
+HSlider/icons/grabber_disabled = ExtResource("1_rjgu6")
+HSlider/icons/grabber_highlight = ExtResource("1_rjgu6")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_vu6l5")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ydht1")
+HSlider/styles/slider = SubResource("StyleBoxLine_8gw6x")
+Label/font_sizes/font_size = 32
