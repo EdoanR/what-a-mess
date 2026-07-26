@@ -28,6 +28,7 @@ enum SOUND_EFFECT_TYPE {
 	RETRO_10,
 	MODERN_15,
 	COFFEE_B,
+	CAT_PICKUP,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.

@@ -125,20 +125,9 @@ func can_be_lowered():
 		return false
 	return true
 
-func lift():
-	if not liftable:
-		return
-	
-	var is_on_floor = get_collision_layer_value(2)
-
-	if not is_on_floor:
-		return
-
+func is_there_something_above():
 	var overlapping_bodies = objects_check.get_overlapping_bodies()
 	overlapping_bodies.sort_custom(Utils.sort_by_visual_order)
-
-	print("analysing the overllaping bodies:")
-	print(overlapping_bodies)
 
 	var found_the_one_being_hold = false
 	var found_middle_bodies_between_one_being_hold = false
@@ -155,8 +144,19 @@ func lift():
 				if body.has_method("shake"):
 					body.shake()
 				found_middle_bodies_between_one_being_hold = true
+	return found_middle_bodies_between_one_being_hold
+
+
+func lift():
+	if not liftable:
+		return
 	
-	if found_middle_bodies_between_one_being_hold:
+	var is_on_floor = get_collision_layer_value(2)
+
+	if not is_on_floor:
+		return
+	
+	if is_there_something_above():
 		return
 	
 	set_collision_mask_value(2, false)
