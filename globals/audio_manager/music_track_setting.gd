@@ -3,7 +3,11 @@ extends Resource
 ## Sound effect resource, used to configure unique sound effects for use with the AudioManager. Passed to [method AudioManager.create_2d_audio_at_location()] and [method AudioManager.create_audio()] to play sound effects.
 
 ## Stores the different types of sounds effects available to be played to distinguish them from another. Each new SoundEffect resource created should add to this enum, to allow them to be easily instantiated via [method AudioManager.create_2d_audio_at_location()] and [method AudioManager.create_audio()].
-enum MUSIC_TRACK_TYPE {}
+enum MUSIC_TRACK_TYPE {
+  MAIN_MENU,
+  MINING_BY_MOONLIGHT,
+  RUNNIN_OUT_TIME,
+}
 
 @export var type: MUSIC_TRACK_TYPE ## The unique sound effect in the [enum SOUND_EFFECT_TYPE] to associate with this effect. Each SoundEffect resource should have it's own unique [enum SOUND_EFFECT_TYPE] setting.
 @export var sound_effect: AudioStream ## The [AudioStreamMP3] audio resource to play.

@@ -18,6 +18,7 @@ extends Node2D
 var sound_effect_dict: Dictionary = {} ## Loads all registered SoundEffects on ready as a reference.
 var music_tracks_dict: Dictionary = {} ## Music tracks to be played. Key: StringName, Value: AudioStream
 
+var current_music_type: int = -1
 
 func _ready() -> void:
 	if "--mute" in OS.get_cmdline_args():
@@ -61,13 +62,21 @@ func play_music(track_type: int, loop := true) -> void:
 	_current_music_player.play()
 
 	if loop:
-		_current_music_player.finished.connect(func(): _current_music_player.play())
+		_current_music_player.finished.connect(_on_music_player_finished)
+	else:
+		_current_music_player.finished.disconnect(_on_music_player_finished)
+	
+	current_music_type = track_type
 
+func _on_music_player_finished():
+	_current_music_player.play()
+	
 
 ## Stops the currently playing music track.
 @rpc("any_peer", "call_local")
 func stop_music() -> void:
 	_current_music_player.stop()
+	current_music_type = -1
 
 ## Creates a sound effect at a specific location if the limit has not been reached. Pass [param location] for the global position of the audio effect, and [param type] for the SoundEffect to be queued.
 @rpc("any_peer", "call_local")

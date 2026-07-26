@@ -1,5 +1,7 @@
 class_name PlayerCursor extends Area2D
 
+@export var enabled := true
+
 @onready var anchor: StaticBody2D = $StaticBody2D
 var object_being_hold: PhysicObject
 var hovering_object: PhysicObject
@@ -7,6 +9,9 @@ var hovering_object: PhysicObject
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	global_position = get_global_mouse_position()
+
+	if not enabled:
+		return
 
 	if object_being_hold and hovering_object:
 		hovering_object.hovering = false
@@ -30,8 +35,7 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("click") or (Game.hold_to_drag and Input.is_action_just_released("click")):
 		if object_being_hold:
-			object_being_hold.drop()
-			object_being_hold = null
+			drop_object()
 			return
 
 		if hovering_object:
@@ -47,6 +51,12 @@ func _process(_delta):
 		lift_object()
 	if Input.is_action_just_pressed("lower"):
 		lower_object()
+
+func drop_object():
+	if not object_being_hold:
+		return
+	object_being_hold.drop()
+	object_being_hold = null
 
 func lift_object():
 	if not object_being_hold:
