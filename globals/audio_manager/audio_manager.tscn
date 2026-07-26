@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bks7ey5sacwtd"]
+[gd_scene load_steps=64 format=3 uid="uid://bks7ey5sacwtd"]
 
 [ext_resource type="Script" uid="uid://qrt3ubnhjp6l" path="res://globals/audio_manager/audio_manager.gd" id="1_gqfen"]
 [ext_resource type="Script" uid="uid://bvm2x72vv7yp1" path="res://globals/audio_manager/sound_effect_setting.gd" id="2_qmnf0"]
@@ -29,8 +29,10 @@
 [ext_resource type="AudioStream" uid="uid://ccja4senrci6m" path="res://assets/sfx/soundpack/Retro10.wav" id="24_p6xgk"]
 [ext_resource type="AudioStream" uid="uid://b2xwpv1s2jpqf" path="res://assets/sfx/soundpack/Modern15.wav" id="25_hew6f"]
 [ext_resource type="AudioStream" uid="uid://dyiltl8gpsmo7" path="res://assets/sfx/soundpack/Coffee2.wav" id="26_p6xgk"]
+[ext_resource type="AudioStream" uid="uid://cluj5phyemqyk" path="res://assets/sfx/cat_pickup.wav" id="27_i6j02"]
 [ext_resource type="AudioStream" uid="uid://miu5x20vpg2i" path="res://assets/music/running_out_time.ogg" id="30_th37a"]
 [ext_resource type="AudioStream" uid="uid://b62x3vxqygh37" path="res://assets/music/Dispersion Relation.mp3" id="31_rtqft"]
+[ext_resource type="AudioStream" uid="uid://b4yta5l7psm4g" path="res://assets/music/Cuban Sandwich.mp3" id="32_p7lj8"]
 
 [sub_resource type="Resource" id="Resource_1veml"]
 script = ExtResource("2_qmnf0")
@@ -272,6 +274,16 @@ pitch_scale = 1.0
 pitch_randomness = 0.1
 metadata/_custom_type_script = "uid://bvm2x72vv7yp1"
 
+[sub_resource type="Resource" id="Resource_5me0h"]
+script = ExtResource("2_qmnf0")
+limit = 5
+type = 24
+sound_effect = ExtResource("27_i6j02")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://bvm2x72vv7yp1"
+
 [sub_resource type="Resource" id="Resource_cvs68"]
 script = ExtResource("21_1anj6")
 type = 0
@@ -308,10 +320,19 @@ pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://x2sbq2i4wh1o"
 
+[sub_resource type="Resource" id="Resource_g7qod"]
+script = ExtResource("21_1anj6")
+type = 4
+sound_effect = ExtResource("32_p7lj8")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://x2sbq2i4wh1o"
+
 [node name="AudioManager" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_gqfen")
-sound_effects = Array[ExtResource("2_qmnf0")]([SubResource("Resource_1veml"), SubResource("Resource_750k4"), SubResource("Resource_kyb3p"), SubResource("Resource_hew6f"), SubResource("Resource_p6xgk"), SubResource("Resource_th37a"), SubResource("Resource_rtqft"), SubResource("Resource_p7lj8"), SubResource("Resource_i6j02"), SubResource("Resource_ou4mq"), SubResource("Resource_6iq0h"), SubResource("Resource_i8kch"), SubResource("Resource_8w5ss"), SubResource("Resource_1aqf3"), SubResource("Resource_1anj6"), SubResource("Resource_tyt4p"), SubResource("Resource_d8dad"), SubResource("Resource_xtogb"), SubResource("Resource_nm8fa"), SubResource("Resource_hllta"), SubResource("Resource_bafjl"), SubResource("Resource_ne7at"), SubResource("Resource_nkeer"), SubResource("Resource_dtiel")])
-musics = Array[ExtResource("21_1anj6")]([SubResource("Resource_cvs68"), SubResource("Resource_otipw"), SubResource("Resource_mop2a"), SubResource("Resource_gmcbh")])
+sound_effects = Array[ExtResource("2_qmnf0")]([SubResource("Resource_1veml"), SubResource("Resource_750k4"), SubResource("Resource_kyb3p"), SubResource("Resource_hew6f"), SubResource("Resource_p6xgk"), SubResource("Resource_th37a"), SubResource("Resource_rtqft"), SubResource("Resource_p7lj8"), SubResource("Resource_i6j02"), SubResource("Resource_ou4mq"), SubResource("Resource_6iq0h"), SubResource("Resource_i8kch"), SubResource("Resource_8w5ss"), SubResource("Resource_1aqf3"), SubResource("Resource_1anj6"), SubResource("Resource_tyt4p"), SubResource("Resource_d8dad"), SubResource("Resource_xtogb"), SubResource("Resource_nm8fa"), SubResource("Resource_hllta"), SubResource("Resource_bafjl"), SubResource("Resource_ne7at"), SubResource("Resource_nkeer"), SubResource("Resource_dtiel"), SubResource("Resource_5me0h")])
+musics = Array[ExtResource("21_1anj6")]([SubResource("Resource_cvs68"), SubResource("Resource_otipw"), SubResource("Resource_mop2a"), SubResource("Resource_gmcbh"), SubResource("Resource_g7qod")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

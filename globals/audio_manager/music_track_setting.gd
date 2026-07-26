@@ -7,7 +7,8 @@ enum MUSIC_TRACK_TYPE {
   MAIN_MENU,
   MINING_BY_MOONLIGHT,
   RUNNIN_OUT_TIME,
-  DISPERSION_RELATION
+  DISPERSION_RELATION,
+  CUBAN_SANDWICH
 }
 
 @export var type: MUSIC_TRACK_TYPE ## The unique sound effect in the [enum SOUND_EFFECT_TYPE] to associate with this effect. Each SoundEffect resource should have it's own unique [enum SOUND_EFFECT_TYPE] setting.
