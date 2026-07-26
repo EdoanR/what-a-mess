@@ -654,10 +654,11 @@ offset_right = -30.0
 offset_bottom = 91.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 54
-text = "05:00"
+text = "04:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_272bh")
+time_left = 240
 
 [node name="Timer" type="Timer" parent="UI/Timer"]
 
@@ -692,10 +693,10 @@ libraries = {
 }
 autoplay = "start"
 
-[node name="ImpactSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ImpactSound" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"
 
-[node name="HarpSound" type="AudioStreamPlayer2D" parent="."]
+[node name="HarpSound" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"
 
 [node name="Pause" type="CanvasLayer" parent="."]

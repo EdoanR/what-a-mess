@@ -20,6 +20,9 @@ class_name Level extends Node2D
 @export var goal_indicator: ColorRect
 @export var buttons_container: HBoxContainer
 
+@export_category("debugging")
+@export var skip_intro := false
+
 var all_objects: Array[PhysicObject] = []
 var expected_obj_groups = {}
 
@@ -29,6 +32,8 @@ var first_obj_index = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = false
+	if not (OS.is_debug_build() and skip_intro):
+		animation_player.play("start")
 	AudioManager.stop_music()
 	Input.set_use_accumulated_input(false)
 
@@ -58,6 +63,11 @@ func _ready():
 
 		if first_obj_index == -1:
 			first_obj_index = idx
+	
+	if OS.is_debug_build() and skip_intro:
+		animation_player.stop()
+		start()
+
 
 func start():
 	hint.text = "Organize this mess!"
