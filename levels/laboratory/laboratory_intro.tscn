@@ -1,0 +1,261 @@
+[gd_scene load_steps=14 format=3 uid="uid://b6xbjwildbmrj"]
+
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="1_cuofx"]
+[ext_resource type="Texture2D" uid="uid://crm40qgc52ovg" path="res://assets/UI/lab_assistant.png" id="2_41kk8"]
+[ext_resource type="Texture2D" uid="uid://j3xisa6mo2ap" path="res://assets/UI/message_balloon.png" id="3_as6u1"]
+[ext_resource type="AudioStream" uid="uid://b8vfkup8xhgx0" path="res://assets/sfx/notification.wav" id="4_txweq"]
+[ext_resource type="AudioStream" uid="uid://bfgus6dfognqx" path="res://assets/sfx/SFX_RetroMultiplev1.wav" id="5_apfxy"]
+[ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="6_nbkwf"]
+[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://Logic/UI/change_scene_button.gd" id="7_xvay8"]
+[ext_resource type="Script" uid="uid://b8hnhk0yapu55" path="res://Logic/UI/music_player.gd" id="8_xjb6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw8d0"]
+size = Vector2(216, 245)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6dok"]
+size = Vector2(633, 203)
+
+[sub_resource type="Animation" id="Animation_lh41o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpeechBubble/Visual:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpeechBubble/Visual/RichTextLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kygvm"]
+resource_name = "start"
+length = 12.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.433333, 0.733333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpeechBubble/Visual:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.46667, 1.63333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpeechBubble/Visual/RichTextLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.26667, 3.4, 4.43333, 5.2, 6.46667, 7.33333, 8.59423, 9.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.065701, 0.065701, 0.313002, 0.313002, 0.665316, 0.665316, 1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChangeScene")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(11.7667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pressed"
+}]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_txweq")
+}, {
+"end_offset": 0.285185,
+"start_offset": 0.0,
+"stream": ExtResource("5_apfxy")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_apfxy")
+}, {
+"end_offset": 0.2274,
+"start_offset": 0.0,
+"stream": ExtResource("5_apfxy")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_apfxy")
+}, {
+"end_offset": 0.129943,
+"start_offset": 0.0,
+"stream": ExtResource("5_apfxy")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_apfxy")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_apfxy")
+}],
+"times": PackedFloat32Array(1.54546, 3.3, 4.46667, 4.92955, 6.5, 6.97159, 8.5896, 9.06119)
+}
+tracks/4/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hjlpn"]
+_data = {
+&"RESET": SubResource("Animation_lh41o"),
+&"start": SubResource("Animation_kygvm")
+}
+
+[node name="LaboratoryIntro" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BG" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.223529, 0.121569, 0.129412, 1)
+metadata/_edit_lock_ = true
+
+[node name="Avatar" parent="." instance=ExtResource("1_cuofx")]
+position = Vector2(380, 331)
+grab_sfxs = Array[int]([])
+drop_sfxs = Array[int]([])
+collision_sfxs = Array[int]([])
+
+[node name="CollisionShape2D" parent="Avatar" index="0"]
+position = Vector2(1, 5.5)
+shape = SubResource("RectangleShape2D_sw8d0")
+
+[node name="Sprite2D" parent="Avatar" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("2_41kk8")
+
+[node name="SpeechBubble" parent="." instance=ExtResource("1_cuofx")]
+position = Vector2(635, 260)
+grab_sfxs = Array[int]([])
+drop_sfxs = Array[int]([])
+collision_sfxs = Array[int]([])
+
+[node name="CollisionShape2D" parent="SpeechBubble" index="0"]
+position = Vector2(180.5, 56.5)
+shape = SubResource("RectangleShape2D_u6dok")
+
+[node name="Sprite2D" parent="SpeechBubble" index="1"]
+scale = Vector2(4, 4)
+texture = null
+
+[node name="Visual" type="Node2D" parent="SpeechBubble"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SpeechBubble/Visual"]
+offset_left = -132.0
+offset_top = -36.0
+offset_right = 485.0
+offset_bottom = 149.0
+texture = ExtResource("3_as6u1")
+patch_margin_left = 60
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpeechBubble/Visual"]
+offset_left = -85.0
+offset_top = 13.0
+offset_right = 480.0
+offset_bottom = 202.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "Erm... I forgot my keys on the lab. Are you done organizing everything there? I'll swing by really quick in 5 minutes."
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label" type="Label" parent="SpeechBubble/Visual"]
+offset_left = -84.0
+offset_top = -24.0
+offset_right = 54.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "LAB. ASSISTANT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hjlpn")
+}
+autoplay = "start"
+
+[node name="Cursor" parent="." instance=ExtResource("6_nbkwf")]
+
+[node name="ChangeScene" type="Button" parent="."]
+offset_left = -365.0
+offset_top = 288.0
+offset_right = -357.0
+offset_bottom = 296.0
+script = ExtResource("7_xvay8")
+scene_path = "res://levels/laboratory/laboratory.tscn"
+
+[node name="MusicPlayer" type="Node2D" parent="."]
+script = ExtResource("8_xjb6g")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = &"sfx"
+
+[connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="stop"]
+
+[editable path="Avatar"]
+[editable path="SpeechBubble"]

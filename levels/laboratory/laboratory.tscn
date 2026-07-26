@@ -1,12 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://diasaen0tcomu"]
+[gd_scene load_steps=53 format=3 uid="uid://d2bjwvgox627n"]
 
 [ext_resource type="Script" uid="uid://cxf5g3oy8ou5a" path="res://Logic/level.gd" id="1_tpttx"]
 [ext_resource type="Texture2D" uid="uid://be42c1b4xjbsn" path="res://assets/UI/level_UI.png" id="2_pfqt6"]
 [ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://Logic/UI/change_scene_button.gd" id="3_o1yh0"]
 [ext_resource type="Script" uid="uid://ycwnel7a04tl" path="res://countdown.gd" id="4_pu7j4"]
-[ext_resource type="PackedScene" uid="uid://da7bfy8letdv8" path="res://levels/bedroom/bedroom_messy.tscn" id="5_m4bbb"]
-[ext_resource type="PackedScene" uid="uid://b1hxved1wik6v" path="res://levels/bedroom/bedroom_expectation.tscn" id="6_mjmdb"]
+[ext_resource type="Texture2D" uid="uid://ckk71fvalspga" path="res://assets/laboratory/laboratoy.png" id="6_7j1dr"]
+[ext_resource type="PackedScene" uid="uid://ba8oudg7capae" path="res://levels/laboratory/laboratory_messy.tscn" id="6_imqrm"]
 [ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="7_e8cji"]
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="7_imqrm"]
 [ext_resource type="AudioStream" uid="uid://ltnt7pcb81ip" path="res://assets/sfx/soundpack/Retro1.wav" id="8_6d261"]
 [ext_resource type="AudioStream" uid="uid://crma1qsv7p8fd" path="res://assets/sfx/harp.wav" id="9_pbwko"]
 [ext_resource type="AudioStream" uid="uid://cmseoirmstkes" path="res://assets/sfx/impact_0.wav" id="10_0tcfd"]
@@ -58,6 +59,87 @@ _data = {
 &"RESET": SubResource("Animation_4c57u"),
 &"pulse": SubResource("Animation_kek77")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71gx0"]
+size = Vector2(326, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6q7o"]
+size = Vector2(112, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cp6nn"]
+size = Vector2(160, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj6dj"]
+size = Vector2(160, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmasg"]
+size = Vector2(76, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgstb"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02knm"]
+size = Vector2(92, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ue7n"]
+size = Vector2(60, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7j1dr"]
+size = Vector2(44, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc8nc"]
+size = Vector2(32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ma6h"]
+size = Vector2(36, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nijqe"]
+size = Vector2(20, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3sn4"]
+size = Vector2(20, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_el0ca"]
+size = Vector2(14, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_miaq4"]
+size = Vector2(48, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_peexr"]
+size = Vector2(20, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubec6"]
+size = Vector2(32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33egf"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khc5w"]
+size = Vector2(4, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ma6h"]
+radius = 15.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2oqp"]
+size = Vector2(60, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3w7g"]
+size = Vector2(40, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrv2k"]
+size = Vector2(36, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atjen"]
+size = Vector2(32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imqrm"]
+size = Vector2(72, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ylbp"]
+size = Vector2(72, 668)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v5dh"]
+size = Vector2(600, 72)
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 length = 0.001
@@ -506,8 +588,8 @@ level_name = "laboratory"
 player_cursor = NodePath("Cursor")
 count_down = NodePath("UI/Timer")
 hint = NodePath("UI/Hint")
-goal_score = 92
-music = 1
+goal_score = 80
+music = 3
 organization_bar = NodePath("UI/ScoreControl/Control/OrganizationBar")
 result_score_label = NodePath("UI/ScoreControl/Label")
 goal_indicator = NodePath("UI/ScoreControl/Control/Goal")
@@ -654,11 +736,10 @@ offset_right = -30.0
 offset_bottom = 91.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 54
-text = "02:00"
+text = "05:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_pu7j4")
-time_left = 120
 
 [node name="Timer" type="Timer" parent="UI/Timer"]
 
@@ -676,27 +757,714 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.74902, 0.435294, 0.290196, 1)
+color = Color(0.164706, 0.184314, 0.305882, 1)
 metadata/_edit_lock_ = true
-
-[node name="Reality" parent="." instance=ExtResource("5_m4bbb")]
-
-[node name="Expectation" parent="." instance=ExtResource("6_mjmdb")]
-position = Vector2(954, 477)
 
 [node name="Cursor" parent="." instance=ExtResource("7_e8cji")]
 enabled = false
+
+[node name="Reality" parent="." instance=ExtResource("6_imqrm")]
+
+[node name="Expectation" type="Node2D" parent="."]
+position = Vector2(978, 425)
+
+[node name="Floor" type="Sprite2D" parent="Expectation"]
+position = Vector2(0, 1)
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(7, 142, 122, 120)
+metadata/_edit_lock_ = true
+
+[node name="MiddleTable" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(0, 77)
+collision_layer = 6
+collision_mask = 7
+mass = 15.0
+rotation_score_judge = 1
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/MiddleTable" index="0"]
+shape = SubResource("RectangleShape2D_71gx0")
+
+[node name="Sprite2D" parent="Expectation/MiddleTable" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(244, 73, 81, 20)
+
+[node name="SmallTable" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(188, 209)
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+obj_group = "small_table"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/SmallTable" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_u6q7o")
+
+[node name="Sprite2D" parent="Expectation/SmallTable" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(220, 102, 28, 16)
+
+[node name="SmallTable2" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(72, 209)
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+obj_group = "small_table"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/SmallTable2" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_u6q7o")
+
+[node name="Sprite2D" parent="Expectation/SmallTable2" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(220, 102, 28, 16)
+
+[node name="PotionCabinet" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-164, 215)
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/PotionCabinet" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_cp6nn")
+
+[node name="Sprite2D" parent="Expectation/PotionCabinet" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(154, 105, 40, 13)
+
+[node name="WideCabinet" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-164, -59)
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/WideCabinet" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_fj6dj")
+
+[node name="Sprite2D" parent="Expectation/WideCabinet" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(154, 88, 40, 8)
+
+[node name="SmallCabinet" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-46, -59)
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/SmallCabinet" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_wmasg")
+
+[node name="Sprite2D" parent="Expectation/SmallCabinet" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(198, 88, 19, 8)
+
+[node name="Storage" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(88, -205)
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/Storage" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_vgstb")
+
+[node name="Sprite2D" parent="Expectation/Storage" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(270, 45, 16, 17)
+
+[node name="Refrigerator" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(198, -203)
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/Refrigerator" index="0"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_02knm")
+
+[node name="Sprite2D" parent="Expectation/Refrigerator" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(163, 8, 23, 18)
+
+[node name="DarkChair" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-116, 141)
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+rotation_score_judge = 1
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/DarkChair" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6ue7n")
+
+[node name="Sprite2D" parent="Expectation/DarkChair" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(267, 13, 15, 10)
+
+[node name="RollingChair" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-116, 13)
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+rotation_score_judge = 1
+obj_group = "rolling_chair"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/RollingChair" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6ue7n")
+
+[node name="Sprite2D" parent="Expectation/RollingChair" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(245, 13, 15, 10)
+
+[node name="RollingChair2" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(0, 13)
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+rotation_score_judge = 1
+obj_group = "rolling_chair"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/RollingChair2" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6ue7n")
+
+[node name="Sprite2D" parent="Expectation/RollingChair2" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(245, 13, 15, 10)
+
+[node name="RollingChair3" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(116, 13)
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+rotation_score_judge = 1
+obj_group = "rolling_chair"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/RollingChair3" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6ue7n")
+
+[node name="Sprite2D" parent="Expectation/RollingChair3" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(245, 13, 15, 10)
+
+[node name="Chair" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(214, -29)
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+obj_group = "chair"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/Chair" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_7j1dr")
+
+[node name="Sprite2D" parent="Expectation/Chair" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(291, 10, 11, 13)
+
+[node name="Chair2" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(214, 27)
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+obj_group = "chair"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Expectation/Chair2" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_7j1dr")
+
+[node name="Sprite2D" parent="Expectation/Chair2" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(291, 10, 11, 13)
+
+[node name="Clipboard" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-128, 68)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.85
+grab_sfxs = Array[int]([14])
+drop_sfxs = Array[int]([15])
+
+[node name="CollisionShape2D" parent="Expectation/Clipboard" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_pc8nc")
+
+[node name="Sprite2D" parent="Expectation/Clipboard" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(156, 32, 8, 10)
+
+[node name="Pinch" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-59, 95)
+collision_layer = 8
+collision_mask = 9
+mass = 0.85
+score_importance = 0.85
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Expectation/Pinch" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_3ma6h")
+
+[node name="Sprite2D" parent="Expectation/Pinch" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(171, 44, 9, 3)
+
+[node name="Key" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(223, 206)
+collision_layer = 8
+collision_mask = 9
+mass = 0.85
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Expectation/Key" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_nijqe")
+
+[node name="Sprite2D" parent="Expectation/Key" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(239, 33, 5, 9)
+
+[node name="BigPen" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(201, 206)
+collision_layer = 8
+collision_mask = 9
+mass = 0.5
+score_importance = 0.65
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Expectation/BigPen" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_p3sn4")
+
+[node name="Sprite2D" parent="Expectation/BigPen" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(246, 56, 1, 7)
+
+[node name="SmallPen" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-100, 68)
+collision_layer = 8
+collision_mask = 9
+mass = 0.5
+score_importance = 0.5
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Expectation/SmallPen" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_el0ca")
+
+[node name="Sprite2D" parent="Expectation/SmallPen" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(166, 37, 1, 5)
+
+[node name="Needle" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-44, -62)
+collision_layer = 8
+collision_mask = 9
+mass = 0.85
+score_importance = 0.85
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Expectation/Needle" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_miaq4")
+
+[node name="Sprite2D" parent="Expectation/Needle" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(177, 53, 12, 3)
+
+[node name="BlueCup" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-227, -62)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.65
+
+[node name="CollisionShape2D" parent="Expectation/BlueCup" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_peexr")
+
+[node name="Sprite2D" parent="Expectation/BlueCup" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(158, 52, 3, 3)
+
+[node name="GreenCup" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-204, -62)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.65
+
+[node name="CollisionShape2D" parent="Expectation/GreenCup" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_peexr")
+
+[node name="Sprite2D" parent="Expectation/GreenCup" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(162, 52, 3, 3)
+
+[node name="GloveLeft" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(48, 209)
+collision_layer = 8
+collision_mask = 9
+mass = 0.5
+score_importance = 0.85
+grab_sfxs = Array[int]([16])
+drop_sfxs = Array[int]([17])
+
+[node name="CollisionShape2D" parent="Expectation/GloveLeft" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_ubec6")
+
+[node name="Sprite2D" parent="Expectation/GloveLeft" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(203, 54, 11, 11)
+
+[node name="GloveRight" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(100, 209)
+collision_layer = 8
+collision_mask = 9
+mass = 0.5
+score_importance = 0.85
+grab_sfxs = Array[int]([16])
+drop_sfxs = Array[int]([17])
+
+[node name="CollisionShape2D" parent="Expectation/GloveRight" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_ubec6")
+
+[node name="Sprite2D" parent="Expectation/GloveRight" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(216, 54, 11, 11)
+
+[node name="GreenPotion" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-216, 216)
+collision_layer = 8
+collision_mask = 9
+mass = 3.0
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Expectation/GreenPotion" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_33egf")
+
+[node name="Sprite2D" parent="Expectation/GreenPotion" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(156, 65, 8, 8)
+
+[node name="PurplePotion" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-165, 216)
+collision_layer = 8
+collision_mask = 9
+mass = 3.0
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Expectation/PurplePotion" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_33egf")
+
+[node name="Sprite2D" parent="Expectation/PurplePotion" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(166, 65, 8, 8)
+
+[node name="YellowPotion" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-114, 216)
+collision_layer = 8
+collision_mask = 9
+mass = 3.0
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Expectation/YellowPotion" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_33egf")
+
+[node name="Sprite2D" parent="Expectation/YellowPotion" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(176, 65, 8, 8)
+
+[node name="RedPotion" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(88, -207)
+collision_layer = 8
+collision_mask = 9
+mass = 3.0
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Expectation/RedPotion" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_33egf")
+
+[node name="Sprite2D" parent="Expectation/RedPotion" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(186, 65, 8, 8)
+
+[node name="MagnifyingGlass" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(98, 70)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Expectation/MagnifyingGlass" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_khc5w")
+
+[node name="Sprite2D" parent="Expectation/MagnifyingGlass" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(213, 33, 7, 10)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Expectation/MagnifyingGlass"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_3ma6h")
+
+[node name="Rack" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(-58, 62)
+collision_layer = 8
+collision_mask = 9
+mass = 2.0
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Expectation/Rack" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_c2oqp")
+
+[node name="Sprite2D" parent="Expectation/Rack" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(169, 32, 15, 7)
+
+[node name="Microscope" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(137, 76)
+collision_layer = 8
+collision_mask = 9
+mass = 3.0
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Expectation/Microscope" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_u3w7g")
+
+[node name="Sprite2D" parent="Expectation/Microscope" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(223, 32, 10, 14)
+
+[node name="Glass" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(12, 62)
+collision_layer = 8
+collision_mask = 9
+mass = 2.0
+score_importance = 0.85
+rotation_score_judge = 2
+obj_group = "glass"
+
+[node name="CollisionShape2D" parent="Expectation/Glass" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_yrv2k")
+
+[node name="Sprite2D" parent="Expectation/Glass" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(188, 32, 9, 9)
+
+[node name="Glass2" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(56, 62)
+collision_layer = 8
+collision_mask = 9
+mass = 2.0
+score_importance = 0.85
+rotation_score_judge = 2
+obj_group = "glass"
+
+[node name="CollisionShape2D" parent="Expectation/Glass2" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_yrv2k")
+
+[node name="Sprite2D" parent="Expectation/Glass2" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(188, 32, 9, 9)
+
+[node name="Notebook" parent="Expectation" instance=ExtResource("7_imqrm")]
+position = Vector2(172, 208)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.85
+grab_sfxs = Array[int]([14])
+drop_sfxs = Array[int]([15])
+
+[node name="CollisionShape2D" parent="Expectation/Notebook" index="0"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_atjen")
+
+[node name="Sprite2D" parent="Expectation/Notebook" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(235, 54, 9, 10)
+
+[node name="Walls" type="Sprite2D" parent="Expectation"]
+position = Vector2(0, 1)
+scale = Vector2(4, 4)
+texture = ExtResource("6_7j1dr")
+region_enabled = true
+region_rect = Rect2(146, 139, 128, 126)
+metadata/_edit_lock_ = true
+
+[node name="WallCollisionSide" type="StaticBody2D" parent="Expectation"]
+position = Vector2(-280, 88)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/WallCollisionSide"]
+shape = SubResource("RectangleShape2D_imqrm")
+
+[node name="WallCollisionSide3" type="StaticBody2D" parent="Expectation"]
+position = Vector2(20, -376)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/WallCollisionSide3"]
+shape = SubResource("RectangleShape2D_imqrm")
+
+[node name="WallCollisionSide2" type="StaticBody2D" parent="Expectation"]
+position = Vector2(280, 56)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/WallCollisionSide2"]
+position = Vector2(0, -34)
+shape = SubResource("RectangleShape2D_8ylbp")
+
+[node name="WallCollisionVertical" type="StaticBody2D" parent="Expectation"]
+position = Vector2(12, -276)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/WallCollisionVertical"]
+shape = SubResource("RectangleShape2D_6v5dh")
+
+[node name="WallCollisionVertical2" type="StaticBody2D" parent="Expectation"]
+position = Vector2(12, 280)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/WallCollisionVertical2"]
+shape = SubResource("RectangleShape2D_6v5dh")
+
+[node name="WallCollisionVertical3" type="StaticBody2D" parent="Expectation"]
+position = Vector2(-244, -112)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/WallCollisionVertical3"]
+shape = SubResource("RectangleShape2D_6v5dh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_kek77")
 }
-autoplay = "start"
 
-[node name="ImpactSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ImpactSound" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"
 
-[node name="HarpSound" type="AudioStreamPlayer2D" parent="."]
+[node name="HarpSound" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"
 
 [node name="Pause" type="CanvasLayer" parent="."]
@@ -827,3 +1595,38 @@ script = ExtResource("15_itacg")
 [connection signal="pressed" from="Pause/Retry" to="." method="retry"]
 [connection signal="pressed" from="Pause/DoneButton" to="UI/Timer" method="time_finished"]
 [connection signal="pressed" from="Pause/DoneButton" to="Pause" method="unpause"]
+
+[editable path="Expectation/MiddleTable"]
+[editable path="Expectation/SmallTable"]
+[editable path="Expectation/SmallTable2"]
+[editable path="Expectation/PotionCabinet"]
+[editable path="Expectation/WideCabinet"]
+[editable path="Expectation/SmallCabinet"]
+[editable path="Expectation/Storage"]
+[editable path="Expectation/Refrigerator"]
+[editable path="Expectation/DarkChair"]
+[editable path="Expectation/RollingChair"]
+[editable path="Expectation/RollingChair2"]
+[editable path="Expectation/RollingChair3"]
+[editable path="Expectation/Chair"]
+[editable path="Expectation/Chair2"]
+[editable path="Expectation/Clipboard"]
+[editable path="Expectation/Pinch"]
+[editable path="Expectation/Key"]
+[editable path="Expectation/BigPen"]
+[editable path="Expectation/SmallPen"]
+[editable path="Expectation/Needle"]
+[editable path="Expectation/BlueCup"]
+[editable path="Expectation/GreenCup"]
+[editable path="Expectation/GloveLeft"]
+[editable path="Expectation/GloveRight"]
+[editable path="Expectation/GreenPotion"]
+[editable path="Expectation/PurplePotion"]
+[editable path="Expectation/YellowPotion"]
+[editable path="Expectation/RedPotion"]
+[editable path="Expectation/MagnifyingGlass"]
+[editable path="Expectation/Rack"]
+[editable path="Expectation/Microscope"]
+[editable path="Expectation/Glass"]
+[editable path="Expectation/Glass2"]
+[editable path="Expectation/Notebook"]

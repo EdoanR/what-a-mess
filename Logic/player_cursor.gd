@@ -30,18 +30,12 @@ func _process(_delta):
 
 			if not object_being_hold:
 				hovering_object.hovering = true
+	elif hovering_object:
+		hovering_object.hovering = false
+		hovering_object = null
 
 	update_pointer(overlappings)
 
-	if Input.is_action_just_pressed("click") or (Game.hold_to_drag and Input.is_action_just_released("click")):
-		if object_being_hold:
-			drop_object()
-			return
-
-		if hovering_object:
-			hovering_object.grab(global_position, anchor)
-			object_being_hold = hovering_object
-	
 	if object_being_hold and Input.is_action_just_pressed("lift_or_lower"):
 		if object_being_hold.can_be_lifted():
 			lift_object()
@@ -51,6 +45,28 @@ func _process(_delta):
 		lift_object()
 	if Input.is_action_just_pressed("lower"):
 		lower_object()
+
+	if Game.hold_to_drag:
+		if Input.is_action_just_released("grab_release"):
+			if object_being_hold:
+				drop_object()
+			return
+		if Input.is_action_just_pressed("grab_release"):
+			if hovering_object:
+				hovering_object.grab(global_position, anchor)
+				object_being_hold = hovering_object
+		return
+	else:
+		if Input.is_action_just_pressed("grab_release"):
+			if object_being_hold:
+				drop_object()
+				return
+
+			if hovering_object:
+				hovering_object.grab(global_position, anchor)
+				object_being_hold = hovering_object
+			return
+	
 
 func drop_object():
 	if not object_being_hold:
@@ -77,3 +93,8 @@ func update_pointer(overlappings: Array[Node2D]):
 		Pointer.set_shape(Pointer.PointerShapes.READY_TO_GRAB)
 	else:
 		Pointer.set_shape(Pointer.PointerShapes.NORMAL)
+
+func _notification(what):
+	if what == NOTIFICATION_WM_MOUSE_EXIT or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		var a = ""
+		# drop_object()
