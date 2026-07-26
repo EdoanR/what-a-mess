@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://3gbh5ygrhbwp"]
+[gd_scene load_steps=10 format=3 uid="uid://3gbh5ygrhbwp"]
 
+[ext_resource type="Script" uid="uid://dcp8m483kw5tx" path="res://main_menu.gd" id="1_8qtwp"]
 [ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="1_glbon"]
 [ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="2_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://dl8mm22bduru4" path="res://UI/logo.tscn" id="2_fu7sn"]
@@ -7,8 +8,10 @@
 [ext_resource type="Script" uid="uid://c5c0gta1grost" path="res://Logic/UI/volume_slider.gd" id="4_jix8l"]
 [ext_resource type="Script" uid="uid://ccoi42fsqwvir" path="res://Logic/UI/hold_to_drag.gd" id="5_glbon"]
 [ext_resource type="Script" uid="uid://bdq3y05snylij" path="res://Logic/UI/sound_player.gd" id="7_qe12f"]
+[ext_resource type="Script" uid="uid://b8hnhk0yapu55" path="res://Logic/UI/music_player.gd" id="9_dy7ct"]
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_8qtwp")
 
 [node name="BG" type="CanvasLayer" parent="."]
 layer = -1
@@ -159,7 +162,11 @@ script = ExtResource("5_glbon")
 script = ExtResource("7_qe12f")
 sounds = Array[int]([2, 3, 4])
 
+[node name="MusicPlayer" type="Node2D" parent="."]
+script = ExtResource("9_dy7ct")
+
 [connection signal="pressed" from="CanvasLayer/StartGame" to="SoundPlayer" method="play_sound"]
 [connection signal="pressed" from="CanvasLayer/Options" to="Options" method="show"]
 [connection signal="pressed" from="CanvasLayer/Options" to="SoundPlayer" method="play_sound"]
 [connection signal="pressed" from="Options/Button" to="Options" method="hide"]
+[connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="play_music"]

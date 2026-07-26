@@ -4,11 +4,15 @@ class_name Level extends Node2D
 @onready var expectation: Node2D = $Expectation
 @onready var animation_player = $AnimationPlayer
 
+@export var level_name := ""
+@export var player_cursor: PlayerCursor
 @export var count_down: CountDown
 @export var hint: Label
 @export var max_distance_score = 160.0
 @export var max_rotation_angle = 3.0
 @export var goal_score: int = 85
+
+@export var music: MusicTrack.MUSIC_TRACK_TYPE
 
 @export_category("score result")
 @export var organization_bar: ProgressBar
@@ -25,6 +29,7 @@ var first_obj_index = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = false
+	AudioManager.stop_music()
 	Input.set_use_accumulated_input(false)
 
 	# reality.process_mode = Node.PROCESS_MODE_DISABLED
@@ -58,13 +63,43 @@ func start():
 	hint.text = "Organize this mess!"
 	reality.process_mode = Node.PROCESS_MODE_INHERIT
 	count_down.start()
+	AudioManager.play_music(music)
+	player_cursor.enabled = true
 
 func retry():
 	get_tree().reload_current_scene()
 
+func on_timer_almost_finished():
+	AudioManager.play_music(MusicTrack.MUSIC_TRACK_TYPE.RUNNIN_OUT_TIME, false)
+
 func on_timer_finished():
+	AudioManager.stop_music()
+
+	player_cursor.drop_object()
+	player_cursor.enabled = false
 	reality.process_mode = Node.PROCESS_MODE_DISABLED
 	var score = calculate_room_score()
+
+	var rating = -1
+
+	if score >= 100:
+		rating = Game.LevelScoreRating.PERFECT
+	elif score >= goal_score:
+		rating = Game.LevelScoreRating.GOOD
+	else:
+		rating = Game.LevelScoreRating.BAD
+
+	var config = ConfigFile.new()
+	var _err = config.load("user://scores.cfg")
+
+	config.set_value(level_name, "score_rating", rating)
+	config.set_value(level_name, "last_score", score)
+	
+	var best_score = config.get_value(level_name, "best_score", 0)
+	if score > best_score:
+		config.set_value(level_name, "best_score", score)
+
+	config.save("user://scores.cfg")
 
 	goal_indicator.position.x = (float(goal_score) / 100) * organization_bar.custom_minimum_size.x
 	organization_bar.value = 0.0
@@ -76,18 +111,23 @@ func on_timer_finished():
 	await Utils.wait(1.0)
 
 	organization_bar.value = 0.0
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.RISING_BAR)
 	var tween = get_tree().create_tween()
 	tween.tween_property(organization_bar, "value", score, 2.0)
 	await tween.finished
 	await Utils.wait(1.0)
 
-	if score >= 100:
+	if rating == Game.LevelScoreRating.PERFECT:
 		result_score_label.text = "PERFECT!"
 		result_score_label.modulate = Color.YELLOW
-	elif score >= goal_score:
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.RETRO_10)
+	elif rating == Game.LevelScoreRating.GOOD:
 		result_score_label.text = "Well done!"
+		result_score_label.modulate = Color.GREEN
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.RETRO_8)
 	else:
-		result_score_label.text = "Not quite there"
+		result_score_label.text = "Not quite there..."
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.RETRO_6)
 
 	buttons_container.visible = true
 

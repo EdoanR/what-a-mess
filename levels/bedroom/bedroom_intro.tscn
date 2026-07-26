@@ -1,70 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://b86c6iaauupj7"]
+[gd_scene load_steps=14 format=3 uid="uid://b86c6iaauupj7"]
 
 [ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="1_ramol"]
 [ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="2_kygvm"]
 [ext_resource type="Texture2D" uid="uid://dnkfo7jjjrii3" path="res://assets/UI/girlfriend.png" id="2_lh41o"]
 [ext_resource type="Texture2D" uid="uid://j3xisa6mo2ap" path="res://assets/UI/message_balloon.png" id="4_28u7o"]
+[ext_resource type="AudioStream" uid="uid://bfgus6dfognqx" path="res://assets/sfx/SFX_RetroMultiplev1.wav" id="5_6wvc5"]
 [ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://Logic/UI/change_scene_button.gd" id="5_28u7o"]
+[ext_resource type="Script" uid="uid://b8hnhk0yapu55" path="res://Logic/UI/music_player.gd" id="6_sw8d0"]
+[ext_resource type="AudioStream" uid="uid://b8vfkup8xhgx0" path="res://assets/sfx/notification.wav" id="7_vmjol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw8d0"]
 size = Vector2(216, 245)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh41o"]
 size = Vector2(633, 170)
-
-[sub_resource type="Animation" id="Animation_kygvm"]
-resource_name = "start"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Avatar/Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.433333, 0.733333),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(4, 4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpeechBubble/Visual:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.46667, 1.76667),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SpeechBubble/Visual/RichTextLabel:visible_ratio")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(3.26667, 4.03333, 4.9, 5.72),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.49, 0.49, 1.0]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ChangeScene")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(8.9),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_pressed"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_lh41o"]
 length = 0.001
@@ -104,6 +53,115 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kygvm"]
+resource_name = "start"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.433333, 0.733333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpeechBubble/Visual:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.46667, 1.63333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpeechBubble/Visual/RichTextLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.26667, 4.03333, 4.9, 5.72),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.49, 0.49, 1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChangeScene")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(8.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pressed"
+}]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_vmjol")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_6wvc5")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_6wvc5")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_6wvc5")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_6wvc5")
+}],
+"times": PackedFloat32Array(1.56667, 3.33333, 3.80544, 4.88738, 5.35897)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.02758),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-11.049]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hjlpn"]
 _data = {
@@ -140,7 +198,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_lh41o")
 
 [node name="SpeechBubble" parent="." instance=ExtResource("1_ramol")]
-position = Vector2(635, 336)
+position = Vector2(635, 260)
 grab_sfxs = Array[int]([])
 drop_sfxs = Array[int]([])
 collision_sfxs = Array[int]([])
@@ -201,6 +259,14 @@ offset_right = -357.0
 offset_bottom = 296.0
 script = ExtResource("5_28u7o")
 scene_path = "res://levels/bedroom/bedroom.tscn"
+
+[node name="MusicPlayer" type="Node2D" parent="."]
+script = ExtResource("6_sw8d0")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"sfx"
+
+[connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="stop"]
 
 [editable path="Avatar"]
 [editable path="SpeechBubble"]

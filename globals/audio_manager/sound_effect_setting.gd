@@ -21,7 +21,13 @@ enum SOUND_EFFECT_TYPE {
 	PAPER_PICKUP,
 	PAPER_DROP,
 	CLOTH_PICKUP,
-	CLOTH_DROP
+	CLOTH_DROP,
+	RISING_BAR,
+	RETRO_6,
+	RETRO_8,
+	RETRO_10,
+	MODERN_15,
+	COFFEE_B,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.
