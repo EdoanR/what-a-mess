@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://busi278cvbhww"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://busi278cvbhww"]
 
-[ext_resource type="Texture2D" uid="uid://dog7311mbs7bx" path="res://assets/UI/grabber.png" id="1_rjgu6"]
-[ext_resource type="Texture2D" uid="uid://bnc377l4eavpa" path="res://assets/UI/checkbox_checked.png" id="1_ydht1"]
-[ext_resource type="Texture2D" uid="uid://cgdmnckkfaio1" path="res://assets/UI/checkbox_unchecked.png" id="2_8gw6x"]
+[ext_resource type="Texture2D" uid="uid://bnc377l4eavpa" path="res://assets/ui/checkbox_checked.png" id="1_ydht1"]
+[ext_resource type="Texture2D" uid="uid://cgdmnckkfaio1" path="res://assets/ui/checkbox_unchecked.png" id="2_8gw6x"]
+[ext_resource type="Texture2D" uid="uid://dog7311mbs7bx" path="res://assets/ui/grabber.png" id="3_g21io"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ceur"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
 
@@ -22,14 +24,15 @@ thickness = 10
 
 [resource]
 Button/colors/font_color = Color(0.705882, 0.705882, 0.705882, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_7ceur")
 Button/styles/hover = SubResource("StyleBoxEmpty_jix8l")
 Button/styles/normal = SubResource("StyleBoxEmpty_glbon")
 Button/styles/pressed = SubResource("StyleBoxEmpty_nlkkf")
 CheckBox/icons/checked = ExtResource("1_ydht1")
 CheckBox/icons/unchecked = ExtResource("2_8gw6x")
-HSlider/icons/grabber = ExtResource("1_rjgu6")
-HSlider/icons/grabber_disabled = ExtResource("1_rjgu6")
-HSlider/icons/grabber_highlight = ExtResource("1_rjgu6")
+HSlider/icons/grabber = ExtResource("3_g21io")
+HSlider/icons/grabber_disabled = ExtResource("3_g21io")
+HSlider/icons/grabber_highlight = ExtResource("3_g21io")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_vu6l5")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ydht1")
 HSlider/styles/slider = SubResource("StyleBoxLine_8gw6x")

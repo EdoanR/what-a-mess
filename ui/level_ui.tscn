@@ -1,0 +1,218 @@
+[gd_scene load_steps=12 format=3 uid="uid://dhjnycgtcajrr"]
+
+[ext_resource type="Texture2D" uid="uid://be42c1b4xjbsn" path="res://logic/level/level_UI.png" id="1_mghd1"]
+[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://common/ui/change_scene_button.gd" id="2_2gdlo"]
+[ext_resource type="Texture2D" uid="uid://dfuti7ms3v2rx" path="res://logic/level/level_UI_score_part.png" id="3_2gdlo"]
+[ext_resource type="Script" uid="uid://ycwnel7a04tl" path="res://ui/countdown.gd" id="3_anta6"]
+[ext_resource type="Script" uid="uid://444eubna7n8j" path="res://common/ui/reload_scene_button.gd" id="4_anta6"]
+[ext_resource type="PackedScene" uid="uid://cntm0phw65y6f" path="res://common/ui/pivot_offset_control/pivot_offset_control.tscn" id="4_g3uqr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
+bg_color = Color(0.109804, 0.0705882, 0.109804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
+bg_color = Color(0.352941, 0.772549, 0.309804, 1)
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kek77"]
+resource_name = "pulse"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_efxa6"]
+_data = {
+&"RESET": SubResource("Animation_4c57u"),
+&"pulse": SubResource("Animation_kek77")
+}
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Layout" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mghd1")
+
+[node name="RealityLabel" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 109.0
+offset_right = 146.0
+offset_bottom = 154.0
+pivot_offset = Vector2(69, 22.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Reality"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PivotOffsetControl" parent="RealityLabel" instance=ExtResource("4_g3uqr")]
+
+[node name="Hint" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 380.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0.705882, 0.705882, 0.705882, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="ScoreControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 640.0
+offset_top = -720.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="NinePatchRect" parent="ScoreControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -480.0
+offset_bottom = -500.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("3_2gdlo")
+patch_margin_left = 68
+patch_margin_bottom = 11
+axis_stretch_horizontal = 1
+
+[node name="ExpectationLabel" type="Label" parent="ScoreControl"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 829.0
+offset_right = 229.0
+offset_bottom = 874.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Expectation"
+
+[node name="ResultScoreLabel" type="Label" parent="ScoreControl"]
+layout_mode = 2
+offset_left = 107.0
+offset_top = 256.0
+offset_right = 513.0
+offset_bottom = 301.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Calculating organization..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="ScoreControl"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 47.0
+offset_top = 364.0
+offset_right = 47.0
+offset_bottom = 364.0
+
+[node name="OrganizationBar" type="ProgressBar" parent="ScoreControl/Control"]
+custom_minimum_size = Vector2(500, 57.72)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -28.86
+offset_right = 500.0
+offset_bottom = 28.86
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/background = SubResource("StyleBoxFlat_5vw27")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kek77")
+value = 65.0
+
+[node name="Goal" type="ColorRect" parent="ScoreControl/Control"]
+custom_minimum_size = Vector2(5, 67)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 303.0
+offset_top = -33.0
+offset_right = 308.0
+offset_bottom = 34.0
+grow_vertical = 2
+color = Color(0, 0.411765, 0.666667, 1)
+
+[node name="ScoreButtonsContainer" type="HBoxContainer" parent="ScoreControl"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 425.0
+offset_right = 568.0
+offset_bottom = 478.0
+theme_override_constants/separation = 25
+
+[node name="Retry" type="Button" parent="ScoreControl/ScoreButtonsContainer"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Retry"
+script = ExtResource("4_anta6")
+
+[node name="LevelSelection" type="Button" parent="ScoreControl/ScoreButtonsContainer"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Go to Level Selection"
+script = ExtResource("2_2gdlo")
+scene_path = "uid://baq18aanfat7t"
+
+[node name="Timer" type="Label" parent="ScoreControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -168.0
+offset_top = 737.0
+offset_right = -30.0
+offset_bottom = 811.0
+grow_horizontal = 0
+pivot_offset = Vector2(69, 37)
+theme_override_font_sizes/font_size = 54
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_anta6")
+
+[node name="Timer" type="Timer" parent="ScoreControl/Timer"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreControl/Timer"]
+libraries = {
+&"": SubResource("AnimationLibrary_efxa6")
+}
+
+[node name="PivotOffsetControl" parent="ScoreControl/Timer" instance=ExtResource("4_g3uqr")]
+
+[connection signal="timeout" from="ScoreControl/Timer/Timer" to="ScoreControl/Timer" method="_on_timer_timeout"]

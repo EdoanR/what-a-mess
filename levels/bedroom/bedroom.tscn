@@ -1,829 +1,497 @@
-[gd_scene load_steps=25 format=3 uid="uid://b6eufvyp0l0bq"]
+[gd_scene load_steps=29 format=3 uid="uid://dyasyyajt1n61"]
 
-[ext_resource type="Script" uid="uid://cxf5g3oy8ou5a" path="res://Logic/level.gd" id="1_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://be42c1b4xjbsn" path="res://assets/UI/level_UI.png" id="2_7mycd"]
-[ext_resource type="Script" uid="uid://ycwnel7a04tl" path="res://countdown.gd" id="3_272bh"]
-[ext_resource type="PackedScene" uid="uid://da7bfy8letdv8" path="res://levels/bedroom/bedroom_messy.tscn" id="4_5vw27"]
-[ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://b1hxved1wik6v" path="res://levels/bedroom/bedroom_expectation.tscn" id="5_rkq2c"]
-[ext_resource type="AudioStream" uid="uid://cmseoirmstkes" path="res://assets/sfx/impact_0.wav" id="7_3xglk"]
-[ext_resource type="AudioStream" uid="uid://ltnt7pcb81ip" path="res://assets/sfx/soundpack/Retro1.wav" id="7_17yto"]
-[ext_resource type="AudioStream" uid="uid://crma1qsv7p8fd" path="res://assets/sfx/harp.wav" id="7_xhnyy"]
-[ext_resource type="AudioStream" uid="uid://dyiltl8gpsmo7" path="res://assets/sfx/soundpack/Coffee2.wav" id="9_3iurg"]
-[ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="9_lhvc8"]
-[ext_resource type="Script" uid="uid://dc2jecvu687p3" path="res://Logic/UI/pause.gd" id="9_xhnyy"]
-[ext_resource type="Script" uid="uid://c5c0gta1grost" path="res://Logic/UI/volume_slider.gd" id="10_cqvla"]
-[ext_resource type="Script" uid="uid://ccoi42fsqwvir" path="res://Logic/UI/hold_to_drag.gd" id="11_xhnyy"]
-[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://Logic/UI/change_scene_button.gd" id="12_3iurg"]
+[ext_resource type="PackedScene" uid="uid://u62oexh3cuf1" path="res://logic/level/level.tscn" id="1_6k2mn"]
+[ext_resource type="PackedScene" uid="uid://da7bfy8letdv8" path="res://levels/bedroom/bedroom_reality.tscn" id="2_rkq2c"]
+[ext_resource type="Texture2D" uid="uid://eeswym73m04m" path="res://levels/bedroom/assets/bedroom.png" id="6_jbyh0"]
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="7_p0lhp"]
+[ext_resource type="PackedScene" uid="uid://cpvr47ikcco48" path="res://entities/table.tscn" id="8_0wck0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
-bg_color = Color(0.109804, 0.0705882, 0.109804, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efxa6"]
+size = Vector2(178, 167)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
-bg_color = Color(0.352941, 0.772549, 0.309804, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_074og"]
+size = Vector2(64, 105)
 
-[sub_resource type="Animation" id="Animation_4c57u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(157, 253)
 
-[sub_resource type="Animation" id="Animation_kek77"]
-resource_name = "pulse"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
+size = Vector2(97, 155)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_efxa6"]
-_data = {
-&"RESET": SubResource("Animation_4c57u"),
-&"pulse": SubResource("Animation_kek77")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
+size = Vector2(28, 55)
 
-[sub_resource type="Animation" id="Animation_5vw27"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Reality:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Reality:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/Reality:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/Reality:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("UI/Expectation:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Expectation:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("UI/Timer:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("UI/Hint:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("UI/ScoreControl/BG:size")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(629, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("UI/ScoreControl:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("UI/ScoreControl/Label:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("UI/ScoreControl/Control:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("ImpactSound:volume_db")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vivmo"]
+size = Vector2(80, 79)
 
-[sub_resource type="Animation" id="Animation_efxa6"]
-resource_name = "show_score"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/ScoreControl/BG:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.866667),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector2(629, 0), Vector2(629, 780)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/Timer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.9),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/ScoreControl:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/ScoreControl/Label:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.48507),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("UI/ScoreControl/Control:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("UI/Hint:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.9),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("UI/Reality:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.9),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "audio"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("ImpactSound")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"clips": [{
-"end_offset": 0.686771,
-"start_offset": 0.0,
-"stream": ExtResource("7_17yto")
-}, {
-"end_offset": 0.686771,
-"start_offset": 0.0,
-"stream": ExtResource("7_17yto")
-}],
-"times": PackedFloat32Array(1.5, 2)
-}
-tracks/7/use_blend = true
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("ImpactSound:volume_db")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 1.43333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 5.0]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaehf"]
+size = Vector2(99, 27)
 
-[sub_resource type="Animation" id="Animation_272bh"]
-resource_name = "start"
-length = 6.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Reality:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Reality:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2667, 0.333333),
-"transitions": PackedFloat32Array(-0.5, 1),
-"update": 0,
-"values": [Vector2(1.065, 1.065), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/Reality:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2667, 0.333333),
-"transitions": PackedFloat32Array(-0.5, 1),
-"update": 0,
-"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/Reality:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("UI/Expectation:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(2.4, 3.43337),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Expectation:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(2.4, 3.43337),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("UI/Timer:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 3.7667, 4.2667, 4.7667, 5.2667, 5.7667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, true, false, true]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(6.20003),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"start"
-}]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("UI/Hint:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 6.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/9/type = "audio"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("ImpactSound")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("7_3xglk")
-}, {
-"end_offset": 1.03272,
-"start_offset": 0.0,
-"stream": ExtResource("9_3iurg")
-}, {
-"end_offset": 1.03272,
-"start_offset": 0.0,
-"stream": ExtResource("9_3iurg")
-}, {
-"end_offset": 1.03272,
-"start_offset": 0.0,
-"stream": ExtResource("9_3iurg")
-}],
-"times": PackedFloat32Array(0.2, 3.8, 4.76534, 5.76393)
-}
-tracks/9/use_blend = true
-tracks/10/type = "audio"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("HarpSound")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 1.51,
-"stream": ExtResource("7_xhnyy")
-}],
-"times": PackedFloat32Array(2.46667)
-}
-tracks/10/use_blend = true
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+radius = 26.03
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kek77"]
-_data = {
-&"RESET": SubResource("Animation_5vw27"),
-&"show_score": SubResource("Animation_efxa6"),
-&"start": SubResource("Animation_272bh")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u8w0"]
+size = Vector2(60, 63)
 
-[node name="BedroomLevel" type="Node2D" node_paths=PackedStringArray("player_cursor", "count_down", "hint", "organization_bar", "result_score_label", "goal_indicator", "buttons_container")]
-script = ExtResource("1_0xm2m")
-level_name = "bedroom"
-player_cursor = NodePath("Cursor")
-count_down = NodePath("UI/Timer")
-hint = NodePath("UI/Hint")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(127, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycdy4"]
+size = Vector2(102, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w48qg"]
+size = Vector2(112, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(104, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
+size = Vector2(20, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
+size = Vector2(12, 26)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycdy4"]
+radius = 15.0333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cegan"]
+size = Vector2(56, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82xsv"]
+size = Vector2(40, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_getpj"]
+size = Vector2(44, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryguw"]
+size = Vector2(48, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
+radius = 11.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(72, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(600, 72)
+
+[node name="Bedroom" instance=ExtResource("1_6k2mn")]
+level_name = "Bedroom"
+count_down_time = 240
 goal_score = 92
 music = 1
-organization_bar = NodePath("UI/ScoreControl/Control/OrganizationBar")
-result_score_label = NodePath("UI/ScoreControl/Label")
-goal_indicator = NodePath("UI/ScoreControl/Control/Goal")
-buttons_container = NodePath("UI/ScoreControl/HBoxContainer")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="UI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_7mycd")
-
-[node name="Reality" type="Label" parent="UI"]
-offset_left = 8.0
-offset_top = 109.0
-offset_right = 146.0
-offset_bottom = 154.0
-theme_override_colors/font_color = Color(0.705882, 0.705882, 0.705882, 1)
-theme_override_font_sizes/font_size = 32
-text = "Reality"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Expectation" type="Label" parent="UI"]
-offset_left = 673.0
-offset_top = 109.0
-offset_right = 855.0
-offset_bottom = 154.0
-theme_override_colors/font_color = Color(0.705882, 0.705882, 0.705882, 1)
-theme_override_font_sizes/font_size = 32
-text = "Expectation"
-
-[node name="Hint" type="Label" parent="UI"]
-offset_left = 24.0
-offset_top = 32.0
-offset_right = 380.0
-offset_bottom = 66.0
-theme_override_colors/font_color = Color(0.705882, 0.705882, 0.705882, 1)
-theme_override_font_sizes/font_size = 24
-
-[node name="ScoreControl" type="Control" parent="UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 651.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BG" type="ColorRect" parent="UI/ScoreControl"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -720.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.223529, 0.121569, 0.129412, 1)
-
-[node name="Label" type="Label" parent="UI/ScoreControl"]
-visible = false
-layout_mode = 2
-offset_left = 107.0
-offset_top = 256.0
-offset_right = 513.0
-offset_bottom = 301.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "Calculating organization..."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="Control" parent="UI/ScoreControl"]
-visible = false
-layout_mode = 2
-anchors_preset = 0
-offset_left = 47.0
-offset_top = 364.0
-offset_right = 47.0
-offset_bottom = 364.0
-
-[node name="OrganizationBar" type="ProgressBar" parent="UI/ScoreControl/Control"]
-custom_minimum_size = Vector2(500, 57.72)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -28.86
-offset_right = 500.0
-offset_bottom = 28.86
-grow_vertical = 2
-theme_override_font_sizes/font_size = 25
-theme_override_styles/background = SubResource("StyleBoxFlat_5vw27")
-theme_override_styles/fill = SubResource("StyleBoxFlat_kek77")
-value = 65.0
-
-[node name="Goal" type="ColorRect" parent="UI/ScoreControl/Control"]
-custom_minimum_size = Vector2(5, 67)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 303.0
-offset_top = -33.0
-offset_right = 308.0
-offset_bottom = 34.0
-grow_vertical = 2
-color = Color(0, 0.411765, 0.666667, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/ScoreControl"]
-visible = false
-layout_mode = 0
-offset_left = 75.0
-offset_top = 425.0
-offset_right = 568.0
-offset_bottom = 478.0
-theme_override_constants/separation = 25
-
-[node name="Retry" type="Button" parent="UI/ScoreControl/HBoxContainer"]
-custom_minimum_size = Vector2(139, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Retry"
-
-[node name="LevelSelection" type="Button" parent="UI/ScoreControl/HBoxContainer"]
-custom_minimum_size = Vector2(139, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Go to Level Selection"
-script = ExtResource("12_3iurg")
-scene_path = "res://level_selection.tscn"
-
-[node name="Timer" type="Label" parent="UI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -168.0
-offset_top = 17.0
-offset_right = -30.0
-offset_bottom = 91.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 54
-text = "04:00"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("3_272bh")
+[node name="Timer" parent="UI/ScoreControl" index="5"]
 time_left = 240
 
-[node name="Timer" type="Timer" parent="UI/Timer"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Timer"]
-libraries = {
-&"": SubResource("AnimationLibrary_efxa6")
-}
-
-[node name="BG" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="BG"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ColorRect" parent="BG" index="0"]
 color = Color(0.74902, 0.435294, 0.290196, 1)
-metadata/_edit_lock_ = true
 
-[node name="Reality" parent="." instance=ExtResource("4_5vw27")]
+[node name="Reality" parent="." index="2" instance=ExtResource("2_rkq2c")]
 
-[node name="Expectation" parent="." instance=ExtResource("5_rkq2c")]
+[node name="Expectation" type="Node2D" parent="." index="3"]
 position = Vector2(954, 477)
 
-[node name="Cursor" parent="." instance=ExtResource("5_lquwl")]
-enabled = false
+[node name="Floor" type="Sprite2D" parent="Expectation" index="0"]
+z_index = -1
+position = Vector2(15, -37)
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(9.16937, 142, 134.831, 127)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_kek77")
-}
-autoplay = "start"
+[node name="Carpet" parent="Expectation" index="1" instance=ExtResource("7_p0lhp")]
+position = Vector2(-5, 45)
+collision_layer = 16
+collision_mask = 17
+score_importance = 0.85
 
-[node name="ImpactSound" type="AudioStreamPlayer" parent="."]
-bus = &"sfx"
+[node name="CollisionShape2D" parent="Expectation/Carpet" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_efxa6")
 
-[node name="HarpSound" type="AudioStreamPlayer" parent="."]
-bus = &"sfx"
+[node name="Sprite2D" parent="Expectation/Carpet" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(204, 144, 44, 42)
 
-[node name="Pause" type="CanvasLayer" parent="."]
-process_mode = 3
-visible = false
-script = ExtResource("9_xhnyy")
+[node name="WelcomeMat" parent="Expectation" index="2" instance=ExtResource("7_p0lhp")]
+position = Vector2(221, 98)
+collision_layer = 16
+collision_mask = 17
+score_importance = 0.55
 
-[node name="BG" type="ColorRect" parent="Pause"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.364706, 0.172549, 0.156863, 1)
+[node name="CollisionShape2D" parent="Expectation/WelcomeMat" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_074og")
 
-[node name="SFXlabel" type="Label" parent="Pause"]
-offset_left = 185.0
-offset_top = 236.0
-offset_right = 518.0
-offset_bottom = 281.0
-theme_override_font_sizes/font_size = 32
-text = "Sound effects volume"
+[node name="Sprite2D" parent="Expectation/WelcomeMat" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(286, 150, 16, 25)
 
-[node name="SFXVolumeSlider" type="HSlider" parent="Pause"]
-custom_minimum_size = Vector2(500, 50)
-offset_left = 190.0
-offset_top = 287.0
-offset_right = 690.0
-offset_bottom = 337.0
-theme = ExtResource("9_lhvc8")
-max_value = 1.0
-step = 0.1
-script = ExtResource("10_cqvla")
-bus_name = "sfx"
+[node name="Bed" parent="Expectation" index="3" instance=ExtResource("7_p0lhp")]
+position = Vector2(192, -150)
+collision_layer = 6
+collision_mask = 7
 
-[node name="MusicLabel" type="Label" parent="Pause"]
-offset_left = 503.0
-offset_top = 385.0
-offset_right = 836.0
-offset_bottom = 430.0
-theme_override_font_sizes/font_size = 32
-text = "Music volume"
+[node name="CollisionShape2D" parent="Expectation/Bed" index="0"]
+position = Vector2(-1.5, -2.5)
+shape = SubResource("RectangleShape2D_7mycd")
 
-[node name="MusicVolumeSlider" type="HSlider" parent="Pause"]
-custom_minimum_size = Vector2(500, 50)
-offset_left = 508.0
-offset_top = 436.0
-offset_right = 1008.0
-offset_bottom = 486.0
-theme = ExtResource("9_lhvc8")
-max_value = 1.0
-step = 0.1
-script = ExtResource("10_cqvla")
-bus_name = "music"
+[node name="Sprite2D" parent="Expectation/Bed" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(210, 4, 42, 66)
 
-[node name="MasterLabel" type="Label" parent="Pause"]
-offset_left = 585.0
-offset_top = 91.0
-offset_right = 918.0
-offset_bottom = 136.0
-theme_override_font_sizes/font_size = 32
-text = "Master volume"
+[node name="Cabinet" parent="Expectation" index="4" instance=ExtResource("7_p0lhp")]
+position = Vector2(-195, 127)
+collision_layer = 6
+collision_mask = 7
+rotation_score_judge = 1
 
-[node name="MasterVolumeSlider" type="HSlider" parent="Pause"]
-custom_minimum_size = Vector2(500, 50)
-offset_left = 590.0
-offset_top = 142.0
-offset_right = 1090.0
-offset_bottom = 192.0
-theme = ExtResource("9_lhvc8")
-max_value = 1.0
-step = 0.1
-script = ExtResource("10_cqvla")
-bus_name = "Master"
+[node name="CollisionShape2D" parent="Expectation/Cabinet" index="0"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_272bh")
 
-[node name="Resume" type="Button" parent="Pause"]
-offset_left = 154.0
-offset_top = 621.0
-offset_right = 420.0
-offset_bottom = 666.0
-theme = ExtResource("9_lhvc8")
-theme_override_font_sizes/font_size = 32
-text = "Resume"
+[node name="Sprite2D" parent="Expectation/Cabinet" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(284, 201, 24, 39)
 
-[node name="Retry" type="Button" parent="Pause"]
-offset_left = 486.0
-offset_top = 616.0
-offset_right = 752.0
-offset_bottom = 661.0
-theme = ExtResource("9_lhvc8")
-theme_override_font_sizes/font_size = 32
-text = "Retry Level"
+[node name="Shoe" parent="Expectation" index="5" instance=ExtResource("7_p0lhp")]
+position = Vector2(118, 164)
+score_importance = 0.5
+obj_group = "shoe"
 
-[node name="LevelSelection" type="Button" parent="Pause"]
-offset_left = 852.0
-offset_top = 609.0
-offset_right = 1193.0
-offset_bottom = 654.0
-theme = ExtResource("9_lhvc8")
-theme_override_font_sizes/font_size = 32
-text = "Back to level selection"
-script = ExtResource("12_3iurg")
-scene_path = "res://level_selection.tscn"
+[node name="CollisionShape2D" parent="Expectation/Shoe" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5vw27")
 
-[node name="DoneButton" type="Button" parent="Pause"]
-offset_left = 645.0
-offset_top = 517.0
-offset_right = 986.0
-offset_bottom = 562.0
-theme = ExtResource("9_lhvc8")
-theme_override_font_sizes/font_size = 32
-text = "I'm done actually, no need to wait"
+[node name="Sprite2D" parent="Expectation/Shoe" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(169, 156, 7, 14)
 
-[node name="HoldToDrag" type="CheckBox" parent="Pause"]
-custom_minimum_size = Vector2(300, 0)
-offset_left = 169.0
-offset_top = 514.0
-offset_right = 387.0
-offset_bottom = 567.0
-theme = ExtResource("9_lhvc8")
-theme_override_font_sizes/font_size = 32
-text = "Hold to drag"
-script = ExtResource("11_xhnyy")
+[node name="Shoe2" parent="Expectation" index="6" instance=ExtResource("7_p0lhp")]
+position = Vector2(153, 164)
+score_importance = 0.5
+obj_group = "shoe"
 
-[connection signal="pressed" from="UI/ScoreControl/HBoxContainer/Retry" to="." method="retry"]
-[connection signal="timeout" from="UI/Timer/Timer" to="UI/Timer" method="_on_timer_timeout"]
-[connection signal="pressed" from="Pause/Resume" to="Pause" method="unpause"]
-[connection signal="pressed" from="Pause/Retry" to="." method="retry"]
-[connection signal="pressed" from="Pause/DoneButton" to="UI/Timer" method="time_finished"]
-[connection signal="pressed" from="Pause/DoneButton" to="Pause" method="unpause"]
+[node name="CollisionShape2D" parent="Expectation/Shoe2" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="Sprite2D" parent="Expectation/Shoe2" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(169, 156, 7, 14)
+
+[node name="Chair" parent="Expectation" index="7" instance=ExtResource("7_p0lhp")]
+position = Vector2(-99, -96)
+collision_layer = 6
+collision_mask = 7
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Expectation/Chair" index="0"]
+position = Vector2(-2, -0.5)
+shape = SubResource("RectangleShape2D_vivmo")
+
+[node name="Sprite2D" parent="Expectation/Chair" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(166, 94, 25, 20)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Expectation/Chair" index="7"]
+position = Vector2(-0.5, 25.5)
+shape = SubResource("RectangleShape2D_yaehf")
+
+[node name="Plant" parent="Expectation" index="8" instance=ExtResource("7_p0lhp")]
+position = Vector2(82, -247)
+collision_layer = 6
+collision_mask = 7
+score_importance = 0.65
+
+[node name="CollisionShape2D" parent="Expectation/Plant" index="0"]
+position = Vector2(-2, -0.5)
+shape = SubResource("CircleShape2D_lquwl")
+
+[node name="Sprite2D" parent="Expectation/Plant" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(170, 31, 14, 13)
+
+[node name="Garbage" parent="Expectation" index="9" instance=ExtResource("7_p0lhp")]
+position = Vector2(-200, 3)
+collision_layer = 6
+collision_mask = 7
+score_importance = 0.5
+rotation_score_judge = 2
+
+[node name="CollisionShape2D" parent="Expectation/Garbage" index="0"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1u8w0")
+
+[node name="Sprite2D" parent="Expectation/Garbage" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(164, 192, 15, 16)
+
+[node name="Table" parent="Expectation" index="10" instance=ExtResource("8_0wck0")]
+position = Vector2(-97, -208)
+rotation_score_judge = 1
+grab_sfxs = Array[int]([])
+drop_sfxs = Array[int]([])
+
+[node name="Pillow" parent="Expectation" index="11" instance=ExtResource("7_p0lhp")]
+position = Vector2(197, -223)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.65
+
+[node name="CollisionShape2D" parent="Expectation/Pillow" index="0"]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Sprite2D" parent="Expectation/Pillow" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(164, 4, 37, 19)
+
+[node name="Computer" parent="Expectation" index="12" instance=ExtResource("7_p0lhp")]
+position = Vector2(-101, -236)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.65
+
+[node name="CollisionShape2D" parent="Expectation/Computer" index="0"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_ycdy4")
+
+[node name="Sprite2D" parent="Expectation/Computer" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(167, 53, 26, 17)
+
+[node name="Keyboard" parent="Expectation" index="13" instance=ExtResource("7_p0lhp")]
+position = Vector2(-102, -169)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.5
+
+[node name="CollisionShape2D" parent="Expectation/Keyboard" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_w48qg")
+
+[node name="Sprite2D" parent="Expectation/Keyboard" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(166, 76, 28, 9)
+
+[node name="Blanket" parent="Expectation" index="14" instance=ExtResource("7_p0lhp")]
+position = Vector2(195, -167)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.65
+
+[node name="CollisionShape2D" parent="Expectation/Blanket" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Sprite2D" parent="Expectation/Blanket" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(260, 7, 26, 9)
+
+[node name="Mouse" parent="Expectation" index="15" instance=ExtResource("7_p0lhp")]
+position = Vector2(-6, -190)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.35
+grab_sfxs = Array[int]([5])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Expectation/Mouse" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_2cqfq")
+
+[node name="Sprite2D" parent="Expectation/Mouse" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(197, 100, 5, 8)
+
+[node name="Cup" parent="Expectation" index="16" instance=ExtResource("7_p0lhp")]
+position = Vector2(-199, -190)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.35
+
+[node name="CollisionShape2D" parent="Expectation/Cup" index="0"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_dg77c")
+
+[node name="Sprite2D" parent="Expectation/Cup" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(168, 122, 7, 9)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Expectation/Cup" index="7"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_ycdy4")
+
+[node name="Notebook" parent="Expectation" index="17" instance=ExtResource("7_p0lhp")]
+position = Vector2(-194, 88)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.35
+
+[node name="CollisionShape2D" parent="Expectation/Notebook" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_cegan")
+
+[node name="Sprite2D" parent="Expectation/Notebook" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(254, 192, 14, 10)
+
+[node name="Pen" parent="Expectation" index="18" instance=ExtResource("7_p0lhp")]
+position = Vector2(-194, 122)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.3
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Expectation/Pen" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_82xsv")
+
+[node name="Sprite2D" parent="Expectation/Pen" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(256, 206, 9, 1)
+
+[node name="Pencil" parent="Expectation" index="19" instance=ExtResource("7_p0lhp")]
+position = Vector2(-194, 138)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.3
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Expectation/Pencil" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_getpj")
+
+[node name="Sprite2D" parent="Expectation/Pencil" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(257, 211, 10, 1)
+
+[node name="Paper" parent="Expectation" index="20" instance=ExtResource("7_p0lhp")]
+position = Vector2(-194, 172)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.35
+
+[node name="CollisionShape2D" parent="Expectation/Paper" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_ryguw")
+
+[node name="Sprite2D" parent="Expectation/Paper" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(213, 227, 12, 8)
+
+[node name="Trash" parent="Expectation" index="21" instance=ExtResource("7_p0lhp")]
+position = Vector2(-200, -2)
+collision_layer = 8
+collision_mask = 9
+score_importance = 0.3
+
+[node name="CollisionShape2D" parent="Expectation/Trash" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_7mycd")
+
+[node name="Sprite2D" parent="Expectation/Trash" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(189, 194, 5, 5)
+
+[node name="Walls" type="Sprite2D" parent="Expectation" index="22"]
+position = Vector2(15, -37)
+scale = Vector2(4, 4)
+texture = ExtResource("6_jbyh0")
+region_enabled = true
+region_rect = Rect2(10, 6, 135, 127)
+
+[node name="WallCollisionSide" type="StaticBody2D" parent="Expectation" index="23"]
+position = Vector2(-279, -42)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/WallCollisionSide" index="0"]
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="WallCollisionSide2" type="StaticBody2D" parent="Expectation" index="24"]
+position = Vector2(309, -42)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/WallCollisionSide2" index="0"]
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="WallCollisionVertical" type="StaticBody2D" parent="Expectation" index="25"]
+position = Vector2(10, -316)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/WallCollisionVertical" index="0"]
+shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="WallCollisionVertical2" type="StaticBody2D" parent="Expectation" index="26"]
+position = Vector2(11, 241)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Expectation/WallCollisionVertical2" index="0"]
+shape = SubResource("RectangleShape2D_4c57u")
+
+[editable path="UI"]
+[editable path="Expectation/Carpet"]
+[editable path="Expectation/WelcomeMat"]
+[editable path="Expectation/Bed"]
+[editable path="Expectation/Cabinet"]
+[editable path="Expectation/Shoe"]
+[editable path="Expectation/Shoe2"]
+[editable path="Expectation/Chair"]
+[editable path="Expectation/Plant"]
+[editable path="Expectation/Garbage"]
+[editable path="Expectation/Pillow"]
+[editable path="Expectation/Computer"]
+[editable path="Expectation/Keyboard"]
+[editable path="Expectation/Blanket"]
+[editable path="Expectation/Mouse"]
+[editable path="Expectation/Cup"]
+[editable path="Expectation/Notebook"]
+[editable path="Expectation/Pen"]
+[editable path="Expectation/Pencil"]
+[editable path="Expectation/Paper"]
+[editable path="Expectation/Trash"]
+[editable path="Pause"]

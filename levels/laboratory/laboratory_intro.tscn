@@ -1,13 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6xbjwildbmrj"]
+[gd_scene load_steps=16 format=3 uid="uid://b6xbjwildbmrj"]
 
 [ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="1_cuofx"]
-[ext_resource type="Texture2D" uid="uid://crm40qgc52ovg" path="res://assets/UI/lab_assistant.png" id="2_41kk8"]
-[ext_resource type="Texture2D" uid="uid://j3xisa6mo2ap" path="res://assets/UI/message_balloon.png" id="3_as6u1"]
+[ext_resource type="Texture2D" uid="uid://crm40qgc52ovg" path="res://levels/laboratory/assets/lab_assistant.png" id="2_41kk8"]
+[ext_resource type="Texture2D" uid="uid://j3xisa6mo2ap" path="res://assets/ui/message_balloon.png" id="3_as6u1"]
 [ext_resource type="AudioStream" uid="uid://b8vfkup8xhgx0" path="res://assets/sfx/notification.wav" id="4_txweq"]
 [ext_resource type="AudioStream" uid="uid://bfgus6dfognqx" path="res://assets/sfx/SFX_RetroMultiplev1.wav" id="5_apfxy"]
 [ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="6_nbkwf"]
-[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://Logic/UI/change_scene_button.gd" id="7_xvay8"]
-[ext_resource type="Script" uid="uid://b8hnhk0yapu55" path="res://Logic/UI/music_player.gd" id="8_xjb6g"]
+[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://common/ui/change_scene_button.gd" id="7_xvay8"]
+[ext_resource type="Script" uid="uid://b8hnhk0yapu55" path="res://common/ui/music_player.gd" id="8_xjb6g"]
+[ext_resource type="PackedScene" uid="uid://vqc2hq8oydxh" path="res://ui/pause/pause.tscn" id="9_y8lxw"]
+[ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="10_rifui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw8d0"]
 size = Vector2(216, 245)
@@ -91,7 +93,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(3.26667, 3.4, 4.43333, 5.2, 6.46667, 7.33333, 8.59423, 9.63333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.065701, 0.065701, 0.313002, 0.313002, 0.665316, 0.665316, 1.0]
+"values": [0.0, 0.065701, 0.065701, 0.348, 0.348, 0.651, 0.651, 1.0]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -146,8 +148,12 @@ tracks/4/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("5_apfxy")
+}, {
+"end_offset": 0.367272,
+"start_offset": 0.0,
+"stream": ExtResource("5_apfxy")
 }],
-"times": PackedFloat32Array(1.54546, 3.3, 4.46667, 4.92955, 6.5, 6.97159, 8.5896, 9.06119)
+"times": PackedFloat32Array(1.54546, 3.3, 4.46667, 4.92955, 6.5, 6.97159, 8.5896, 9.06119, 9.52784)
 }
 tracks/4/use_blend = true
 
@@ -219,7 +225,9 @@ offset_right = 480.0
 offset_bottom = 202.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 30
-text = "Erm... I forgot my keys on the lab. Are you done organizing everything there? I'll swing by really quick in 5 minutes."
+text = "Erm... I forgot my keys on the lab. 
+Are you done organizing there?
+I'll swing by really quick in 5 min."
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -255,7 +263,20 @@ script = ExtResource("8_xjb6g")
 volume_db = -10.0
 bus = &"sfx"
 
+[node name="Pause" parent="." instance=ExtResource("9_y8lxw")]
+
+[node name="SkipIntro" type="Button" parent="Pause"]
+offset_left = 486.0
+offset_top = 616.0
+offset_right = 752.0
+offset_bottom = 661.0
+theme = ExtResource("10_rifui")
+theme_override_font_sizes/font_size = 32
+text = "Skip Intro"
+
 [connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="stop"]
+[connection signal="pressed" from="Pause/SkipIntro" to="ChangeScene" method="_on_pressed"]
 
 [editable path="Avatar"]
 [editable path="SpeechBubble"]
+[editable path="Pause"]

@@ -1,0 +1,994 @@
+[gd_scene load_steps=30 format=3 uid="uid://ba8oudg7capae"]
+
+[ext_resource type="Texture2D" uid="uid://ckk71fvalspga" path="res://levels/laboratory/assets/laboratoy.png" id="1_evnfd"]
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="2_7vnrh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33egf"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2oqp"]
+size = Vector2(60, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubec6"]
+size = Vector2(32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atjen"]
+size = Vector2(32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrv2k"]
+size = Vector2(36, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_miaq4"]
+size = Vector2(48, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_peexr"]
+size = Vector2(20, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3sn4"]
+size = Vector2(20, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_el0ca"]
+size = Vector2(14, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71gx0"]
+size = Vector2(326, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6q7o"]
+size = Vector2(112, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cp6nn"]
+size = Vector2(160, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj6dj"]
+size = Vector2(160, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmasg"]
+size = Vector2(76, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgstb"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02knm"]
+size = Vector2(92, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ue7n"]
+size = Vector2(60, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7j1dr"]
+size = Vector2(44, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3w7g"]
+size = Vector2(40, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ma6h"]
+size = Vector2(36, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khc5w"]
+size = Vector2(4, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ma6h"]
+radius = 15.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nijqe"]
+size = Vector2(20, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc8nc"]
+size = Vector2(32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imqrm"]
+size = Vector2(72, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ylbp"]
+size = Vector2(72, 668)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v5dh"]
+size = Vector2(600, 72)
+
+[node name="Reality" type="Node2D"]
+position = Vector2(304, 425)
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(7, 142, 122, 120)
+metadata/_edit_lock_ = true
+
+[node name="GreenPotion" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(20.0215, 211.445)
+rotation = 2.67841
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(-8.96265e-07, -3.15865e-07)
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="GreenPotion" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_33egf")
+
+[node name="Sprite2D" parent="GreenPotion" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(156, 65, 8, 8)
+
+[node name="PinJoint2D" parent="GreenPotion" index="2"]
+position = Vector2(-6.6315, -2.80682)
+
+[node name="Rack" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(159.655, -111.239)
+rotation = -1.56594
+mass = 2.0
+sleeping = true
+linear_velocity = Vector2(3.81426e-21, -3.5894e-22)
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Rack" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_c2oqp")
+
+[node name="Sprite2D" parent="Rack" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(169, 32, 15, 7)
+
+[node name="PinJoint2D" parent="Rack" index="2"]
+position = Vector2(2.83368, 1.70174)
+
+[node name="GloveLeft" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(-16.3647, 8.47955)
+rotation = 2.21142
+mass = 0.5
+sleeping = true
+linear_velocity = Vector2(-2.02173e-38, -9.74043e-38)
+score_importance = 0.85
+grab_sfxs = Array[int]([16])
+drop_sfxs = Array[int]([17])
+
+[node name="CollisionShape2D" parent="GloveLeft" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_ubec6")
+
+[node name="Sprite2D" parent="GloveLeft" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(203, 54, 11, 11)
+
+[node name="PinJoint2D" parent="GloveLeft" index="2"]
+position = Vector2(-7.89105, -1.59128)
+
+[node name="PurplePotion" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(227.593, -184.17)
+rotation = -0.0450569
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(-0.0206898, 0.0225397)
+angular_velocity = -0.00101055
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="PurplePotion" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_33egf")
+
+[node name="Sprite2D" parent="PurplePotion" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(166, 65, 8, 8)
+
+[node name="PinJoint2D" parent="PurplePotion" index="2"]
+position = Vector2(2.3774, -3.98193)
+
+[node name="RedPotion" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(43.0728, -27.224)
+rotation = 0.693704
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(1.57544e-33, -3.74127e-33)
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="RedPotion" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_33egf")
+
+[node name="Sprite2D" parent="RedPotion" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(186, 65, 8, 8)
+
+[node name="PinJoint2D" parent="RedPotion" index="2"]
+position = Vector2(-4.29419, -12.1852)
+
+[node name="Notebook" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(167.086, -191.328)
+rotation = 0.954091
+sleeping = true
+linear_velocity = Vector2(2.24208e-44, 3.08286e-44)
+score_importance = 0.85
+grab_sfxs = Array[int]([14])
+drop_sfxs = Array[int]([15])
+
+[node name="CollisionShape2D" parent="Notebook" index="0"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_atjen")
+
+[node name="Sprite2D" parent="Notebook" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(235, 54, 9, 10)
+
+[node name="PinJoint2D" parent="Notebook" index="2"]
+position = Vector2(2.96735, -1.15728)
+
+[node name="Glass" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(1.82855, 172.868)
+rotation = 1.7448
+mass = 2.0
+sleeping = true
+linear_velocity = Vector2(4.72587e-16, -3.10389e-16)
+score_importance = 0.85
+rotation_score_judge = 2
+obj_group = "glass"
+
+[node name="CollisionShape2D" parent="Glass" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_yrv2k")
+
+[node name="Sprite2D" parent="Glass" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(188, 32, 9, 9)
+
+[node name="PinJoint2D" parent="Glass" index="2"]
+position = Vector2(0.00396729, 11.8406)
+
+[node name="Needle" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(-137.308, 208.928)
+rotation = 0.565003
+mass = 0.85
+sleeping = true
+linear_velocity = Vector2(-1.62726e-19, 3.56888e-20)
+score_importance = 0.85
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Needle" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_miaq4")
+
+[node name="Sprite2D" parent="Needle" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(177, 53, 12, 3)
+
+[node name="PinJoint2D" parent="Needle" index="2"]
+position = Vector2(-14.742, 1.62595)
+
+[node name="YellowPotion" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(80.1771, 144.099)
+rotation = 1.85309
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(2.8026e-45, -2.8026e-45)
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="YellowPotion" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_33egf")
+
+[node name="Sprite2D" parent="YellowPotion" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(176, 65, 8, 8)
+
+[node name="PinJoint2D" parent="YellowPotion" index="2"]
+position = Vector2(-11.1621, 4.57227)
+
+[node name="BlueCup" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(158.997, 61.4425)
+rotation = 2.27194
+sleeping = true
+linear_velocity = Vector2(-1.26117e-44, -2.8026e-45)
+score_importance = 0.65
+rotation_score_judge = 2
+
+[node name="CollisionShape2D" parent="BlueCup" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_peexr")
+
+[node name="Sprite2D" parent="BlueCup" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(158, 52, 3, 3)
+
+[node name="PinJoint2D" parent="BlueCup" index="2"]
+position = Vector2(-1.27126, -1.54816)
+
+[node name="GreenCup" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(-21.9265, 222.028)
+rotation = -1.2948
+sleeping = true
+linear_velocity = Vector2(6.68835e-23, 9.69008e-24)
+score_importance = 0.65
+rotation_score_judge = 2
+
+[node name="CollisionShape2D" parent="GreenCup" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_peexr")
+
+[node name="Sprite2D" parent="GreenCup" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(162, 52, 3, 3)
+
+[node name="PinJoint2D" parent="GreenCup" index="2"]
+position = Vector2(-11.0218, -4.50912)
+
+[node name="BigPen" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(225.482, -16.533)
+rotation = 1.6187
+mass = 0.5
+sleeping = true
+linear_velocity = Vector2(1.29466e-09, 1.27113e-09)
+score_importance = 0.65
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="BigPen" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_p3sn4")
+
+[node name="Sprite2D" parent="BigPen" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(246, 56, 1, 7)
+
+[node name="PinJoint2D" parent="BigPen" index="2"]
+position = Vector2(-1.90891, -7.45337)
+
+[node name="SmallPen" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(-145.572, 171.914)
+rotation = -2.19519
+mass = 0.5
+sleeping = true
+linear_velocity = Vector2(7.40796e-15, 2.3732e-15)
+score_importance = 0.5
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="SmallPen" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_el0ca")
+
+[node name="Sprite2D" parent="SmallPen" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(166, 37, 1, 5)
+
+[node name="MiddleTable" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(106.173, -75.5761)
+rotation = -1.58259
+collision_layer = 6
+collision_mask = 7
+mass = 15.0
+sleeping = true
+linear_velocity = Vector2(-1.38729e-43, 2.66247e-44)
+rotation_score_judge = 1
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="MiddleTable" index="0"]
+shape = SubResource("RectangleShape2D_71gx0")
+
+[node name="Sprite2D" parent="MiddleTable" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(244, 73, 81, 20)
+
+[node name="PinJoint2D" parent="MiddleTable" index="2"]
+position = Vector2(100.867, 19.9609)
+
+[node name="SmallTable" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(211.675, -86.096)
+rotation = 1.55989
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+sleeping = true
+linear_velocity = Vector2(-1.21649e-08, 7.10116e-09)
+rotation_score_judge = 1
+obj_group = "small_table"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="SmallTable" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_u6q7o")
+
+[node name="Sprite2D" parent="SmallTable" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(220, 102, 28, 16)
+
+[node name="PinJoint2D" parent="SmallTable" index="2"]
+position = Vector2(52.8716, -12.8825)
+
+[node name="SmallTable2" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(-35.6373, 84.3347)
+rotation = -1.17755
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+sleeping = true
+linear_velocity = Vector2(8.48341e-33, 1.1639e-32)
+rotation_score_judge = 1
+obj_group = "small_table"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="SmallTable2" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_u6q7o")
+
+[node name="Sprite2D" parent="SmallTable2" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(220, 102, 28, 16)
+
+[node name="PinJoint2D" parent="SmallTable2" index="2"]
+position = Vector2(29.7265, -5.84543)
+
+[node name="PotionCabinet" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(121.719, 216.717)
+rotation = -3.07964
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+sleeping = true
+linear_velocity = Vector2(-7.73332e-07, 1.24942e-06)
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="PotionCabinet" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_cp6nn")
+
+[node name="Sprite2D" parent="PotionCabinet" index="1"]
+scale = Vector2(4.08, 4.08)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(154, 105, 40, 13)
+
+[node name="PinJoint2D" parent="PotionCabinet" index="2"]
+position = Vector2(-59.8311, 1.86165)
+
+[node name="WideCabinet" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(-182.356, 73.8223)
+rotation = 2.27624
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+sleeping = true
+linear_velocity = Vector2(0.00862792, -0.000942434)
+angular_velocity = 0.000101955
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="WideCabinet" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_fj6dj")
+
+[node name="Sprite2D" parent="WideCabinet" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(154, 88, 40, 8)
+
+[node name="PinJoint2D" parent="WideCabinet" index="2"]
+position = Vector2(3.72711, 7.799)
+
+[node name="SmallCabinet" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(-175.17, 203.862)
+rotation = -1.75052
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+sleeping = true
+linear_velocity = Vector2(0.00227467, 8.00513e-05)
+angular_velocity = 1.14706e-05
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="SmallCabinet" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_wmasg")
+
+[node name="Sprite2D" parent="SmallCabinet" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(198, 88, 19, 8)
+
+[node name="PinJoint2D" parent="SmallCabinet" index="2"]
+position = Vector2(4.70612, -1.09537)
+
+[node name="Storage" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(42.1845, 106.957)
+rotation = -2.64817
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+sleeping = true
+linear_velocity = Vector2(-2.73253e-43, 8.82818e-44)
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Storage" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_vgstb")
+
+[node name="Sprite2D" parent="Storage" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(270, 45, 16, 17)
+
+[node name="PinJoint2D" parent="Storage" index="2"]
+position = Vector2(1.11749, -6.98123)
+
+[node name="Refrigerator" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(193.03, 90.7055)
+rotation = -0.870067
+collision_layer = 6
+collision_mask = 7
+mass = 6.0
+sleeping = true
+linear_velocity = Vector2(-4.2039e-45, -9.80909e-45)
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Refrigerator" index="0"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_02knm")
+
+[node name="Sprite2D" parent="Refrigerator" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(163, 8, 23, 18)
+
+[node name="PinJoint2D" parent="Refrigerator" index="2"]
+position = Vector2(8.83783, 15.9792)
+
+[node name="DarkChair" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(214.165, -221.299)
+rotation = 3.94688e-05
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(0, 1.4013e-45)
+rotation_score_judge = 1
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="DarkChair" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6ue7n")
+
+[node name="Sprite2D" parent="DarkChair" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(267, 13, 15, 10)
+
+[node name="PinJoint2D" parent="DarkChair" index="2"]
+position = Vector2(3.44037, -5.4256)
+
+[node name="RollingChair" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(-151.664, -32.5079)
+rotation = -0.119077
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(0.00721526, -0.00612184)
+angular_velocity = -1.8316e-05
+rotation_score_judge = 1
+obj_group = "rolling_chair"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="RollingChair" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6ue7n")
+
+[node name="Sprite2D" parent="RollingChair" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(245, 13, 15, 10)
+
+[node name="PinJoint2D" parent="RollingChair" index="2"]
+position = Vector2(18.5233, -9.42401)
+
+[node name="RollingChair2" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(-42.9712, 189.71)
+rotation = -1.27746
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(5.26419e-16, -5.51321e-16)
+rotation_score_judge = 1
+obj_group = "rolling_chair"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="RollingChair2" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6ue7n")
+
+[node name="Sprite2D" parent="RollingChair2" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(245, 13, 15, 10)
+
+[node name="PinJoint2D" parent="RollingChair2" index="2"]
+position = Vector2(-7.2865, 20.2031)
+
+[node name="RollingChair3" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(187.28, -0.102905)
+rotation = -1.58033
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(2.17629e-09, 1.33283e-08)
+rotation_score_judge = 1
+obj_group = "rolling_chair"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="RollingChair3" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6ue7n")
+
+[node name="Sprite2D" parent="RollingChair3" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(245, 13, 15, 10)
+
+[node name="PinJoint2D" parent="RollingChair3" index="2"]
+position = Vector2(-21.3878, 9.65176)
+
+[node name="Chair" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(156.938, 157.083)
+rotation = -2.79801
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(8.40779e-45, 1.54143e-44)
+obj_group = "chair"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Chair" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_7j1dr")
+
+[node name="Sprite2D" parent="Chair" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(291, 10, 11, 13)
+
+[node name="PinJoint2D" parent="Chair" index="2"]
+position = Vector2(11.0476, -11.1896)
+
+[node name="Chair2" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(220.145, 154.923)
+rotation = 1.65862
+collision_layer = 6
+collision_mask = 7
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(-3.45607e-08, -2.90125e-07)
+obj_group = "chair"
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="Chair2" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_7j1dr")
+
+[node name="Sprite2D" parent="Chair2" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(291, 10, 11, 13)
+
+[node name="PinJoint2D" parent="Chair2" index="2"]
+position = Vector2(6.35364, 11.5981)
+
+[node name="GloveRight" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(194.674, 59.2681)
+rotation = 0.14509
+collision_layer = 8
+collision_mask = 9
+mass = 0.5
+sleeping = true
+linear_velocity = Vector2(-2.8026e-45, -9.80909e-45)
+score_importance = 0.85
+grab_sfxs = Array[int]([16])
+drop_sfxs = Array[int]([17])
+
+[node name="CollisionShape2D" parent="GloveRight" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_ubec6")
+
+[node name="Sprite2D" parent="GloveRight" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(216, 54, 11, 11)
+
+[node name="PinJoint2D" parent="GloveRight" index="2"]
+position = Vector2(1.98392, 1.33759)
+
+[node name="Glass2" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(110.991, -28.7258)
+rotation = 1.2221
+collision_layer = 8
+collision_mask = 9
+mass = 2.0
+sleeping = true
+linear_velocity = Vector2(-1.31722e-43, 2.38221e-44)
+score_importance = 0.85
+rotation_score_judge = 2
+obj_group = "glass"
+
+[node name="CollisionShape2D" parent="Glass2" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_yrv2k")
+
+[node name="Sprite2D" parent="Glass2" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(188, 32, 9, 9)
+
+[node name="PinJoint2D" parent="Glass2" index="2"]
+position = Vector2(10.2567, -2.91443)
+
+[node name="Microscope" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(60.5759, 95.7626)
+rotation = 1.06126
+collision_layer = 8
+collision_mask = 9
+mass = 3.0
+sleeping = true
+linear_velocity = Vector2(-2.49431e-43, 7.84727e-44)
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="Microscope" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_u3w7g")
+
+[node name="Sprite2D" parent="Microscope" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(223, 32, 10, 14)
+
+[node name="PinJoint2D" parent="Microscope" index="2"]
+position = Vector2(5.1825, 0.181)
+
+[node name="Pinch" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(123.139, -191.695)
+rotation = 1.69878
+collision_layer = 8
+collision_mask = 9
+mass = 0.85
+sleeping = true
+linear_velocity = Vector2(-1.28919e-43, 2.38221e-44)
+score_importance = 0.85
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Pinch" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_3ma6h")
+
+[node name="Sprite2D" parent="Pinch" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(171, 44, 9, 3)
+
+[node name="PinJoint2D" parent="Pinch" index="2"]
+position = Vector2(-0.498871, 5.07913)
+
+[node name="MagnifyingGlass" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(-185.626, 198.642)
+rotation = -1.30318
+collision_layer = 8
+collision_mask = 9
+sleeping = true
+linear_velocity = Vector2(0.002066, 7.27078e-05)
+score_importance = 0.85
+
+[node name="CollisionShape2D" parent="MagnifyingGlass" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_khc5w")
+
+[node name="Sprite2D" parent="MagnifyingGlass" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(213, 33, 7, 10)
+
+[node name="PinJoint2D" parent="MagnifyingGlass" index="2"]
+position = Vector2(-1.14478, -11.656)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MagnifyingGlass"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_3ma6h")
+
+[node name="Key" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(218.628, -219.704)
+rotation = 2.76132
+collision_layer = 8
+collision_mask = 9
+mass = 0.85
+sleeping = true
+linear_velocity = Vector2(1.26117e-44, 2.8026e-45)
+grab_sfxs = Array[int]([6, 7, 8])
+drop_sfxs = Array[int]([6, 7, 8])
+
+[node name="CollisionShape2D" parent="Key" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_nijqe")
+
+[node name="Sprite2D" parent="Key" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(239, 33, 5, 9)
+
+[node name="PinJoint2D" parent="Key" index="2"]
+position = Vector2(0.10907, 1.43646)
+
+[node name="Clipboard" parent="." instance=ExtResource("2_7vnrh")]
+position = Vector2(215.996, -104.659)
+rotation = 0.990625
+collision_layer = 8
+collision_mask = 9
+sleeping = true
+linear_velocity = Vector2(-1.1049e-08, 6.44974e-09)
+score_importance = 0.85
+grab_sfxs = Array[int]([14])
+drop_sfxs = Array[int]([15])
+
+[node name="CollisionShape2D" parent="Clipboard" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_pc8nc")
+
+[node name="Sprite2D" parent="Clipboard" index="1"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(156, 32, 8, 10)
+
+[node name="PinJoint2D" parent="Clipboard" index="2"]
+position = Vector2(-9.68127, 4.57751)
+
+[node name="Walls" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(4, 4)
+texture = ExtResource("1_evnfd")
+region_enabled = true
+region_rect = Rect2(146, 139, 128, 126)
+metadata/_edit_lock_ = true
+
+[node name="WallCollisionSide" type="StaticBody2D" parent="."]
+position = Vector2(-280, 88)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisionSide"]
+shape = SubResource("RectangleShape2D_imqrm")
+
+[node name="WallCollisionSide3" type="StaticBody2D" parent="."]
+position = Vector2(20, -376)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisionSide3"]
+shape = SubResource("RectangleShape2D_imqrm")
+
+[node name="WallCollisionSide2" type="StaticBody2D" parent="."]
+position = Vector2(280, 56)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisionSide2"]
+position = Vector2(0, -34)
+shape = SubResource("RectangleShape2D_8ylbp")
+
+[node name="WallCollisionVertical" type="StaticBody2D" parent="."]
+position = Vector2(12, -276)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisionVertical"]
+shape = SubResource("RectangleShape2D_6v5dh")
+
+[node name="WallCollisionVertical2" type="StaticBody2D" parent="."]
+position = Vector2(12, 280)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisionVertical2"]
+shape = SubResource("RectangleShape2D_6v5dh")
+
+[node name="WallCollisionVertical3" type="StaticBody2D" parent="."]
+position = Vector2(-244, -112)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisionVertical3"]
+shape = SubResource("RectangleShape2D_6v5dh")
+
+[editable path="GreenPotion"]
+[editable path="Rack"]
+[editable path="GloveLeft"]
+[editable path="PurplePotion"]
+[editable path="RedPotion"]
+[editable path="Notebook"]
+[editable path="Glass"]
+[editable path="Needle"]
+[editable path="YellowPotion"]
+[editable path="BlueCup"]
+[editable path="GreenCup"]
+[editable path="BigPen"]
+[editable path="SmallPen"]
+[editable path="MiddleTable"]
+[editable path="SmallTable"]
+[editable path="SmallTable2"]
+[editable path="PotionCabinet"]
+[editable path="WideCabinet"]
+[editable path="SmallCabinet"]
+[editable path="Storage"]
+[editable path="Refrigerator"]
+[editable path="DarkChair"]
+[editable path="RollingChair"]
+[editable path="RollingChair2"]
+[editable path="RollingChair3"]
+[editable path="Chair"]
+[editable path="Chair2"]
+[editable path="GloveRight"]
+[editable path="Glass2"]
+[editable path="Microscope"]
+[editable path="Pinch"]
+[editable path="MagnifyingGlass"]
+[editable path="Key"]
+[editable path="Clipboard"]

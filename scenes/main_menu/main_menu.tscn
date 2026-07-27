@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://3gbh5ygrhbwp"]
+
+[ext_resource type="Script" uid="uid://dcp8m483kw5tx" path="res://scenes/main_menu/main_menu.gd" id="1_8qtwp"]
+[ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="1_glbon"]
+[ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="2_7vrkn"]
+[ext_resource type="PackedScene" uid="uid://dl8mm22bduru4" path="res://ui/logo/logo.tscn" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://common/ui/change_scene_button.gd" id="2_qe12f"]
+[ext_resource type="Script" uid="uid://bdq3y05snylij" path="res://common/ui/sound_player.gd" id="7_qe12f"]
+[ext_resource type="PackedScene" uid="uid://vqc2hq8oydxh" path="res://ui/pause/pause.tscn" id="7_thkx5"]
+[ext_resource type="Script" uid="uid://b8hnhk0yapu55" path="res://common/ui/music_player.gd" id="9_dy7ct"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_8qtwp")
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.223529, 0.121569, 0.129412, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartGame" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = 100.0
+offset_right = 192.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0567393
+theme = ExtResource("1_glbon")
+theme_override_font_sizes/font_size = 50
+text = "Start Game"
+script = ExtResource("2_qe12f")
+scene_path = "uid://baq18aanfat7t"
+
+[node name="Options" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = 239.0
+offset_right = 183.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.1282
+theme = ExtResource("1_glbon")
+theme_override_font_sizes/font_size = 50
+text = "Options"
+
+[node name="Logo" parent="." instance=ExtResource("2_fu7sn")]
+position = Vector2(627, 253)
+
+[node name="Cursor" parent="." instance=ExtResource("2_7vrkn")]
+
+[node name="Options" parent="." instance=ExtResource("7_thkx5")]
+
+[node name="Resume" parent="Options" index="7"]
+offset_left = 496.0
+offset_top = 615.0
+offset_right = 762.0
+offset_bottom = 660.0
+text = "Back to Main Menu"
+
+[node name="LevelSelection" parent="Options" index="8"]
+visible = false
+
+[node name="SoundPlayer" type="Node2D" parent="."]
+script = ExtResource("7_qe12f")
+sounds = Array[int]([2, 3, 4])
+
+[node name="MusicPlayer" type="Node2D" parent="."]
+script = ExtResource("9_dy7ct")
+
+[connection signal="pressed" from="CanvasLayer/StartGame" to="SoundPlayer" method="play_sound"]
+[connection signal="pressed" from="CanvasLayer/Options" to="Options" method="pause"]
+[connection signal="pressed" from="CanvasLayer/Options" to="SoundPlayer" method="play_sound"]
+[connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="play_music"]
+
+[editable path="Options"]
