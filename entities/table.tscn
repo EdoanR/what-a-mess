@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpvr47ikcco48"]
 
 [ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="1_dlbyq"]
-[ext_resource type="Texture2D" uid="uid://eeswym73m04m" path="res://assets/bedroom/bedroom_assets.png" id="2_dlbyq"]
+[ext_resource type="Texture2D" uid="uid://eeswym73m04m" path="res://levels/bedroom/assets/bedroom.png" id="2_dlbyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2baeo"]
 size = Vector2(290, 140)

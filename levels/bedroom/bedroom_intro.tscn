@@ -1,13 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://b86c6iaauupj7"]
+[gd_scene load_steps=16 format=3 uid="uid://b86c6iaauupj7"]
 
 [ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="1_ramol"]
 [ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="2_kygvm"]
-[ext_resource type="Texture2D" uid="uid://dnkfo7jjjrii3" path="res://assets/UI/girlfriend.png" id="2_lh41o"]
-[ext_resource type="Texture2D" uid="uid://j3xisa6mo2ap" path="res://assets/UI/message_balloon.png" id="4_28u7o"]
+[ext_resource type="Texture2D" uid="uid://dnkfo7jjjrii3" path="res://levels/bedroom/assets/girlfriend.png" id="2_lh41o"]
+[ext_resource type="Texture2D" uid="uid://j3xisa6mo2ap" path="res://assets/ui/message_balloon.png" id="4_28u7o"]
 [ext_resource type="AudioStream" uid="uid://bfgus6dfognqx" path="res://assets/sfx/SFX_RetroMultiplev1.wav" id="5_6wvc5"]
-[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://Logic/UI/change_scene_button.gd" id="5_28u7o"]
-[ext_resource type="Script" uid="uid://b8hnhk0yapu55" path="res://Logic/UI/music_player.gd" id="6_sw8d0"]
+[ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://common/ui/change_scene_button.gd" id="5_28u7o"]
+[ext_resource type="Script" uid="uid://b8hnhk0yapu55" path="res://common/ui/music_player.gd" id="6_sw8d0"]
 [ext_resource type="AudioStream" uid="uid://b8vfkup8xhgx0" path="res://assets/sfx/notification.wav" id="7_vmjol"]
+[ext_resource type="PackedScene" uid="uid://vqc2hq8oydxh" path="res://ui/pause/pause.tscn" id="9_y0yd6"]
+[ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="10_hvqb2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw8d0"]
 size = Vector2(216, 245)
@@ -234,7 +236,7 @@ offset_top = 288.0
 offset_right = -357.0
 offset_bottom = 296.0
 script = ExtResource("5_28u7o")
-scene_path = "res://levels/bedroom/bedroom.tscn"
+scene_path = "uid://dyasyyajt1n61"
 
 [node name="MusicPlayer" type="Node2D" parent="."]
 script = ExtResource("6_sw8d0")
@@ -243,7 +245,20 @@ script = ExtResource("6_sw8d0")
 volume_db = -10.0
 bus = &"sfx"
 
+[node name="Pause" parent="." instance=ExtResource("9_y0yd6")]
+
+[node name="SkipIntro" type="Button" parent="Pause"]
+offset_left = 486.0
+offset_top = 616.0
+offset_right = 752.0
+offset_bottom = 661.0
+theme = ExtResource("10_hvqb2")
+theme_override_font_sizes/font_size = 32
+text = "Skip Intro"
+
 [connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="stop"]
+[connection signal="pressed" from="Pause/SkipIntro" to="ChangeScene" method="_on_pressed"]
 
 [editable path="Avatar"]
 [editable path="SpeechBubble"]
+[editable path="Pause"]

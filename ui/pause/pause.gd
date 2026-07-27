@@ -1,0 +1,23 @@
+extends CanvasLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	hide()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		if visible:
+			unpause()
+		else:
+			pause()
+
+func pause():
+	show()
+	get_tree().paused = true
+
+func unpause():
+	hide()
+	get_tree().paused = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dril3jhprl65l"]
 
-[ext_resource type="Script" uid="uid://cut2ebhtbmd62" path="res://Logic/physic_object.gd" id="1_eomnh"]
+[ext_resource type="Script" uid="uid://cut2ebhtbmd62" path="res://logic/physic_object.gd" id="1_eomnh"]
 [ext_resource type="Texture2D" uid="uid://c10kwnlir8ods" path="res://icon.svg" id="2_yaler"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkbon"]
