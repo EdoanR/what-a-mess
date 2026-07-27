@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cntm0phw65y6f"]
+
+[ext_resource type="Script" uid="uid://b2tbvlq3sripd" path="res://common/ui/pivot_offset_control/pivot_offset_control.gd" id="1_2egoq"]
+
+[node name="PivotOffsetControl" type="Node2D"]
+script = ExtResource("1_2egoq")
+change_on_ready = true
