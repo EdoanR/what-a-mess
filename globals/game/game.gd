@@ -7,13 +7,3 @@ enum LevelScoreRating {
 	GOOD,
 	BAD
 }
-
-func _ready():
-	var config = ConfigFile.new()
-	config.clear()
-	config.save("user://scores.cfg")
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
