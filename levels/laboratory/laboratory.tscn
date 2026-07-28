@@ -87,6 +87,7 @@ size = Vector2(72, 668)
 size = Vector2(600, 72)
 
 [node name="Laboratory" instance=ExtResource("1_r4sis")]
+level_id = "laboratory"
 level_name = "Laboratory"
 goal_score = 80
 music = 3

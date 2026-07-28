@@ -1,7 +1,7 @@
 [gd_scene load_steps=44 format=3 uid="uid://v6623r167ubo"]
 
 [ext_resource type="PackedScene" uid="uid://u62oexh3cuf1" path="res://logic/level/level.tscn" id="1_vpopf"]
-[ext_resource type="PackedScene" path="res://levels/kitchen/kitchen_reality.tscn" id="2_bec4f"]
+[ext_resource type="PackedScene" uid="uid://c65x088gnsxdp" path="res://levels/kitchen/kitchen_reality.tscn" id="2_bec4f"]
 [ext_resource type="Texture2D" uid="uid://bx1anihlck8vg" path="res://levels/kitchen/assets/kitchen.png" id="3_8wn2n"]
 [ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="4_h8277"]
 [ext_resource type="PackedScene" uid="uid://cpvr47ikcco48" path="res://entities/table.tscn" id="5_h74hq"]
@@ -121,6 +121,7 @@ size = Vector2(72, 685)
 size = Vector2(734, 72)
 
 [node name="Kitchen" instance=ExtResource("1_vpopf")]
+level_id = "kitchen"
 level_name = "Kitchen"
 count_down_time = 240
 goal_score = 70

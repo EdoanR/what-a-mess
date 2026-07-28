@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3]
+[gd_scene load_steps=42 format=3 uid="uid://c65x088gnsxdp"]
 
 [ext_resource type="Texture2D" uid="uid://bx1anihlck8vg" path="res://levels/kitchen/assets/kitchen.png" id="1_gfh1l"]
 [ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="2_8bqpn"]
@@ -65,7 +65,7 @@ radius = 16.0312
 size = Vector2(312, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56p2d"]
-size = Vector2(132, 76)
+size = Vector2(131.764, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu257"]
 size = Vector2(84, 92)
@@ -77,10 +77,10 @@ size = Vector2(124, 60)
 size = Vector2(76, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7tgi"]
-size = Vector2(116, 60)
+size = Vector2(121.672, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvfq5"]
-size = Vector2(206, 60)
+size = Vector2(209.976, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0b1n7"]
 size = Vector2(99, 68)
@@ -210,7 +210,6 @@ scale = Vector2(0.999999, 0.900001)
 [node name="FryingPan" parent="." instance=ExtResource("2_8bqpn")]
 position = Vector2(75.7603, -208.741)
 rotation = -2.79666
-scale = Vector2(1, 1)
 mass = 2.5
 sleeping = true
 linear_velocity = Vector2(-0.00429566, -0.000651042)
@@ -327,7 +326,6 @@ scale = Vector2(0.999999, 0.900001)
 [node name="Toaster" parent="." instance=ExtResource("2_8bqpn")]
 position = Vector2(-108.382, 194.598)
 rotation = 1.29714
-scale = Vector2(1, 1)
 sleeping = true
 linear_velocity = Vector2(5.79979e-33, 5.41541e-33)
 score_importance = 0.85
@@ -666,7 +664,7 @@ grab_sfxs = Array[int]([0, 1])
 drop_sfxs = Array[int]([0, 1])
 
 [node name="CollisionShape2D" parent="SideBlueTable" index="0"]
-position = Vector2(0, 0)
+position = Vector2(-4.69092, 0)
 shape = SubResource("RectangleShape2D_56p2d")
 
 [node name="Sprite2D" parent="SideBlueTable" index="1"]
@@ -745,7 +743,7 @@ grab_sfxs = Array[int]([0, 1])
 drop_sfxs = Array[int]([0, 1])
 
 [node name="CollisionShape2D" parent="Stove" index="0"]
-position = Vector2(-5, -2)
+position = Vector2(-5.19354, -2)
 shape = SubResource("RectangleShape2D_p7tgi")
 
 [node name="Sprite2D" parent="Stove" index="1"]
@@ -771,7 +769,7 @@ grab_sfxs = Array[int]([0, 1])
 drop_sfxs = Array[int]([0, 1])
 
 [node name="CollisionShape2D" parent="BoardTable" index="0"]
-position = Vector2(-5, -2)
+position = Vector2(-5.34329, -2.00003)
 shape = SubResource("RectangleShape2D_cvfq5")
 
 [node name="Sprite2D" parent="BoardTable" index="1"]
@@ -875,7 +873,6 @@ region_rect = Rect2(235, 86, 11, 11)
 [node name="Chair4" parent="." instance=ExtResource("2_8bqpn")]
 position = Vector2(257.849, 183.072)
 rotation = 0.52203
-scale = Vector2(1, 1)
 collision_layer = 6
 collision_mask = 23
 mass = 3.0
@@ -1138,7 +1135,6 @@ scale = Vector2(0.999999, 0.900001)
 [node name="Cat" parent="." instance=ExtResource("2_8bqpn")]
 position = Vector2(69.2053, 70.6876)
 rotation = 0.974628
-scale = Vector2(1, 1)
 collision_layer = 8
 collision_mask = 9
 mass = 4.0
@@ -1164,7 +1160,6 @@ position = Vector2(-13.8214, 15.9424)
 [node name="BalconyPlant" parent="." instance=ExtResource("2_8bqpn")]
 position = Vector2(236.254, -93.0135)
 rotation = -1.03101
-scale = Vector2(1, 1)
 collision_layer = 8
 collision_mask = 9
 sleeping = true
