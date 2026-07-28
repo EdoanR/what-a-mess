@@ -4,6 +4,7 @@ class_name Level extends Node2D
 @onready var expectation: Node2D = $Expectation
 @onready var animation_player = $AnimationPlayer
 
+@export var level_id := ""
 @export var level_name := ""
 @export var count_down_time := 300
 @export var goal_score: int = 85
@@ -34,6 +35,9 @@ var first_obj_index = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = false
+	count_down.time_left = count_down_time
+	count_down.update_time_label()
+
 	if OS.is_debug_build() and override_timer != 0.0:
 		count_down.time_left = override_timer
 		count_down.update_time_label()
@@ -109,12 +113,12 @@ func on_timer_finished():
 	var config = ConfigFile.new()
 	var _err = config.load("user://scores.cfg")
 
-	config.set_value(level_name, "score_rating", rating)
-	config.set_value(level_name, "last_score", score)
+	config.set_value(level_id, "score_rating", rating)
+	config.set_value(level_id, "last_score", score)
 	
-	var best_score = config.get_value(level_name, "best_score", 0)
+	var best_score = config.get_value(level_id, "best_score", 0)
 	if score > best_score:
-		config.set_value(level_name, "best_score", score)
+		config.set_value(level_id, "best_score", score)
 
 	config.save("user://scores.cfg")
 

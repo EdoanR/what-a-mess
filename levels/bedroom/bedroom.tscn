@@ -76,6 +76,7 @@ size = Vector2(72, 600)
 size = Vector2(600, 72)
 
 [node name="Bedroom" instance=ExtResource("1_6k2mn")]
+level_id = "bedroom"
 level_name = "Bedroom"
 count_down_time = 240
 goal_score = 92
