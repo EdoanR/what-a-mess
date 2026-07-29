@@ -1,11 +1,58 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhjnycgtcajrr"]
+[gd_scene load_steps=20 format=3 uid="uid://dhjnycgtcajrr"]
 
 [ext_resource type="Texture2D" uid="uid://be42c1b4xjbsn" path="res://logic/level/level_UI.png" id="1_mghd1"]
 [ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://common/ui/change_scene_button.gd" id="2_2gdlo"]
 [ext_resource type="Texture2D" uid="uid://dfuti7ms3v2rx" path="res://logic/level/level_UI_score_part.png" id="3_2gdlo"]
 [ext_resource type="Script" uid="uid://ycwnel7a04tl" path="res://ui/countdown.gd" id="3_anta6"]
+[ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="3_g3uqr"]
 [ext_resource type="Script" uid="uid://444eubna7n8j" path="res://common/ui/reload_scene_button.gd" id="4_anta6"]
 [ext_resource type="PackedScene" uid="uid://cntm0phw65y6f" path="res://common/ui/pivot_offset_control/pivot_offset_control.tscn" id="4_g3uqr"]
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="8_vursv"]
+[ext_resource type="Texture2D" uid="uid://d17oqlsaocyg5" path="res://levels/kitchen/assets/mom_worried.png" id="9_yv23q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ch25"]
+size = Vector2(216, 245)
+
+[sub_resource type="Animation" id="Animation_yv23q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [27]
+}
+
+[sub_resource type="Animation" id="Animation_vursv"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(0, 0, 0, 0),
+"update": 1,
+"values": [24, 25, 26, 27]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ch25"]
+_data = {
+&"RESET": SubResource("Animation_yv23q"),
+&"new_animation": SubResource("Animation_vursv")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yv23q"]
+size = Vector2(511, 66)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
 bg_color = Color(0.109804, 0.0705882, 0.109804, 1)
@@ -92,6 +139,7 @@ offset_top = -720.0
 offset_bottom = -720.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_g3uqr")
 
 [node name="BG" type="NinePatchRect" parent="ScoreControl"]
 layout_mode = 1
@@ -108,6 +156,21 @@ patch_margin_left = 68
 patch_margin_bottom = 11
 axis_stretch_horizontal = 1
 
+[node name="Avatar" parent="ScoreControl" instance=ExtResource("8_vursv")]
+position = Vector2(313, 201)
+grab_sfxs = Array[int]([])
+drop_sfxs = Array[int]([])
+collision_sfxs = Array[int]([])
+
+[node name="CollisionShape2D" parent="ScoreControl/Avatar" index="0"]
+visible = false
+position = Vector2(1, 5.5)
+shape = SubResource("RectangleShape2D_4ch25")
+
+[node name="Sprite2D" parent="ScoreControl/Avatar" index="1"]
+scale = Vector2(3, 3)
+texture = ExtResource("9_yv23q")
+
 [node name="ExpectationLabel" type="Label" parent="ScoreControl"]
 layout_mode = 0
 offset_left = 47.0
@@ -118,27 +181,46 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Expectation"
 
-[node name="ResultScoreLabel" type="Label" parent="ScoreControl"]
+[node name="CalculatingOrganization" type="Label" parent="ScoreControl"]
 layout_mode = 2
-offset_left = 107.0
-offset_top = 256.0
-offset_right = 513.0
-offset_bottom = 301.0
+offset_left = 128.0
+offset_top = 340.0
+offset_right = 534.0
+offset_bottom = 385.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Calculating organization..."
-horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 27
 
-[node name="Control" type="Control" parent="ScoreControl"]
-layout_mode = 2
-anchors_preset = 0
-offset_left = 47.0
-offset_top = 364.0
-offset_right = 47.0
-offset_bottom = 364.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreControl/CalculatingOrganization"]
+libraries = {
+&"": SubResource("AnimationLibrary_4ch25")
+}
+autoplay = "new_animation"
 
-[node name="OrganizationBar" type="ProgressBar" parent="ScoreControl/Control"]
+[node name="Control" parent="ScoreControl" instance=ExtResource("8_vursv")]
+position = Vector2(312, 462)
+
+[node name="CollisionShape2D" parent="ScoreControl/Control" index="0"]
+position = Vector2(11.5, -1)
+shape = SubResource("RectangleShape2D_yv23q")
+
+[node name="Sprite2D" parent="ScoreControl/Control" index="1"]
+visible = false
+
+[node name="Control" type="Control" parent="ScoreControl/Control"]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = -1.0
+offset_right = -239.0
+offset_bottom = -1.0
+grow_vertical = 2
+
+[node name="OrganizationBar" type="ProgressBar" parent="ScoreControl/Control/Control"]
 custom_minimum_size = Vector2(500, 57.72)
 layout_mode = 1
 anchors_preset = 4
@@ -153,7 +235,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_5vw27")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kek77")
 value = 65.0
 
-[node name="Goal" type="ColorRect" parent="ScoreControl/Control"]
+[node name="Goal" type="ColorRect" parent="ScoreControl/Control/Control"]
 custom_minimum_size = Vector2(5, 67)
 layout_mode = 1
 anchors_preset = 4
@@ -167,15 +249,22 @@ grow_vertical = 2
 color = Color(0, 0.411765, 0.666667, 1)
 
 [node name="ScoreButtonsContainer" type="HBoxContainer" parent="ScoreControl"]
-layout_mode = 0
-offset_left = 75.0
-offset_top = 425.0
-offset_right = 568.0
-offset_bottom = 478.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = 189.0
+offset_right = 247.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 25
+alignment = 1
 
 [node name="Retry" type="Button" parent="ScoreControl/ScoreButtonsContainer"]
-custom_minimum_size = Vector2(139, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Retry"
@@ -215,4 +304,32 @@ libraries = {
 
 [node name="PivotOffsetControl" parent="ScoreControl/Timer" instance=ExtResource("4_g3uqr")]
 
+[node name="ScoreResultPosition" type="Marker2D" parent="ScoreControl"]
+position = Vector2(321, 353)
+
+[node name="NewBestScore" type="Label" parent="ScoreControl"]
+visible = false
+layout_mode = 0
+offset_left = 43.0
+offset_top = 662.0
+offset_right = 225.0
+offset_bottom = 702.0
+theme_override_colors/font_color = Color(0.352941, 0.772549, 0.309804, 1)
+theme_override_font_sizes/font_size = 24
+text = "New best score!"
+
+[node name="NewBestTime" type="Label" parent="ScoreControl"]
+visible = false
+layout_mode = 0
+offset_left = 418.0
+offset_top = 662.0
+offset_right = 601.0
+offset_bottom = 702.0
+theme_override_colors/font_color = Color(0.352941, 0.772549, 0.309804, 1)
+theme_override_font_sizes/font_size = 24
+text = "New best time!"
+
 [connection signal="timeout" from="ScoreControl/Timer/Timer" to="ScoreControl/Timer" method="_on_timer_timeout"]
+
+[editable path="ScoreControl/Avatar"]
+[editable path="ScoreControl/Control"]

@@ -1,15 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://u62oexh3cuf1"]
+[gd_scene load_steps=20 format=3 uid="uid://u62oexh3cuf1"]
 
 [ext_resource type="Script" uid="uid://cxf5g3oy8ou5a" path="res://logic/level/level.gd" id="1_g3umw"]
 [ext_resource type="PackedScene" uid="uid://dhjnycgtcajrr" path="res://ui/level_ui.tscn" id="2_1mfur"]
+[ext_resource type="PackedScene" uid="uid://dumdiw0u3mjgr" path="res://ui/score_results/good_score/good_score.tscn" id="2_nlm85"]
+[ext_resource type="PackedScene" uid="uid://daenhm0i5irux" path="res://ui/score_results/perfect_score/perfect_score.tscn" id="3_bkb8c"]
 [ext_resource type="PackedScene" uid="uid://bbf6c4y8jah8a" path="res://entities/cursor.tscn" id="3_ftv40"]
+[ext_resource type="PackedScene" uid="uid://vyuyjnyyhxe8" path="res://ui/score_results/bad_score/bad_score.tscn" id="4_bkb8c"]
 [ext_resource type="AudioStream" uid="uid://ltnt7pcb81ip" path="res://assets/sfx/soundpack/Retro1.wav" id="7_ca1cn"]
 [ext_resource type="AudioStream" uid="uid://crma1qsv7p8fd" path="res://assets/sfx/harp.wav" id="8_kt2p7"]
 [ext_resource type="AudioStream" uid="uid://cmseoirmstkes" path="res://assets/sfx/impact_0.wav" id="9_t28jp"]
 [ext_resource type="AudioStream" uid="uid://dyiltl8gpsmo7" path="res://assets/sfx/soundpack/Coffee2.wav" id="10_dmmc1"]
 [ext_resource type="PackedScene" uid="uid://vqc2hq8oydxh" path="res://ui/pause/pause.tscn" id="11_b6y8i"]
 [ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="12_5ovf7"]
+[ext_resource type="AudioStream" uid="uid://dqusqwn073m1c" path="res://assets/sfx/perfect.wav" id="13_0bcr1"]
 [ext_resource type="Script" uid="uid://444eubna7n8j" path="res://common/ui/reload_scene_button.gd" id="13_6t80s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwoeq"]
+size = Vector2(158, 177)
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 length = 0.001
@@ -112,7 +119,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("UI/ScoreControl/ResultScoreLabel:visible")
+tracks/8/path = NodePath("UI/ScoreControl/Control:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -124,43 +131,43 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("UI/ScoreControl/Control:visible")
+tracks/9/path = NodePath("UI/RealityLabel:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("UI/RealityLabel:modulate")
+tracks/10/path = NodePath("UI/ScoreControl:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(640, -720)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("UI/ScoreControl:position")
+tracks/11/path = NodePath("UI/ScoreControl/ScoreButtonsContainer:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(640, -720)]
+"update": 1,
+"values": [true]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("UI/ScoreControl/ScoreButtonsContainer:visible")
+tracks/12/path = NodePath("UI/ScoreControl/CalculatingOrganization:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -168,6 +175,18 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("UI/ScoreControl/Avatar:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_efxa6"]
@@ -188,11 +207,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UI/ScoreControl/ResultScoreLabel:visible")
+tracks/1/path = NodePath("UI/ScoreControl/Control:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.53333),
+"times": PackedFloat32Array(0, 5.04826),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -200,34 +219,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("UI/ScoreControl/Control:visible")
+tracks/2/path = NodePath("UI/Hint:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 5.04826),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/Hint:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/4/type = "audio"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ImpactSound")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ImpactSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "clips": [{
 "end_offset": 0.686771,
 "start_offset": 0.0,
@@ -239,38 +246,62 @@ tracks/4/keys = {
 }],
 "times": PackedFloat32Array(4.53333, 5.03333)
 }
-tracks/4/use_blend = true
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("UI/RealityLabel:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/RealityLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(2, 2.8),
 "transitions": PackedFloat32Array(1, -2),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("UI/ScoreControl:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/ScoreControl:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(2, 3.6),
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector2(640, -720), Vector2(640, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UI/ScoreControl/ScoreButtonsContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("UI/ScoreControl/ScoreButtonsContainer:visible")
+tracks/7/path = NodePath("UI/ScoreControl/CalculatingOrganization:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(0, 4.5333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("UI/ScoreControl/Avatar:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -440,20 +471,38 @@ _data = {
 &"start": SubResource("Animation_272bh")
 }
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("player_cursor", "count_down", "hint", "organization_bar", "result_score_label", "goal_indicator", "score_buttons_container")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("player_cursor", "count_down", "hint", "organization_bar", "goal_indicator", "score_buttons_container", "score_result_position", "score_calculating_label", "score_result_avatar", "perfect_sound_effect")]
 script = ExtResource("1_g3umw")
-player_cursor = NodePath("Cursor")
+player_cursor = NodePath("UI/Cursor")
 count_down = NodePath("UI/ScoreControl/Timer")
 hint = NodePath("UI/Hint")
-organization_bar = NodePath("UI/ScoreControl/Control/OrganizationBar")
-result_score_label = NodePath("UI/ScoreControl/ResultScoreLabel")
-goal_indicator = NodePath("UI/ScoreControl/Control/Goal")
+organization_bar = NodePath("UI/ScoreControl/Control/Control/OrganizationBar")
+goal_indicator = NodePath("UI/ScoreControl/Control/Control/Goal")
 score_buttons_container = NodePath("UI/ScoreControl/ScoreButtonsContainer")
+score_result_position = NodePath("UI/ScoreControl/ScoreResultPosition")
+score_calculating_label = NodePath("UI/ScoreControl/CalculatingOrganization")
+good_score_result_scene = ExtResource("2_nlm85")
+perfect_score_result_scene = ExtResource("3_bkb8c")
+bad_score_result_scene = ExtResource("4_bkb8c")
+score_result_avatar = NodePath("UI/ScoreControl/Avatar/Sprite2D")
+perfect_sound_effect = NodePath("PerfectSoundEffect")
 
 [node name="UI" parent="." instance=ExtResource("2_1mfur")]
 
-[node name="ExpectationLabel" parent="UI/ScoreControl" index="1"]
+[node name="Avatar" parent="UI/ScoreControl" index="1"]
+visible = false
+grab_sfxs = Array[int]([0, 1])
+drop_sfxs = Array[int]([0, 1])
+
+[node name="CollisionShape2D" parent="UI/ScoreControl/Avatar" index="0"]
+visible = true
+shape = SubResource("RectangleShape2D_mwoeq")
+
+[node name="ExpectationLabel" parent="UI/ScoreControl" index="2"]
 layout_mode = 1
+
+[node name="Cursor" parent="UI" instance=ExtResource("3_ftv40")]
+enabled = false
 
 [node name="BG" type="CanvasLayer" parent="."]
 layer = -1
@@ -467,8 +516,7 @@ grow_vertical = 2
 color = Color(0.164706, 0.184314, 0.305882, 1)
 metadata/_edit_lock_ = true
 
-[node name="Cursor" parent="." instance=ExtResource("3_ftv40")]
-enabled = false
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -504,8 +552,14 @@ theme = ExtResource("12_5ovf7")
 theme_override_font_sizes/font_size = 32
 text = "I'm done actually, no need to wait"
 
+[node name="PerfectSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_0bcr1")
+bus = &"sfx"
+
 [connection signal="pressed" from="Pause/DoneButton" to="." method="on_timer_finished"]
 [connection signal="pressed" from="Pause/DoneButton" to="Pause" method="unpause"]
 
 [editable path="UI"]
+[editable path="UI/ScoreControl/Avatar"]
+[editable path="UI/ScoreControl/Control"]
 [editable path="Pause"]

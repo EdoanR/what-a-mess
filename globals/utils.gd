@@ -17,3 +17,9 @@ func format_time(seconds: int):
 
 func wait(time: float):
 	return get_tree().create_timer(time).timeout
+
+func pop(node, scale_mult: float = 1.2, time: float = 0.3):
+	var original_scale = node.scale
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+	tween.tween_property(node, "scale", original_scale, time).from(original_scale * scale_mult)

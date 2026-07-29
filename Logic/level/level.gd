@@ -18,13 +18,23 @@ class_name Level extends Node2D
 
 @export_category("score result")
 @export var organization_bar: ProgressBar
-@export var result_score_label: Label
 @export var goal_indicator: ColorRect
 @export var score_buttons_container: HBoxContainer
+@export var score_result_position: Marker2D
+@export var score_calculating_label: Label
+@export var good_score_result_scene: PackedScene
+@export var perfect_score_result_scene: PackedScene
+@export var bad_score_result_scene: PackedScene
+@export var score_result_avatar: Sprite2D
+@export var perfect_sound_effect: AudioStreamPlayer
+@export var avatar_good: Texture2D
+@export var avatar_perfect: Texture2D
+@export var avatar_bad: Texture2D
 
 @export_category("debugging")
 @export var skip_intro := false
 @export var override_timer: int = 0
+@export_range(-1, 100, 1) var override_final_score: int = -1
 
 var all_objects: Array[PhysicObject] = []
 var expected_obj_groups = {}
@@ -101,6 +111,9 @@ func on_timer_finished():
 	Pointer.set_shape(Pointer.PointerShapes.NORMAL)
 	var score = calculate_room_score()
 
+	if OS.is_debug_build() and override_final_score != -1:
+		score = override_final_score
+
 	var rating = -1
 
 	if score >= 100:
@@ -115,10 +128,26 @@ func on_timer_finished():
 
 	config.set_value(level_id, "score_rating", rating)
 	config.set_value(level_id, "last_score", score)
+
+	var has_new_best_score = false
+	var has_new_best_time = false
 	
 	var best_score = config.get_value(level_id, "best_score", 0)
 	if score > best_score:
 		config.set_value(level_id, "best_score", score)
+
+		if best_score != 0:
+			has_new_best_score = true
+
+	if best_score != 0 and score >= best_score: # best time just change when same best score or new best score
+		var time_left = count_down.time_left
+
+		if time_left != 0:
+			var best_time = config.get_value(level_id, "best_time", 0)
+
+			if time_left > best_time:
+				config.set_value(level_id, "best_time", time_left)
+				has_new_best_time = true
 
 	config.save("user://scores.cfg")
 
@@ -135,21 +164,49 @@ func on_timer_finished():
 	await tween.finished
 	await Utils.wait(1.0)
 
+	score_calculating_label.visible = false
+
 	if rating == Game.LevelScoreRating.PERFECT:
-		result_score_label.text = "PERFECT!"
-		result_score_label.modulate = Color.YELLOW
-		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.RETRO_10)
+		if score_result_position:
+			if perfect_score_result_scene:
+				var score_result = perfect_score_result_scene.instantiate()
+				score_result_position.get_parent().add_child(score_result)
+				score_result.global_position = score_result_position.global_position
+			if score_result_avatar and avatar_perfect:
+				score_result_avatar.texture = avatar_perfect
+				score_result_avatar.get_parent().visible = true
+				Utils.pop(score_result_avatar)
+		perfect_sound_effect.play()
 	elif rating == Game.LevelScoreRating.GOOD:
-		result_score_label.text = "Well done!"
-		result_score_label.modulate = Color.GREEN
+		if score_result_position:
+			if good_score_result_scene:
+				var score_result = good_score_result_scene.instantiate()
+				score_result_position.get_parent().add_child(score_result)
+				score_result.global_position = score_result_position.global_position
+			if score_result_avatar and avatar_good:
+				score_result_avatar.texture = avatar_good
+				score_result_avatar.get_parent().visible = true
+				Utils.pop(score_result_avatar)
 		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.RETRO_8)
 	else:
-		result_score_label.text = "Not quite there..."
+		if score_result_position:
+			if bad_score_result_scene:
+				var score_result = bad_score_result_scene.instantiate()
+				score_result_position.get_parent().add_child(score_result)
+				score_result.global_position = score_result_position.global_position
+			if score_result_avatar and avatar_bad:
+				score_result_avatar.texture = avatar_bad
+				score_result_avatar.get_parent().visible = true
+				Utils.pop(score_result_avatar)
 		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.RETRO_6)
 
 	score_buttons_container.visible = true
+	player_cursor.enabled = true
 
-	print("The end! Result: ", score)
+	if has_new_best_score:
+		$UI/ScoreControl/NewBestScore.visible = true
+	if has_new_best_time:
+		$UI/ScoreControl/NewBestTime.visible = true
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
