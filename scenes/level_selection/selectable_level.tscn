@@ -1,0 +1,117 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwixkdk6ttgje"]
+
+[ext_resource type="Texture2D" uid="uid://byce3msrtuiyt" path="res://assets/ui/white_32x32.png" id="1_0ogrf"]
+[ext_resource type="Script" uid="uid://csqvhu7a78rsd" path="res://scenes/level_selection/selectable_level.gd" id="2_sudgg"]
+[ext_resource type="Texture2D" uid="uid://81qxt7fr73gg" path="res://assets/ui/check.png" id="3_sudgg"]
+[ext_resource type="Texture2D" uid="uid://dkheqclkrmmhc" path="res://ui/score_results/perfect_score/big_star.png" id="4_5nt4c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fg0ae"]
+texture = ExtResource("1_0ogrf")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rv05k"]
+texture = ExtResource("1_0ogrf")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+modulate_color = Color(0.848485, 0.848485, 0.848485, 1)
+draw_center = false
+
+[node name="SelectableLevel" type="Button"]
+offset_left = 84.0
+offset_top = 132.0
+offset_right = 529.0
+offset_bottom = 335.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_fg0ae")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rv05k")
+script = ExtResource("2_sudgg")
+metadata/level_name = "bedroom"
+
+[node name="Thumbnail" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 20.0
+offset_right = 193.0
+offset_bottom = 183.0
+texture = ExtResource("1_0ogrf")
+
+[node name="LevelName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 18.0
+offset_right = 350.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 24
+text = "Level name"
+
+[node name="Done" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 243.0
+offset_top = 72.0
+offset_right = 283.0
+offset_bottom = 112.0
+
+[node name="Label" type="Label" parent="Done"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -8.0
+offset_right = 101.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 24
+text = "Done!"
+
+[node name="TextureRect" type="TextureRect" parent="Done"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -7.0
+offset_bottom = 25.0
+texture = ExtResource("3_sudgg")
+
+[node name="Perfect" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 243.0
+offset_top = 72.0
+offset_right = 283.0
+offset_bottom = 112.0
+
+[node name="Label" type="Label" parent="Perfect"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 95.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 0.784314, 0.145098, 1)
+theme_override_font_sizes/font_size = 24
+text = "Perfect!"
+
+[node name="TextureRect" type="TextureRect" parent="Perfect"]
+layout_mode = 0
+offset_left = -35.0
+offset_top = -7.0
+offset_right = -5.0
+offset_bottom = 23.0
+texture = ExtResource("4_5nt4c")
+
+[node name="BestScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 108.0
+offset_right = 430.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 24
+text = "Best score: 0%"
+
+[node name="BestTime" type="Label" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 151.0
+offset_right = 430.0
+offset_bottom = 196.0
+theme_override_font_sizes/font_size = 24
+text = "In 00:00"

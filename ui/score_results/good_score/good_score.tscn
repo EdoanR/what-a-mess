@@ -1,0 +1,157 @@
+[gd_scene load_steps=11 format=3 uid="uid://dumdiw0u3mjgr"]
+
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="1_haxr8"]
+[ext_resource type="Script" uid="uid://c5bcfm20ble0f" path="res://ui/score_results/good_score/good_score.gd" id="1_r7pvh"]
+[ext_resource type="Texture2D" uid="uid://dlo8rcnj2c21v" path="res://ui/score_results/good_score/good_score.png" id="2_r7pvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jf1g"]
+size = Vector2(64, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mxcf"]
+atlas = ExtResource("2_r7pvh")
+region = Rect2(0, 0, 101, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7knx5"]
+atlas = ExtResource("2_r7pvh")
+region = Rect2(101, 0, 101, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrjje"]
+atlas = ExtResource("2_r7pvh")
+region = Rect2(202, 0, 101, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mys7e"]
+atlas = ExtResource("2_r7pvh")
+region = Rect2(303, 0, 101, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aswws"]
+atlas = ExtResource("2_r7pvh")
+region = Rect2(404, 0, 101, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yn4nl"]
+animations = [{
+"frames": [{
+"duration": 50.0,
+"texture": SubResource("AtlasTexture_7mxcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7knx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrjje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mys7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aswws")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="GoodtScore" type="Node2D"]
+script = ExtResource("1_r7pvh")
+
+[node name="G" parent="." instance=ExtResource("1_haxr8")]
+position = Vector2(-108, -1)
+
+[node name="CollisionShape2D" parent="G" index="0"]
+shape = SubResource("RectangleShape2D_0jf1g")
+
+[node name="Sprite2D" parent="G" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="G"]
+clip_children = 1
+offset_left = -31.0
+offset_top = -49.0
+offset_right = 32.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="G/Visual"]
+position = Vector2(134, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_yn4nl")
+autoplay = "default"
+frame_progress = 0.988035
+
+[node name="O" parent="." instance=ExtResource("1_haxr8")]
+position = Vector2(-38, -1)
+
+[node name="CollisionShape2D" parent="O" index="0"]
+shape = SubResource("RectangleShape2D_0jf1g")
+
+[node name="Sprite2D" parent="O" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="O"]
+clip_children = 1
+offset_left = -31.0
+offset_top = -49.0
+offset_right = 32.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="O/Visual"]
+position = Vector2(62, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_yn4nl")
+autoplay = "default"
+frame_progress = 0.988035
+
+[node name="O2" parent="." instance=ExtResource("1_haxr8")]
+position = Vector2(38, -4.76837e-07)
+rotation = 0.0677785
+
+[node name="CollisionShape2D" parent="O2" index="0"]
+shape = SubResource("RectangleShape2D_0jf1g")
+
+[node name="Sprite2D" parent="O2" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="O2"]
+clip_children = 1
+offset_left = -31.0
+offset_top = -49.0
+offset_right = 32.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="O2/Visual"]
+position = Vector2(62, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_yn4nl")
+autoplay = "default"
+frame_progress = 0.988035
+
+[node name="D" parent="." instance=ExtResource("1_haxr8")]
+position = Vector2(116, 4)
+rotation = 0.176235
+
+[node name="CollisionShape2D" parent="D" index="0"]
+shape = SubResource("RectangleShape2D_0jf1g")
+
+[node name="Sprite2D" parent="D" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="D"]
+clip_children = 1
+offset_left = -31.0
+offset_top = -49.0
+offset_right = 32.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="D/Visual"]
+position = Vector2(-82, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_yn4nl")
+autoplay = "default"
+frame_progress = 0.988035
+
+[editable path="G"]
+[editable path="O"]
+[editable path="O2"]
+[editable path="D"]

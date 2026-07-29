@@ -1,7 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://dyasyyajt1n61"]
+[gd_scene load_steps=32 format=3 uid="uid://dyasyyajt1n61"]
 
 [ext_resource type="PackedScene" uid="uid://u62oexh3cuf1" path="res://logic/level/level.tscn" id="1_6k2mn"]
+[ext_resource type="Texture2D" uid="uid://6qlk0a4knfig" path="res://levels/bedroom/assets/girlfriend_good_score.png" id="2_0etjl"]
 [ext_resource type="PackedScene" uid="uid://da7bfy8letdv8" path="res://levels/bedroom/bedroom_reality.tscn" id="2_rkq2c"]
+[ext_resource type="Texture2D" uid="uid://m2dw203vbo8p" path="res://levels/bedroom/assets/girlfriend_perfect_score.png" id="3_buggl"]
+[ext_resource type="Texture2D" uid="uid://blobxks7sshch" path="res://levels/bedroom/assets/girlfriend_bad_score.png" id="4_hobr5"]
 [ext_resource type="Texture2D" uid="uid://eeswym73m04m" path="res://levels/bedroom/assets/bedroom.png" id="6_jbyh0"]
 [ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="7_p0lhp"]
 [ext_resource type="PackedScene" uid="uid://cpvr47ikcco48" path="res://entities/table.tscn" id="8_0wck0"]
@@ -79,10 +82,13 @@ size = Vector2(600, 72)
 level_id = "bedroom"
 level_name = "Bedroom"
 count_down_time = 240
-goal_score = 92
+goal_score = 90
 music = 1
+avatar_good = ExtResource("2_0etjl")
+avatar_perfect = ExtResource("3_buggl")
+avatar_bad = ExtResource("4_hobr5")
 
-[node name="Timer" parent="UI/ScoreControl" index="5"]
+[node name="Timer" parent="UI/ScoreControl" index="6"]
 time_left = 240
 
 [node name="ColorRect" parent="BG" index="0"]
@@ -475,6 +481,8 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_4c57u")
 
 [editable path="UI"]
+[editable path="UI/ScoreControl/Avatar"]
+[editable path="UI/ScoreControl/Control"]
 [editable path="Expectation/Carpet"]
 [editable path="Expectation/WelcomeMat"]
 [editable path="Expectation/Bed"]

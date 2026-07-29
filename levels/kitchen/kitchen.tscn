@@ -1,9 +1,12 @@
-[gd_scene load_steps=44 format=3 uid="uid://v6623r167ubo"]
+[gd_scene load_steps=47 format=3 uid="uid://v6623r167ubo"]
 
 [ext_resource type="PackedScene" uid="uid://u62oexh3cuf1" path="res://logic/level/level.tscn" id="1_vpopf"]
+[ext_resource type="Texture2D" uid="uid://dmk87gn7n1b38" path="res://levels/kitchen/assets/mom_good.png" id="2_5ge82"]
 [ext_resource type="PackedScene" uid="uid://c65x088gnsxdp" path="res://levels/kitchen/kitchen_reality.tscn" id="2_bec4f"]
+[ext_resource type="Texture2D" uid="uid://bmbl3wwk53fb6" path="res://levels/kitchen/assets/mom_perfect.png" id="3_7xuje"]
 [ext_resource type="Texture2D" uid="uid://bx1anihlck8vg" path="res://levels/kitchen/assets/kitchen.png" id="3_8wn2n"]
 [ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="4_h8277"]
+[ext_resource type="Texture2D" uid="uid://bmswclmplunxf" path="res://levels/kitchen/assets/mom_bad.png" id="4_uat51"]
 [ext_resource type="PackedScene" uid="uid://cpvr47ikcco48" path="res://entities/table.tscn" id="5_h74hq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqiqk"]
@@ -126,6 +129,9 @@ level_name = "Kitchen"
 count_down_time = 240
 goal_score = 70
 music = 4
+avatar_good = ExtResource("2_5ge82")
+avatar_perfect = ExtResource("3_7xuje")
+avatar_bad = ExtResource("4_uat51")
 
 [node name="ColorRect" parent="BG" index="0"]
 color = Color(0.0745098, 0.298039, 0.298039, 1)
@@ -1037,6 +1043,8 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_wuitq")
 
 [editable path="UI"]
+[editable path="UI/ScoreControl/Avatar"]
+[editable path="UI/ScoreControl/Control"]
 [editable path="Expectation/CatBed"]
 [editable path="Expectation/Cat"]
 [editable path="Expectation/CatFood"]

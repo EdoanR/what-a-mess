@@ -1,0 +1,389 @@
+[gd_scene load_steps=15 format=3 uid="uid://daenhm0i5irux"]
+
+[ext_resource type="Script" uid="uid://c5bcfm20ble0f" path="res://ui/score_results/good_score/good_score.gd" id="1_c45tr"]
+[ext_resource type="PackedScene" uid="uid://dril3jhprl65l" path="res://entities/physic_object.tscn" id="2_386e1"]
+[ext_resource type="Texture2D" uid="uid://dkriayemt7664" path="res://ui/score_results/perfect_score/perfect_score.png" id="3_fm0my"]
+[ext_resource type="Texture2D" uid="uid://dkheqclkrmmhc" path="res://ui/score_results/perfect_score/big_star.png" id="4_4f8tj"]
+[ext_resource type="Texture2D" uid="uid://datinn04cv3a3" path="res://ui/score_results/perfect_score/small_star.png" id="5_ammq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pow0n"]
+size = Vector2(64, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f8tj"]
+atlas = ExtResource("3_fm0my")
+region = Rect2(0, 0, 101, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ammq7"]
+atlas = ExtResource("3_fm0my")
+region = Rect2(101, 0, 101, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6nrg"]
+atlas = ExtResource("3_fm0my")
+region = Rect2(202, 0, 101, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2rp4"]
+atlas = ExtResource("3_fm0my")
+region = Rect2(303, 0, 101, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v851"]
+atlas = ExtResource("3_fm0my")
+region = Rect2(404, 0, 101, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1r0ai"]
+animations = [{
+"frames": [{
+"duration": 40.0,
+"texture": SubResource("AtlasTexture_4f8tj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ammq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6nrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2rp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v851")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6nrg"]
+size = Vector2(58, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2rp4"]
+size = Vector2(32, 27)
+
+[node name="PerfectScore" type="Node2D"]
+script = ExtResource("1_c45tr")
+scale_multiplier = 2.0
+
+[node name="P" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(-199, 0)
+
+[node name="CollisionShape2D" parent="P" index="0"]
+shape = SubResource("RectangleShape2D_pow0n")
+
+[node name="Sprite2D" parent="P" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="P"]
+clip_children = 1
+offset_left = -31.0
+offset_top = -49.0
+offset_right = 28.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="P/Visual"]
+position = Vector2(203, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1r0ai")
+autoplay = "default"
+frame_progress = 0.737173
+
+[node name="E" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(-131, 0)
+
+[node name="CollisionShape2D" parent="E" index="0"]
+shape = SubResource("RectangleShape2D_pow0n")
+
+[node name="Sprite2D" parent="E" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="E"]
+clip_children = 1
+offset_left = -24.0
+offset_top = -49.0
+offset_right = 28.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="E/Visual"]
+position = Vector2(137, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1r0ai")
+autoplay = "default"
+
+[node name="R" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(-64, 0)
+
+[node name="CollisionShape2D" parent="R" index="0"]
+shape = SubResource("RectangleShape2D_pow0n")
+
+[node name="Sprite2D" parent="R" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="R"]
+clip_children = 1
+offset_left = -27.0
+offset_top = -49.0
+offset_right = 28.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="R/Visual"]
+position = Vector2(81, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1r0ai")
+autoplay = "default"
+
+[node name="F" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(3, 0)
+
+[node name="CollisionShape2D" parent="F" index="0"]
+shape = SubResource("RectangleShape2D_pow0n")
+
+[node name="Sprite2D" parent="F" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="F"]
+clip_children = 1
+offset_left = -31.0
+offset_top = -49.0
+offset_right = 28.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="F/Visual"]
+position = Vector2(24, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1r0ai")
+autoplay = "default"
+
+[node name="E2" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(71, 0)
+
+[node name="CollisionShape2D" parent="E2" index="0"]
+shape = SubResource("RectangleShape2D_pow0n")
+
+[node name="Sprite2D" parent="E2" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="E2"]
+clip_children = 1
+offset_left = -31.0
+offset_top = -49.0
+offset_right = 28.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="E2/Visual"]
+position = Vector2(-35, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1r0ai")
+autoplay = "default"
+
+[node name="C" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(140, 0)
+
+[node name="CollisionShape2D" parent="C" index="0"]
+shape = SubResource("RectangleShape2D_pow0n")
+
+[node name="Sprite2D" parent="C" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="C"]
+clip_children = 1
+offset_left = -31.0
+offset_top = -49.0
+offset_right = 28.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="C/Visual"]
+position = Vector2(-94, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1r0ai")
+autoplay = "default"
+
+[node name="T" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(209, 0)
+
+[node name="CollisionShape2D" parent="T" index="0"]
+shape = SubResource("RectangleShape2D_pow0n")
+
+[node name="Sprite2D" parent="T" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="ColorRect" parent="T"]
+clip_children = 1
+offset_left = -31.0
+offset_top = -49.0
+offset_right = 28.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="T/Visual"]
+position = Vector2(-150, 49)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1r0ai")
+autoplay = "default"
+
+[node name="Star" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(-268, -150)
+
+[node name="CollisionShape2D" parent="Star" index="0"]
+shape = SubResource("RectangleShape2D_m6nrg")
+
+[node name="Sprite2D" parent="Star" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="Sprite2D" parent="Star"]
+scale = Vector2(4, 4)
+texture = ExtResource("4_4f8tj")
+
+[node name="Star2" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(172, 270)
+
+[node name="CollisionShape2D" parent="Star2" index="0"]
+shape = SubResource("RectangleShape2D_m6nrg")
+
+[node name="Sprite2D" parent="Star2" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="Sprite2D" parent="Star2"]
+scale = Vector2(4, 4)
+texture = ExtResource("4_4f8tj")
+
+[node name="Star3" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(-340, 192)
+
+[node name="CollisionShape2D" parent="Star3" index="0"]
+shape = SubResource("RectangleShape2D_m6nrg")
+
+[node name="Sprite2D" parent="Star3" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="Sprite2D" parent="Star3"]
+scale = Vector2(4, 4)
+texture = ExtResource("4_4f8tj")
+
+[node name="Star4" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(224, -274)
+
+[node name="CollisionShape2D" parent="Star4" index="0"]
+shape = SubResource("RectangleShape2D_m6nrg")
+
+[node name="Sprite2D" parent="Star4" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="Sprite2D" parent="Star4"]
+scale = Vector2(4, 4)
+texture = ExtResource("4_4f8tj")
+
+[node name="SmallStar" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(268, -69)
+
+[node name="CollisionShape2D" parent="SmallStar" index="0"]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_d2rp4")
+
+[node name="Sprite2D" parent="SmallStar" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="Sprite2D" parent="SmallStar"]
+scale = Vector2(4, 4)
+texture = ExtResource("5_ammq7")
+
+[node name="SmallStar6" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(144, 165)
+
+[node name="CollisionShape2D" parent="SmallStar6" index="0"]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_d2rp4")
+
+[node name="Sprite2D" parent="SmallStar6" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="Sprite2D" parent="SmallStar6"]
+scale = Vector2(4, 4)
+texture = ExtResource("5_ammq7")
+
+[node name="SmallStar2" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(-174, -248)
+
+[node name="CollisionShape2D" parent="SmallStar2" index="0"]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_d2rp4")
+
+[node name="Sprite2D" parent="SmallStar2" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="Sprite2D" parent="SmallStar2"]
+scale = Vector2(4, 4)
+texture = ExtResource("5_ammq7")
+
+[node name="SmallStar3" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(-420, -128)
+
+[node name="CollisionShape2D" parent="SmallStar3" index="0"]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_d2rp4")
+
+[node name="Sprite2D" parent="SmallStar3" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="Sprite2D" parent="SmallStar3"]
+scale = Vector2(4, 4)
+texture = ExtResource("5_ammq7")
+
+[node name="SmallStar4" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(-269, 13)
+
+[node name="CollisionShape2D" parent="SmallStar4" index="0"]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_d2rp4")
+
+[node name="Sprite2D" parent="SmallStar4" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="Sprite2D" parent="SmallStar4"]
+scale = Vector2(4, 4)
+texture = ExtResource("5_ammq7")
+
+[node name="SmallStar5" parent="." instance=ExtResource("2_386e1")]
+position = Vector2(-149, 270)
+
+[node name="CollisionShape2D" parent="SmallStar5" index="0"]
+position = Vector2(-2, 1.5)
+shape = SubResource("RectangleShape2D_d2rp4")
+
+[node name="Sprite2D" parent="SmallStar5" index="1"]
+visible = false
+region_rect = Rect2(17, 1, 45.375, 25)
+
+[node name="Visual" type="Sprite2D" parent="SmallStar5"]
+scale = Vector2(4, 4)
+texture = ExtResource("5_ammq7")
+
+[editable path="P"]
+[editable path="E"]
+[editable path="R"]
+[editable path="F"]
+[editable path="E2"]
+[editable path="C"]
+[editable path="T"]
+[editable path="Star"]
+[editable path="Star2"]
+[editable path="Star3"]
+[editable path="Star4"]
+[editable path="SmallStar"]
+[editable path="SmallStar6"]
+[editable path="SmallStar2"]
+[editable path="SmallStar3"]
+[editable path="SmallStar4"]
+[editable path="SmallStar5"]
