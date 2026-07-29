@@ -1,0 +1,6 @@
+- Adjusted kitchen score goal to be 70%.
+- Adjusted weight of some objects in the bedroom and laboratory level.
+- Fixed collision area of some objects in the kitchen level.
+- Better visuals when showing the score.
+- Add intro to the kitchen level.
+- Add skip button on the pause screen while intro is playing.

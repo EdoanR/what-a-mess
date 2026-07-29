@@ -243,7 +243,7 @@ offset_bottom = 676.0
 theme_override_styles/hover = SubResource("StyleBoxTexture_fg0ae")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rv05k")
 script = ExtResource("2_txqpt")
-scene_path = "res://levels/kitchen/kitchen.tscn"
+scene_path = "uid://b5fltt5ywk7fe"
 metadata/level_name = "kitchen"
 
 [node name="TextureRect" type="TextureRect" parent="UI/Levels/Kitchen"]
