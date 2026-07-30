@@ -21,3 +21,4 @@ func pause():
 func unpause():
 	hide()
 	get_tree().paused = false
+	Game.flush_save_settings()

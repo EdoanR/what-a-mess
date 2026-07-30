@@ -5,3 +5,7 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_qdmn5")
 hold_to_drag = true
+
+[node name="SaveTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
