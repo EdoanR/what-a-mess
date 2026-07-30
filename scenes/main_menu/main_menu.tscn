@@ -69,6 +69,7 @@ position = Vector2(627, 253)
 [node name="Cursor" parent="." instance=ExtResource("2_7vrkn")]
 
 [node name="Options" parent="." instance=ExtResource("7_thkx5")]
+visible = true
 
 [node name="Resume" parent="Options" index="7"]
 offset_left = 496.0
@@ -90,6 +91,7 @@ script = ExtResource("9_dy7ct")
 [connection signal="pressed" from="CanvasLayer/StartGame" to="SoundPlayer" method="play_sound"]
 [connection signal="pressed" from="CanvasLayer/Options" to="Options" method="pause"]
 [connection signal="pressed" from="CanvasLayer/Options" to="SoundPlayer" method="play_sound"]
+[connection signal="pressed" from="Options/Resume" to="SoundPlayer" method="play_sound"]
 [connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="play_music"]
 
 [editable path="Options"]
