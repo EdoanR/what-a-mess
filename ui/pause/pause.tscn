@@ -9,7 +9,6 @@
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
-visible = false
 script = ExtResource("1_fuq3x")
 
 [node name="BG" type="ColorRect" parent="."]
@@ -40,7 +39,7 @@ step = 0.1
 script = ExtResource("3_t3fb8")
 bus_name = "sfx"
 
-[node name="Node" type="Node" parent="SFXVolumeSlider"]
+[node name="AutoSaveTrigger" type="Node" parent="SFXVolumeSlider"]
 script = ExtResource("4_7i4wi")
 
 [node name="MusicLabel" type="Label" parent="."]
@@ -63,7 +62,7 @@ step = 0.1
 script = ExtResource("3_t3fb8")
 bus_name = "music"
 
-[node name="Node" type="Node" parent="MusicVolumeSlider"]
+[node name="AutoSaveTrigger" type="Node" parent="MusicVolumeSlider"]
 script = ExtResource("4_7i4wi")
 
 [node name="MasterLabel" type="Label" parent="."]
@@ -86,7 +85,7 @@ step = 0.1
 script = ExtResource("3_t3fb8")
 bus_name = "Master"
 
-[node name="Node" type="Node" parent="MasterVolumeSlider"]
+[node name="AutoSaveTrigger" type="Node" parent="MasterVolumeSlider"]
 script = ExtResource("4_7i4wi")
 
 [node name="Resume" type="Button" parent="."]
@@ -120,7 +119,7 @@ theme_override_font_sizes/font_size = 32
 text = "Hold to drag"
 script = ExtResource("5_ixyhc")
 
-[node name="Node" type="Node" parent="HoldToDrag"]
+[node name="AutoSaveTrigger" type="Node" parent="HoldToDrag"]
 script = ExtResource("4_7i4wi")
 
 [connection signal="pressed" from="Resume" to="." method="unpause"]
