@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3gbh5ygrhbwp"]
+[gd_scene load_steps=12 format=3 uid="uid://3gbh5ygrhbwp"]
 
 [ext_resource type="Script" uid="uid://dcp8m483kw5tx" path="res://scenes/main_menu/main_menu.gd" id="1_8qtwp"]
 [ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="1_glbon"]
@@ -7,7 +7,12 @@
 [ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://common/ui/change_scene_button.gd" id="2_qe12f"]
 [ext_resource type="Script" uid="uid://bdq3y05snylij" path="res://common/ui/sound_player.gd" id="7_qe12f"]
 [ext_resource type="PackedScene" uid="uid://vqc2hq8oydxh" path="res://ui/pause/pause.tscn" id="7_thkx5"]
+[ext_resource type="PackedScene" uid="uid://nu7qetnnr8u2" path="res://ui/themed_confirmation_modal/themed_confirmation_modal.tscn" id="7_x2yjq"]
+[ext_resource type="Script" uid="uid://bxkvuf6bi7id1" path="res://ui/clear_save_data.gd" id="8_lqpn7"]
 [ext_resource type="Script" uid="uid://b8hnhk0yapu55" path="res://common/ui/music_player.gd" id="9_dy7ct"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2yjq"]
+bg_color = Color(0.242031, 0.192112, 0.192112, 1)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_8qtwp")
@@ -63,13 +68,46 @@ theme = ExtResource("1_glbon")
 theme_override_font_sizes/font_size = 50
 text = "Options"
 
+[node name="QuitGame" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 337.0
+offset_top = 234.0
+offset_right = 737.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0853114
+theme = ExtResource("1_glbon")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="QuitGameConfirmation" parent="CanvasLayer" instance=ExtResource("7_x2yjq")]
+visible = false
+
+[node name="Modal" parent="CanvasLayer/QuitGameConfirmation" index="1"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_x2yjq")
+
+[node name="HeaderLabel" parent="CanvasLayer/QuitGameConfirmation/Modal/MarginContainer/VBoxContainer" index="0"]
+visible = false
+
+[node name="MessageLabel" parent="CanvasLayer/QuitGameConfirmation/Modal/MarginContainer/VBoxContainer" index="1"]
+text = "Are you sure you want to quit the game?"
+
+[node name="ConfirmButton" parent="CanvasLayer/QuitGameConfirmation/Modal/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+text = "Quit Game"
+
 [node name="Logo" parent="." instance=ExtResource("2_fu7sn")]
 position = Vector2(627, 253)
 
 [node name="Cursor" parent="." instance=ExtResource("2_7vrkn")]
 
 [node name="Options" parent="." instance=ExtResource("7_thkx5")]
-visible = true
+visible = false
 
 [node name="Resume" parent="Options" index="7"]
 offset_left = 496.0
@@ -81,6 +119,20 @@ text = "Back to Main Menu"
 [node name="LevelSelection" parent="Options" index="8"]
 visible = false
 
+[node name="DeleteSaveDataConfirmation" parent="Options" instance=ExtResource("7_x2yjq")]
+visible = false
+
+[node name="ClearSaveData" type="Button" parent="Options" node_paths=PackedStringArray("confirmation_modal")]
+offset_left = 950.0
+offset_top = 568.0
+offset_right = 1192.0
+offset_bottom = 613.0
+theme = ExtResource("1_glbon")
+theme_override_font_sizes/font_size = 32
+text = "Clear Save Data"
+script = ExtResource("8_lqpn7")
+confirmation_modal = NodePath("../DeleteSaveDataConfirmation")
+
 [node name="SoundPlayer" type="Node2D" parent="."]
 script = ExtResource("7_qe12f")
 sounds = Array[int]([2, 3, 4])
@@ -91,7 +143,17 @@ script = ExtResource("9_dy7ct")
 [connection signal="pressed" from="CanvasLayer/StartGame" to="SoundPlayer" method="play_sound"]
 [connection signal="pressed" from="CanvasLayer/Options" to="Options" method="pause"]
 [connection signal="pressed" from="CanvasLayer/Options" to="SoundPlayer" method="play_sound"]
+[connection signal="pressed" from="CanvasLayer/QuitGame" to="CanvasLayer/QuitGameConfirmation" method="prompt"]
+[connection signal="pressed" from="CanvasLayer/QuitGame" to="SoundPlayer" method="play_sound"]
+[connection signal="pressed" from="CanvasLayer/QuitGameConfirmation/Modal/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="quit_game"]
+[connection signal="pressed" from="CanvasLayer/QuitGameConfirmation/Modal/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" to="SoundPlayer" method="play_sound"]
+[connection signal="pressed" from="CanvasLayer/QuitGameConfirmation/Modal/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="SoundPlayer" method="play_sound"]
 [connection signal="pressed" from="Options/Resume" to="SoundPlayer" method="play_sound"]
+[connection signal="pressed" from="Options/DeleteSaveDataConfirmation/Modal/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" to="SoundPlayer" method="play_sound"]
+[connection signal="pressed" from="Options/DeleteSaveDataConfirmation/Modal/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="SoundPlayer" method="play_sound"]
+[connection signal="pressed" from="Options/ClearSaveData" to="SoundPlayer" method="play_sound"]
 [connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="play_music"]
 
+[editable path="CanvasLayer/QuitGameConfirmation"]
 [editable path="Options"]
+[editable path="Options/DeleteSaveDataConfirmation"]

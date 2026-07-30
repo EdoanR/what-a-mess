@@ -126,7 +126,9 @@ func on_timer_finished():
 	var config = ConfigFile.new()
 	var _err = config.load("user://scores.cfg")
 
-	config.set_value(level_id, "score_rating", rating)
+	var saved_rating = config.get_value(level_id, "score_rating", 9999)
+	if rating < saved_rating:
+		config.set_value(level_id, "score_rating", rating)
 	config.set_value(level_id, "last_score", score)
 
 	var has_new_best_score = false
@@ -148,6 +150,8 @@ func on_timer_finished():
 			if time_left > best_time:
 				config.set_value(level_id, "best_time", time_left)
 				has_new_best_time = true
+	else:
+		config.erase_section_key(level_id, "best_time")
 
 	config.save("user://scores.cfg")
 
