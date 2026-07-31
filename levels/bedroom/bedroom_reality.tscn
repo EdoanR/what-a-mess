@@ -140,6 +140,7 @@ mass = 0.5
 sleeping = true
 linear_velocity = Vector2(-3.56007e-17, 3.65551e-21)
 score_importance = 0.3
+rotation_score_judge = 2
 grab_sfxs = Array[int]([14])
 drop_sfxs = Array[int]([15])
 
