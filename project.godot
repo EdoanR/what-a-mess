@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Constants="*res://globals/constants.gd"
 Utils="*res://globals/utils.gd"
 Game="*res://globals/game/game.tscn"
 Pointer="*res://globals/pointer/pointer.tscn"

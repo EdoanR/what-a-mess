@@ -124,7 +124,7 @@ func on_timer_finished():
 		rating = Game.LevelScoreRating.BAD
 
 	var config = ConfigFile.new()
-	var _err = config.load("user://scores.cfg")
+	var _err = config.load(Constants.SAVING_PATHS.scores)
 
 	var saved_rating = config.get_value(level_id, "score_rating", 9999)
 	if rating < saved_rating:
@@ -153,7 +153,7 @@ func on_timer_finished():
 	else:
 		config.erase_section_key(level_id, "best_time")
 
-	config.save("user://scores.cfg")
+	config.save(Constants.SAVING_PATHS.scores)
 
 	goal_indicator.position.x = (float(goal_score) / 100) * organization_bar.custom_minimum_size.x
 	organization_bar.value = 0.0

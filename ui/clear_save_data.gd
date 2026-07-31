@@ -17,7 +17,7 @@ func _on_pressed():
 
 	if is_confirmed:
 		var config = ConfigFile.new()
-		var err = config.load("user://scores.cfg")
+		var err = config.load(Constants.SAVING_PATHS.scores)
 		if err == OK:
 			config.clear()
-			config.save("user://scores.cfg")
+			config.save(Constants.SAVING_PATHS.scores)
