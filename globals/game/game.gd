@@ -15,7 +15,6 @@ signal settings_loaded
 
 @onready var save_timer: Timer = $SaveTimer
 const SAVE_DEBOUNCE_TIME: float = 0.5
-const SETTINGS_PATH: String = "user://settings.cfg"
 
 enum LevelScoreRating {
 	PERFECT,
@@ -33,7 +32,7 @@ func _ready() -> void:
 
 func load_settings() -> void:
 	var config = ConfigFile.new()
-	var err = config.load(SETTINGS_PATH)
+	var err = config.load(Constants.SAVING_PATHS.settings)
 	if err == OK:
 		hold_to_drag = config.get_value("game", "hold_to_drag", hold_to_drag)
 		if not OS.has_feature("web"):
@@ -90,7 +89,7 @@ func save_settings() -> void:
 	if save_timer and not save_timer.is_stopped():
 		save_timer.stop()
 	var config = ConfigFile.new()
-	var _err = config.load(SETTINGS_PATH)
+	var _err = config.load(Constants.SAVING_PATHS.settings)
 	
 	config.set_value("game", "hold_to_drag", hold_to_drag)
 	if not OS.has_feature("web"):
@@ -101,7 +100,7 @@ func save_settings() -> void:
 		var volume_db = AudioServer.get_bus_volume_db(i)
 		config.set_value("audio", bus_name, db_to_linear(volume_db))
 		
-	config.save(SETTINGS_PATH)
+	config.save(Constants.SAVING_PATHS.settings)
 
 func request_save_settings() -> void:
 	if save_timer:

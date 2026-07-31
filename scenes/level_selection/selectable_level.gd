@@ -18,7 +18,7 @@ func _ready():
 	best_time_label.visible = false
 
 	var config = ConfigFile.new()
-	var err = config.load("user://scores.cfg")
+	var err = config.load(Constants.SAVING_PATHS.scores)
 	if err != OK:
 		return
 
