@@ -26,7 +26,7 @@ func _ready():
 		print("Warning, selectable level with no level_id")
 		return
 	
-	var rating = config.get_value(level_id, "score_rating")
+	var rating = config.get_value(level_id, "score_rating", null)
 	if rating == null:
 		return
 	
@@ -35,14 +35,14 @@ func _ready():
 	elif rating == Game.LevelScoreRating.GOOD:
 		done_control.visible = true
 	
-	var best_score_value = config.get_value(level_id, "best_score")
+	var best_score_value = config.get_value(level_id, "best_score", null)
 	if best_score_value == null:
 		return
 	
 	best_score_label.text = "Best score: %d%%" % best_score_value
 	best_score_label.visible = true
 
-	var best_time_value = config.get_value(level_id, "best_time")
+	var best_time_value = config.get_value(level_id, "best_time", null)
 	if best_time_value == null:
 		return
 	

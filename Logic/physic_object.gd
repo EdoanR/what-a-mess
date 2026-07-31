@@ -223,7 +223,7 @@ func update_hint():
 		return
 	level.hint.text = ""
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if not being_hold:
 		return
 	if not collision_sfxs.is_empty():
