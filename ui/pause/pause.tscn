@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://vqc2hq8oydxh"]
+[gd_scene load_steps=8 format=3 uid="uid://vqc2hq8oydxh"]
 
 [ext_resource type="Script" uid="uid://dc2jecvu687p3" path="res://ui/pause/pause.gd" id="1_fuq3x"]
 [ext_resource type="Theme" uid="uid://busi278cvbhww" path="res://themes/main_theme.tres" id="2_7i4wi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cxy86ub5qiu4" path="res://common/ui/auto_save_trigger.gd" id="4_7i4wi"]
 [ext_resource type="Script" uid="uid://dpt2gl6f2vby7" path="res://common/ui/change_scene_button.gd" id="4_25a3s"]
 [ext_resource type="Script" uid="uid://ccoi42fsqwvir" path="res://logic/ui/hold_to_drag.gd" id="5_ixyhc"]
+[ext_resource type="Script" uid="uid://chxuus65pwm6a" path="res://common/ui/fullscreen_checkbox.gd" id="7_t3fb8"]
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -120,6 +121,20 @@ text = "Hold to drag"
 script = ExtResource("5_ixyhc")
 
 [node name="AutoSaveTrigger" type="Node" parent="HoldToDrag"]
+script = ExtResource("4_7i4wi")
+
+[node name="Fullscreen" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(300, 0)
+offset_left = 508.0
+offset_top = 514.0
+offset_right = 808.0
+offset_bottom = 567.0
+theme = ExtResource("2_7i4wi")
+theme_override_font_sizes/font_size = 32
+text = "Fullscreen"
+script = ExtResource("7_t3fb8")
+
+[node name="AutoSaveTrigger" type="Node" parent="Fullscreen"]
 script = ExtResource("4_7i4wi")
 
 [connection signal="pressed" from="Resume" to="." method="unpause"]

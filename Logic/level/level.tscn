@@ -540,17 +540,19 @@ offset_right = 752.0
 offset_bottom = 661.0
 theme = ExtResource("12_5ovf7")
 theme_override_font_sizes/font_size = 32
-text = "Retry Level"
+text = "Restart Level"
 script = ExtResource("13_6t80s")
 
 [node name="DoneButton" type="Button" parent="Pause"]
-offset_left = 645.0
-offset_top = 517.0
-offset_right = 986.0
-offset_bottom = 562.0
+offset_left = 840.0
+offset_top = 486.0
+offset_right = 1177.0
+offset_bottom = 576.0
+rotation = 0.0415085
 theme = ExtResource("12_5ovf7")
 theme_override_font_sizes/font_size = 32
-text = "I'm done actually, no need to wait"
+text = "I'm done actually, 
+no need to wait"
 
 [node name="PerfectSoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_0bcr1")
