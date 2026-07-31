@@ -93,8 +93,3 @@ func update_pointer(overlappings: Array[Node2D]):
 		Pointer.set_shape(Pointer.PointerShapes.READY_TO_GRAB)
 	else:
 		Pointer.set_shape(Pointer.PointerShapes.NORMAL)
-
-func _notification(what):
-	if what == NOTIFICATION_WM_MOUSE_EXIT or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
-		var a = ""
-		# drop_object()
